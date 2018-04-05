@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "274556394391",
+    "firebase_url": "https://tunisair-c8cd9.firebaseio.com",
+    "project_id": "tunisair-c8cd9",
+    "storage_bucket": "tunisair-c8cd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274556394391:android:1f873a9e3ffe8e1d",
+        "android_client_info": {
+          "package_name": "com.example.khawla.fidelys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274556394391-uc2t8icf6tkm9pnvsea9bhebvp2p1u4h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.khawla.fidelys",
+            "certificate_hash": "c3fcf80868b870251bfbf19d2838f65fd6f3157c"
+          }
+        },
+        {
+          "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUfbWnPVftjmJWkcCNK7J68n_rHiOfFgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274556394391:android:09de87d152c51296",
+        "android_client_info": {
+          "package_name": "com.example.khawla.tunisair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274556394391-llk1gojbk7vukuoetv5a6qdp1bksjmvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.khawla.tunisair",
+            "certificate_hash": "c3fcf80868b870251bfbf19d2838f65fd6f3157c"
+          }
+        },
+        {
+          "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUfbWnPVftjmJWkcCNK7J68n_rHiOfFgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274556394391:android:c9b7dd0e52f06f66",
+        "android_client_info": {
+          "package_name": "com.tunisair.khawla.tunisair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274556394391-sbgvpv8007b40m7u9l4itpmg2pa5q5bu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tunisair.khawla.tunisair",
+            "certificate_hash": "9456799b3d6fca766b36e7692a3446aa4a0ad402"
+          }
+        },
+        {
+          "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUfbWnPVftjmJWkcCNK7J68n_rHiOfFgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
