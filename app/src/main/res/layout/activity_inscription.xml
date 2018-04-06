@@ -59,7 +59,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editText5"
+                        android:id="@+id/sexe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -72,9 +72,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
                         android:focusableInTouchMode="false"
                         android:cursorVisible="false"
+                        android:ems="10"
                         android:onClick="get_age"
                         android:hint="Date naissance"
                         android:inputType="date" />
@@ -131,13 +131,10 @@
                     android:hint="Numero passport"
                     android:inputType="textPersonName" />
 
-                <EditText
-                    android:id="@+id/editText8"
+                <Spinner
+                    android:id="@+id/natio"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Nationnalité"
-                    android:inputType="textPersonName" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
                     android:id="@+id/adr_domic"
@@ -152,17 +149,14 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/editText12"
-                        android:layout_width="wrap_content"
+                    <Spinner
+                        android:id="@+id/pays"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Pays"
-                        android:inputType="textPersonName" />
+                        android:layout_weight="1" />
 
                     <EditText
-                        android:id="@+id/editText10"
+                        android:id="@+id/ville"
                         android:layout_width="201dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -171,7 +165,7 @@
                         android:inputType="textPersonName" />
 
                     <EditText
-                        android:id="@+id/editText13"
+                        android:id="@+id/code_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
