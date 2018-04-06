@@ -42,12 +42,6 @@ public class MouvementActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-    //Action des Buttons
-    public void mouvement(View view) {
-        Intent intent = new Intent(this, MouvementActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

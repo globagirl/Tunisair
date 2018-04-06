@@ -24,6 +24,10 @@
         <activity
             android:name=".MouvementActivity"
             android:label="@string/title_activity_mouvement"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProfilActivity"
+            android:label="@string/title_activity_profil"
             android:theme="@style/AppTheme"></activity>
     </application>
 
