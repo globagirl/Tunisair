@@ -104,5 +104,16 @@ public class AccountActivity extends AppCompatActivity
         Intent intent = new Intent(this, MouvementActivity.class);
         startActivity(intent);
     }
-
+    public void billet(View view) {
+        Intent intent = new Intent(this, BilletActivity.class);
+        startActivity(intent);
+    }
+    public void miles(View view) {
+        Intent intent = new Intent(this, MilesActivity.class);
+        startActivity(intent);
+    }
+    public void reclamation(View view) {
+        Intent intent = new Intent(this, ReclamationActivity.class);
+        startActivity(intent);
+    }
 }
