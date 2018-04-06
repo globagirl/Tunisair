@@ -25,6 +25,7 @@
         android:layout_height="150dp"
         android:background="@drawable/button2"
         android:text="Mouvement"
+        android:onClick="mouvement"
         android:textColor="@android:color/holo_red_dark"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="16dp" />
