@@ -8,4 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_mouvement">MouvementActivity</string>
     <string name="title_activity_profil">ProfilActivity</string>
+    <string name="title_activity_billet">BilletActivity</string>
+    <string name="title_activity_miles">MilesActivity</string>
+    <string name="title_activity_reclamation">ReclamationActivity</string>
 </resources>

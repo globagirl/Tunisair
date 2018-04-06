@@ -28,6 +28,18 @@
         <activity
             android:name=".ProfilActivity"
             android:label="@string/title_activity_profil"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BilletActivity"
+            android:label="@string/title_activity_billet"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MilesActivity"
+            android:label="@string/title_activity_miles"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ReclamationActivity"
+            android:label="@string/title_activity_reclamation"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -48,6 +48,7 @@
         android:layout_alignStart="@+id/B_rec"
         android:background="@drawable/button2"
         android:text="Achat Billet"
+        android:onClick="billet"
         android:textColor="@android:color/holo_red_dark"
         tools:layout_editor_absoluteX="42dp"
         tools:layout_editor_absoluteY="195dp" />
@@ -61,6 +62,7 @@
         android:layout_alignRight="@+id/B_rec"
         android:background="@drawable/button2"
         android:text="Achat Miles"
+        android:onClick="miles"
         android:textColor="@android:color/holo_red_dark"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="195dp" />
@@ -77,6 +79,7 @@
         android:layout_marginStart="25dp"
         android:background="@drawable/button"
         android:text="Reclamation"
+        android:onClick="reclamation"
         android:textColor="@android:color/holo_red_dark"
         tools:layout_editor_absoluteX="42dp"
         tools:layout_editor_absoluteY="370dp" />
