@@ -41,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
          pass=password.getText().toString().trim();
         if (!valider()){
             Toast.makeText(getApplicationContext(),"verifier tout les champs",Toast.LENGTH_LONG).show();
+            //login without email and password for test
+            Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+            startActivity(intent);
         }else{
             mAuth.signInWithEmailAndPassword(email,pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

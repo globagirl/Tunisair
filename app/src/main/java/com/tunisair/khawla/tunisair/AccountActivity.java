@@ -83,6 +83,9 @@ public class AccountActivity extends AppCompatActivity
 
         if (id == R.id.nav_about) {
 
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_location) {
 
         } else if (id == R.id.nav_deconnexion) {
