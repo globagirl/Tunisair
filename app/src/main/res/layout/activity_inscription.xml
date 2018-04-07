@@ -255,6 +255,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/button"
                         android:text="Envoyer"
+                        android:onClick="verif"
                         android:textColor="@android:color/holo_red_dark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
