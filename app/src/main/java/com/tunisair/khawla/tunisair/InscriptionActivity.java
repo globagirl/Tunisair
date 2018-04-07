@@ -63,8 +63,8 @@ public class InscriptionActivity extends AppCompatActivity {
          case2=(CheckBox) findViewById(R.id.checkBox2);
         spinner = (Spinner) findViewById(R.id.code_pays);
 
-
-
+    //Appel des methodes
+        remplirspinir();
     }
     public void remplirspinir() {
 
@@ -76,6 +76,7 @@ public class InscriptionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
+
             }
 
             @Override
@@ -85,6 +86,7 @@ public class InscriptionActivity extends AppCompatActivity {
         });
 
     }
+    //contenu d indicatif pays
     public void rempli_code_pays() {
 
         try {
@@ -105,7 +107,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
     }
 
-
+// controle de saisi
     public void verif(View view) {
         name =nom.getText().toString().trim();
         prenoms=prenom.getText().toString().trim();
@@ -124,93 +126,90 @@ public class InscriptionActivity extends AppCompatActivity {
         fonc=fonction.getText().toString().trim();
 
         if (!valider()){
-            Toast.makeText(getApplicationContext(),"verifier tout les champs",Toast.LENGTH_LONG).show();
-        }else{
+            Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
+        }
+        else{
 
         }
         Intent intent = new Intent(this, ProfilActivity.class);
         startActivity(intent);
     }
 
-
+// validation et messages d erreur
     private boolean valider() {
         boolean valide = true;
         if (name.isEmpty() ) {
-            nom.setError("insirer votre nom");
+            nom.setError("Veuillez insérer votre Nom");
             valide = false;
 
         }
         if (prenoms.isEmpty()) {
-            prenom.setError("insirer votre prenom");
+            prenom.setError("Veuillez insérer votre Prénom");
             valide = false;
 
         }
         if (pass.isEmpty()) {
-            password.setError("insirer votre password");
+            password.setError("Veuillez insérer votre Mot de pass");
             valide = false;
 
         }
         if (confirme.isEmpty()&& confirme!=pass) {
-            conf_password.setError("vérifier votre password");
+            conf_password.setError("Veuillez vérifier votre Mot de pass");
             valide = false;
 
         }
         if (email.isEmpty() || (!Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
-            mail.setError("insirer votre mail");
+            mail.setError("Veuillez réinsérer votre adresse email");
             valide = false;
 
         }
         if (pasport.isEmpty()||pasport.length()>8) {
-            num_pass.setError("insirer votre numéro pasport");
+            num_pass.setError("Numéro de passport incorrect");
             valide = false;
 
         }
         if (adrDO.isEmpty()) {
-            adresseDo.setError("insirer votre adresse domicile");
+            adresseDo.setError("Veuillez insérer votre Adresse Domicile");
             valide = false;
 
         }
         if (villes.isEmpty()) {
-            ville.setError("insirer votre ville");
+            ville.setError("Veuillez insérer votre Ville");
             valide = false;
 
         }
         if (postale.isEmpty()&& postale.length()<=4 && postale.length()>=6) {
-            codepostale.setError("insirer votre code postale");
+            codepostale.setError("Veuillez insérer votre Code Postale");
             valide = false;
 
         }
         if (teldom.isEmpty()) {
-            Tel_dom.setError("insirer votre numéro de téléphone domicile");
+            Tel_dom.setError("Veuillez insérer votre N° de Téléphone Domicile");
             valide = false;
 
         }
-        if (telprof.isEmpty()) {
-            Tel_prof.setError("insirer votre numéro de téléphone profitionel");
-            valide = false;
-
-        }
-        if (telmobil.isEmpty()) {
-            Tel_mobile.setError("insirer votre numéro de télephone mobile ");
-            valide = false;
-
-        }
-        if (soc.isEmpty()) {
-            sociéte.setError("insirer votre sociéte au tu travail");
-            valide = false;
-
-        }
-        if (fonc.isEmpty()) {
-            fonction.setError("insirer votre fonctionalité dans la société");
-            valide = false;
-
-        }
-        if (case1.isChecked()&& case2.isChecked()){
-            Toast.makeText(InscriptionActivity.this,"il faut cocher une seule case",Toast.LENGTH_SHORT).show();
-
-        }
-        else if (!(case1.isChecked())&&!(case2.isChecked())){
-            Toast.makeText(InscriptionActivity.this,"sélectioner une case",Toast.LENGTH_SHORT).show();
+//        if (telprof.isEmpty()) {
+//            Tel_prof.setError("insirer votre numéro de téléphone profitionel");
+//            valide = false;
+//
+//        }
+//        if (telmobil.isEmpty()) {
+//            Tel_mobile.setError("insirer votre numéro de télephone mobile ");
+//            valide = false;
+//
+//        }
+//        if (soc.isEmpty()) {
+//            sociéte.setError("insirer votre sociéte au tu travail");
+//            valide = false;
+//
+//        }
+//        if (fonc.isEmpty()) {
+//            fonction.setError("insirer votre fonctionalité dans la société");
+//            valide = false;
+//
+//        }
+        if (! case2.isChecked()){
+            Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
 
         }
         return valide;
