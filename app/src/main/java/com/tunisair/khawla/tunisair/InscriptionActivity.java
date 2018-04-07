@@ -9,16 +9,22 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -28,7 +34,10 @@ public class InscriptionActivity extends AppCompatActivity {
     EditText naisence,nom,prenom,mail,password,conf_password,num_pass,adresseDo,ville,codepostale,Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction;
     String name,prenoms,email,pass,confirme,pasport,adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc;
     String pays;
+    Spinner spinner;
     CheckBox case1,case2;
+    Liste_code_payes adapter;
+    String[] codes = new String[199];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +61,51 @@ public class InscriptionActivity extends AppCompatActivity {
          fonction=(EditText) findViewById(R.id.fonction);
         case1=(CheckBox) findViewById(R.id.checkBox);
          case2=(CheckBox) findViewById(R.id.checkBox2);
+        spinner = (Spinner) findViewById(R.id.code_pays);
 
 
 
     }
+    public void remplirspinir() {
+
+        rempli_code_pays();
+        adapter = new Liste_code_payes(this, codes, Constante.imgs);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                spinner.setSelection(-1);
+            }
+        });
+
+    }
+    public void rempli_code_pays() {
+
+        try {
+            InputStream inputStream = getAssets().open("indicatif_pays.txt");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            int x = 0;
+            String ligne;
+            while (bufferedReader.ready()) {
+
+                ligne = bufferedReader.readLine();
+                codes[x] = ligne;
+                x++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     public void verif(View view) {
         name =nom.getText().toString().trim();
         prenoms=prenom.getText().toString().trim();
@@ -78,6 +128,8 @@ public class InscriptionActivity extends AppCompatActivity {
         }else{
 
         }
+        Intent intent = new Intent(this, ProfilActivity.class);
+        startActivity(intent);
     }
 
 
