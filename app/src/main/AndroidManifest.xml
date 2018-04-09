@@ -2,12 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tunisair.khawla.tunisair">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
-    -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -26,44 +21,33 @@
         <activity android:name=".InscriptionActivity" />
         <activity
             android:name=".AccountActivity"
-            android:label="@string/title_activity_account"
+            android:label="Accueil"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MouvementActivity"
-            android:label="@string/title_activity_mouvement"
+            android:label="Mouvement"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ProfilActivity"
-            android:label="@string/title_activity_profil"
+            android:label="Profil"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".BilletActivity"
-            android:label="@string/title_activity_billet"
+            android:label="Achat de Billets Prime"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MilesActivity"
-            android:label="@string/title_activity_miles"
+            android:label="Achat de Miles"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ReclamationActivity"
-            android:label="@string/title_activity_reclamation"
+            android:label="Reclamations Fidelys"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_reclamation"
-            android:theme="@style/AppTheme" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
+            android:label="About Fidelys"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
