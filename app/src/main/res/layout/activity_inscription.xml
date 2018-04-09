@@ -134,7 +134,7 @@
                 <Spinner
                     android:id="@+id/natio"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent" />
 
                 <EditText
                     android:id="@+id/adr_domic"
@@ -152,7 +152,7 @@
                     <Spinner
                         android:id="@+id/pays"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1" />
 
                     <EditText
@@ -197,7 +197,19 @@
                         android:hint="Tél Domicile"
                         android:inputType="number" />
                 </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <Spinner
+                    android:id="@+id/code_pays_prof"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:spinnerMode="dialog">
+
+                </Spinner>
                 <EditText
                     android:id="@+id/T_prof"
                     android:layout_width="match_parent"
@@ -205,7 +217,20 @@
                     android:ems="10"
                     android:hint="Tél Professionnel"
                     android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <Spinner
+                    android:id="@+id/code_pays_mob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:spinnerMode="dialog">
+
+                </Spinner>
                 <EditText
                     android:id="@+id/T_mobile"
                     android:layout_width="match_parent"
@@ -213,7 +238,7 @@
                     android:ems="10"
                     android:hint="Tél Mobile"
                     android:inputType="number" />
-
+            </LinearLayout>
                 <EditText
                     android:id="@+id/fax"
                     android:layout_width="match_parent"

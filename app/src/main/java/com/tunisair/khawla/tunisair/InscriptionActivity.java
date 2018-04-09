@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -34,10 +35,16 @@ public class InscriptionActivity extends AppCompatActivity {
     EditText naisence,nom,prenom,mail,password,conf_password,num_pass,adresseDo,ville,codepostale,Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction;
     String name,prenoms,email,pass,confirme,pasport,adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc;
     String pays;
-    Spinner spinner;
+    Spinner SpiCode,SpiNatio,SpiPays,Spicode2;
     CheckBox case1,case2;
     Liste_code_payes adapter;
+    Liste_nationnalité adapterN;
+    Liste_pays adapterP;
     String[] codes = new String[199];
+    String[] nation=new String[175];
+    String[] pay=new String[199];
+    Spinner Spicode3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,18 +67,23 @@ public class InscriptionActivity extends AppCompatActivity {
          sociéte=(EditText) findViewById(R.id.societe);
          fonction=(EditText) findViewById(R.id.fonction);
         case1=(CheckBox) findViewById(R.id.checkBox);
-         case2=(CheckBox) findViewById(R.id.checkBox2);
-        spinner = (Spinner) findViewById(R.id.code_pays);
-
+        case2=(CheckBox) findViewById(R.id.checkBox2);
+        SpiCode = (Spinner) findViewById(R.id.code_pays);
+        SpiNatio=(Spinner) findViewById(R.id.natio);
+        SpiPays = (Spinner) findViewById(R.id.pays);
+        Spicode2=(Spinner) findViewById(R.id.code_pays_prof);
+        Spicode3= (Spinner)findViewById(R.id.code_pays_mob) ;
     //Appel des methodes
         remplirspinir();
+        remplirnatio();
+        remplirpays();
     }
     public void remplirspinir() {
 
         rempli_code_pays();
         adapter = new Liste_code_payes(this, codes, Constante.imgs);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        SpiCode.setAdapter(adapter);
+        SpiCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -81,11 +93,49 @@ public class InscriptionActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                spinner.setSelection(-1);
+                SpiCode.setSelection(-1);
             }
         });
 
+        adapter = new Liste_code_payes(this, codes, Constante.imgs);
+        Spicode2.setAdapter(adapter);
+        Spicode2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Spicode2.setSelection(-1);
+            }
+        });
+
+        adapter = new Liste_code_payes(this, codes, Constante.imgs);
+        Spicode3.setAdapter(adapter);
+        Spicode3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Spicode3.setSelection(-1);
+            }
+        });
+
+      // selection_code();
     }
+   // public void selection_code(){
+      //  if (SpiCode.isSelected()){
+           // }
+
+   // }
     //contenu d indicatif pays
     public void rempli_code_pays() {
 
@@ -106,6 +156,90 @@ public class InscriptionActivity extends AppCompatActivity {
         }
 
     }
+    // remplir liste nationalité
+    public void remplirnatio() {
+
+        rempli_natio();
+        adapterN = new Liste_nationnalité(this,nation);
+        SpiNatio.setAdapter(adapterN);
+        SpiNatio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                SpiNatio.setSelection(-1);
+            }
+        });
+
+    }
+    //contenu de nationalité
+    public void rempli_natio() {
+
+        try {
+            InputStream inputStream = getAssets().open("nationnalité.txt");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            int x = 0;
+            String ligne;
+            while (bufferedReader.ready()) {
+
+                ligne = bufferedReader.readLine();
+                nation[x] = ligne;
+                x++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // remplir liste pays
+    public void remplirpays() {
+
+        rempli_pays();
+        adapterP = new Liste_pays(this,pay);
+        SpiPays.setAdapter(adapterP);
+        SpiPays.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                SpiPays.setSelection(-1);
+            }
+        });
+
+    }
+    //contenu de pays
+    public void rempli_pays() {
+
+        try {
+            InputStream inputStream = getAssets().open("payes.txt");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            int x = 0;
+            String ligne;
+            while (bufferedReader.ready()) {
+
+                ligne = bufferedReader.readLine();
+                pay[x] = ligne;
+                x++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 // controle de saisi
     public void verif(View view) {
