@@ -54,6 +54,8 @@ public class BilletActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_location) {
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_deconnexion) {
 
