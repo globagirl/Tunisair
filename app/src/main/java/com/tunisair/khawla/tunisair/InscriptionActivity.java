@@ -45,12 +45,15 @@ public class InscriptionActivity extends AppCompatActivity {
     String[] nation=new String[175];
     String[] pay=new String[199];
     Spinner Spicode3;
+    //private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
+       // mDatabase = FirebaseDatabase.getInstance().getReference();
          nom = (EditText) findViewById(R.id.nom);
          prenom= (EditText) findViewById(R.id.prenom);
          mail= (EditText) findViewById(R.id.email);
@@ -328,13 +331,13 @@ public class InscriptionActivity extends AppCompatActivity {
     }
 
     public void get_date(View view) {
-    FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-    Calandrier_pop pop = new Calandrier_pop();
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+        Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
 
-}
-    public void setdate(String age) {
-        naisence.setText(age);
+    }
+    public void setdate(String date) {
+        naisence.setText(date);
     }
 
 
