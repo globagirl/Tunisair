@@ -67,7 +67,8 @@ public class MilesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_about) {
-
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_location) {
             Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);

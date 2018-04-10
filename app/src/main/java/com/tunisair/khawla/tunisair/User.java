@@ -5,6 +5,7 @@ package com.tunisair.khawla.tunisair;
  */
 
 public class User {
+
     public User() {
     }
 }
