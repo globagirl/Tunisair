@@ -342,10 +342,11 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
-        if (! case2.isChecked()){
+        if (! case2.isChecked()||(! case1.isChecked())){
             Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
-
+            valide = false;
         }
+
         return valide;
     }
 
