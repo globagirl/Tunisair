@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 
 public class InscriptionActivity extends AppCompatActivity {
     EditText naisence,nom,prenom,mail,password,conf_password,num_pass,adresseDo,ville,codepostale,Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction;
-    String name,prenoms,email,pass,confirme,pasport,adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc;
+    String name,prenoms,email,pass,confirme,pasport,adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc,co,nat,pa;
     String pays;
     Spinner SpiCode,SpiNatio,SpiPays,Spicode2;
     CheckBox case1,case2;
@@ -252,18 +252,20 @@ public class InscriptionActivity extends AppCompatActivity {
         pass=password.getText().toString().trim();
         confirme=conf_password.getText().toString().trim();
         pasport=num_pass.getText().toString().trim();
+        nat=Spicode2.getSelectedItem().toString();
         adrDO=adresseDo.getText().toString().trim();
         villes=ville.getText().toString().trim();
         postale=codepostale.getText().toString().trim();
+        co=SpiCode.getSelectedItem().toString();
         teldom=Tel_dom.getText().toString().trim();
         telprof=Tel_prof.getText().toString().trim();
         telmobil=Tel_mobile.getText().toString().trim();
+        pa=Spicode3.getSelectedItem().toString();
         faxs=fax.getText().toString().trim();
         soc=sociéte.getText().toString().trim();
         fonc=fonction.getText().toString().trim();
 
-        fonc=fonction.getText().toString().trim();
-        fonc=fonction.getText().toString().trim();
+
 
         if (!valider()){
             Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
@@ -273,7 +275,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
             String userId = mDatabase.push().getKey();
 
-            User user = new User(name,prenoms,email,pass,pasport,adrDO,villes,postale,teldom,telmobil,telprof,faxs,soc,fonc,"ee","");
+            User user = new User(name,prenoms,email,pass,pasport,adrDO,villes,postale,teldom,telmobil,telprof,faxs,soc,fonc,co,nat,pa);
             mDatabase.child(userId).setValue(user);
 
             Intent intent = new Intent(this, AccountActivity.class);
@@ -344,7 +346,7 @@ public class InscriptionActivity extends AppCompatActivity {
             Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
 
         }
-        return true;
+        return valide;
     }
 
     public void get_date(View view) {
