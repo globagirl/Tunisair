@@ -30,12 +30,11 @@ public class User {
 
     }
 
-    public User(String name, String prenoms, String email, String pass, String confirme, String pasport, String adrDO, String villes, String postale, String teldom, String telprof, String telmobil, String faxs, String soc, String fonc, String code, String pays, String nationalité) {
+    public User(String name, String prenoms, String email, String pass,  String pasport, String adrDO, String villes, String postale, String teldom, String telprof, String telmobil, String faxs, String soc, String fonc,  String pays, String nationalité) {
         this.name = name;
         this.prenoms = prenoms;
         this.email = email;
         this.pass = pass;
-        this.confirme = confirme;
         this.pasport = pasport;
         this.adrDO = adrDO;
         this.villes = villes;

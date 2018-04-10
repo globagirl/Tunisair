@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -260,14 +262,24 @@ public class InscriptionActivity extends AppCompatActivity {
         soc=sociéte.getText().toString().trim();
         fonc=fonction.getText().toString().trim();
 
+        fonc=fonction.getText().toString().trim();
+        fonc=fonction.getText().toString().trim();
+
         if (!valider()){
             Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
         }
         else{
+            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
 
+            String userId = mDatabase.push().getKey();
+
+            User user = new User(name,prenoms,email,pass,pasport,adrDO,villes,postale,teldom,telmobil,telprof,faxs,soc,fonc,"ee","");
+            mDatabase.child(userId).setValue(user);
+
+            Intent intent = new Intent(this, AccountActivity.class);
+            startActivity(intent);
         }
-        Intent intent = new Intent(this, ProfilActivity.class);
-        startActivity(intent);
+
     }
 
 // validation et messages d erreur
@@ -288,7 +300,12 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
-        if (confirme.isEmpty()|| confirme!=pass) {
+        if (confirme.isEmpty() ) {
+            conf_password.setError("Veuillez vérifier votre Mot de pass");
+            valide = false;
+
+        }
+        if (!confirme.equals(pass)) {
             conf_password.setError("Veuillez vérifier votre Mot de pass");
             valide = false;
 
@@ -313,7 +330,7 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
-        if (postale.isEmpty()|| postale.length()<=4 || postale.length()>=6) {
+        if (postale.isEmpty()|| postale.length()<=4 && postale.length()>=6) {
             codepostale.setError("Veuillez vérifier votre Code Postale");
             valide = false;
 
@@ -327,7 +344,7 @@ public class InscriptionActivity extends AppCompatActivity {
             Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
 
         }
-        return valide;
+        return true;
     }
 
     public void get_date(View view) {
