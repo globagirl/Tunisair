@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -129,13 +130,10 @@ public class InscriptionActivity extends AppCompatActivity {
             }
         });
 
-      // selection_code();
     }
-   // public void selection_code(){
-      //  if (SpiCode.isSelected()){
-           // }
 
-   // }
+
+
     //contenu d indicatif pays
     public void rempli_code_pays() {
 
@@ -287,7 +285,7 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
-        if (confirme.isEmpty()&& confirme!=pass) {
+        if (confirme.isEmpty()|| confirme!=pass) {
             conf_password.setError("Veuillez vérifier votre Mot de pass");
             valide = false;
 
@@ -298,7 +296,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
         }
         if (pasport.isEmpty()||pasport.length()>8) {
-            num_pass.setError("Numéro de passport incorrect");
+            num_pass.setError("Veuillez vérifier votre N° de Passport");
             valide = false;
 
         }
@@ -312,8 +310,8 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
-        if (postale.isEmpty()&& postale.length()<=4 && postale.length()>=6) {
-            codepostale.setError("Veuillez insérer votre Code Postale");
+        if (postale.isEmpty()|| postale.length()<=4 || postale.length()>=6) {
+            codepostale.setError("Veuillez vérifier votre Code Postale");
             valide = false;
 
         }
@@ -322,26 +320,6 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
-//        if (telprof.isEmpty()) {
-//            Tel_prof.setError("insirer votre numéro de téléphone profitionel");
-//            valide = false;
-//
-//        }
-//        if (telmobil.isEmpty()) {
-//            Tel_mobile.setError("insirer votre numéro de télephone mobile ");
-//            valide = false;
-//
-//        }
-//        if (soc.isEmpty()) {
-//            sociéte.setError("insirer votre sociéte au tu travail");
-//            valide = false;
-//
-//        }
-//        if (fonc.isEmpty()) {
-//            fonction.setError("insirer votre fonctionalité dans la société");
-//            valide = false;
-//
-//        }
         if (! case2.isChecked()){
             Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
 
@@ -349,19 +327,15 @@ public class InscriptionActivity extends AppCompatActivity {
         return valide;
     }
 
-    public void get_age(View view) {
+    public void get_date(View view) {
     FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
     Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
 
 }
-    public void setage(String age) {
+    public void setdate(String age) {
         naisence.setText(age);
     }
 
 
-//    public void openMain(View view) {
-//        Intent intent=new Intent(this, LoginActivity.class);
-//        startActivity(intent);
-//    }
 }

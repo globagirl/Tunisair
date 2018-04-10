@@ -43,7 +43,7 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View view) {
-        String age;
+        String date;
         Button button=(Button)view;
         if(button.getText().toString().equals("Anuler")){
             this.dismiss();
@@ -53,10 +53,10 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
             int mois = naisence.getMonth();
             int day = naisence.getDayOfMonth();
 
-                age =day+"/"+mois+"/"+x;
-Toast.makeText(getContext(),age+"",Toast.LENGTH_LONG).show();
+                date =day+"/"+mois+"/"+x;
+Toast.makeText(getContext(),date+"",Toast.LENGTH_LONG).show();
             InscriptionActivity inscr = (InscriptionActivity) getActivity();
-            inscr.setage(age);
+            inscr.setdate(date);
             this.dismiss();
 
         }
