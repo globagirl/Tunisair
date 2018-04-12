@@ -279,7 +279,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
             mDatabase.child(userId).setValue(user);
 
-            Intent intent = new Intent(this, AccountActivity.class);
+            Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
         }
 
@@ -287,66 +287,66 @@ public class InscriptionActivity extends AppCompatActivity {
 
 // validation et messages d erreur
     private boolean valider() {
-        boolean valide = true;
-//        if (name.isEmpty() ) {
-//            nom.setError("Veuillez insérer votre Nom");
-//            valide = false;
-//
-//        }
-//        if (prenoms.isEmpty()) {
-//            prenom.setError("Veuillez insérer votre Prénom");
-//            valide = false;
-//
-//        }
-//        if (pass.isEmpty()) {
-//            password.setError("Veuillez insérer votre Mot de pass");
-//            valide = false;
-//
-//        }
-//        if (confirme.isEmpty() ) {
-//            conf_password.setError("Veuillez vérifier votre Mot de pass");
-//            valide = false;
-//
-//        }
-//        if (!confirme.equals(pass)) {
-//            conf_password.setError("Veuillez vérifier votre Mot de pass");
-//            valide = false;
-//
-//        }
-//        if (email.isEmpty() || (!Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
-//            mail.setError("Veuillez réinsérer votre adresse email");
-//            valide = false;
-//
-//        }
-//        if (pasport.isEmpty()||pasport.length()>8) {
-//            num_pass.setError("Veuillez vérifier votre N° de Passport");
-//            valide = false;
-//
-//        }
-//        if (adrDO.isEmpty()) {
-//            adresseDo.setError("Veuillez insérer votre Adresse Domicile");
-//            valide = false;
-//
-//        }
-//        if (villes.isEmpty()) {
-//            ville.setError("Veuillez insérer votre Ville");
-//            valide = false;
-//
-//        }
-//        if (postale.isEmpty()|| postale.length()<=4 && postale.length()>=6) {
-//            codepostale.setError("Veuillez vérifier votre Code Postale");
-//            valide = false;
-//
-//        }
-//        if (teldom.isEmpty()) {
-//            Tel_dom.setError("Veuillez insérer votre N° de Téléphone Domicile");
-//            valide = false;
-//
-//        }
-//        if (! case2.isChecked()){
-//            Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
-//            valide = false;
-//        }
+            boolean valide = true;
+            if (name.isEmpty() ) {
+                nom.setError("Veuillez insérer votre Nom");
+                valide = false;
+
+            }
+            if (prenoms.isEmpty()) {
+                prenom.setError("Veuillez insérer votre Prénom");
+                valide = false;
+
+            }
+            if (pass.isEmpty()) {
+                password.setError("Veuillez insérer votre Mot de pass");
+                valide = false;
+
+            }
+            if (confirme.isEmpty() ) {
+                conf_password.setError("Veuillez vérifier votre Mot de pass");
+                valide = false;
+
+            }
+            if (!confirme.equals(pass)) {
+                conf_password.setError("Veuillez vérifier votre Mot de pass");
+                valide = false;
+
+            }
+            if (email.isEmpty() || (!Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+                mail.setError("Veuillez réinsérer votre adresse email");
+                valide = false;
+
+            }
+            if (pasport.isEmpty()||pasport.length()>8) {
+                num_pass.setError("Veuillez vérifier votre N° de Passport");
+                valide = false;
+
+            }
+            if (adrDO.isEmpty()) {
+                adresseDo.setError("Veuillez insérer votre Adresse Domicile");
+                valide = false;
+
+            }
+            if (villes.isEmpty()) {
+                ville.setError("Veuillez insérer votre Ville");
+                valide = false;
+
+            }
+            if (postale.isEmpty()|| postale.length()<=4 && postale.length()>=6) {
+                codepostale.setError("Veuillez vérifier votre Code Postale");
+                valide = false;
+
+            }
+            if (teldom.isEmpty()) {
+                Tel_dom.setError("Veuillez insérer votre N° de Téléphone Domicile");
+                valide = false;
+
+            }
+            if (! case2.isChecked()){
+                Toast.makeText(InscriptionActivity.this,"Veuillez accepter les Conditions Générales du Programme",Toast.LENGTH_SHORT).show();
+                valide = false;
+           }
 
         return valide;
     }

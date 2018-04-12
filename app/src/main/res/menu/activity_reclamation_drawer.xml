@@ -5,14 +5,36 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_about"
-            android:title="About Fidelys" />
+            android:id="@+id/nav_profil"
+            android:title="Profil" />
         <item
-            android:id="@+id/nav_location"
-            android:title="Location" />
+            android:id="@+id/nav_billet"
+            android:title="Achat de Billets" />
         <item
-            android:id="@+id/nav_deconnexion"
-            android:title="Deconnexion" />
+            android:id="@+id/nav_miles"
+            android:title="Achat de Miles" />
+        <item
+            android:id="@+id/nav_mouv"
+            android:title="Mouvements" />
+        <item
+            android:id="@+id/nav_rec"
+            android:title="Réclamation" />
+
+
     </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:title="About Fidelys" />
+            <item
+                android:id="@+id/nav_location"
+                android:title="Location" />
+            <item
+                android:id="@+id/nav_deconnexion"
+                android:title="Deconnexion" />
+        </menu>
+    </item>
 
 </menu>

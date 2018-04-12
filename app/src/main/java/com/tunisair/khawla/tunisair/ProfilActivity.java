@@ -70,8 +70,35 @@ public class ProfilActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.nav_profil) {
 
-        if (id == R.id.nav_about) {
+            Intent intent = new Intent(this, ProfilActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_billet) {
+
+            Intent intent = new Intent(this, BilletActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_miles) {
+
+            Intent intent = new Intent(this, MilesActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_mouv) {
+
+            Intent intent = new Intent(this, MouvementActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_rec) {
+
+            Intent intent = new Intent(this, ReclamationActivity.class);
+            startActivity(intent);
+
+        }
+
+        else if (id == R.id.nav_about) {
+
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
 

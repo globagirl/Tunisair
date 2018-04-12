@@ -70,18 +70,45 @@ EditText naisence;
         public boolean onNavigationItemSelected (MenuItem item){
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+            if (id == R.id.nav_profil) {
 
-        if (id == R.id.nav_about) {
-            Intent intent = new Intent(this, AboutActivity.class);
-            startActivity(intent);
+                Intent intent = new Intent(this, ProfilActivity.class);
+                startActivity(intent);
 
-        } else if (id == R.id.nav_location) {
-            Intent intent = new Intent(this, MapsActivity.class);
-            startActivity(intent);
+            }else if (id == R.id.nav_billet) {
 
-        } else if (id == R.id.nav_deconnexion) {
+                Intent intent = new Intent(this, BilletActivity.class);
+                startActivity(intent);
 
-        }
+            }else if (id == R.id.nav_miles) {
+
+                Intent intent = new Intent(this, MilesActivity.class);
+                startActivity(intent);
+
+            }else if (id == R.id.nav_mouv) {
+
+                Intent intent = new Intent(this, MouvementActivity.class);
+                startActivity(intent);
+
+            }else if (id == R.id.nav_rec) {
+
+                Intent intent = new Intent(this, ReclamationActivity.class);
+                startActivity(intent);
+
+            }
+
+            else if (id == R.id.nav_about) {
+
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+
+            } else if (id == R.id.nav_location) {
+                Intent intent = new Intent(this, MapsActivity.class);
+                startActivity(intent);
+
+            } else if (id == R.id.nav_deconnexion) {
+
+            }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

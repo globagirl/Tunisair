@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         if (!valider()){
             Toast.makeText(getApplicationContext(),"verifier tout les champs",Toast.LENGTH_LONG).show();
             //login without email and password for test
-            Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ProfilActivity.class);
             startActivity(intent);
         }else{
             mAuth.signInWithEmailAndPassword(email,pass)
@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ProfilActivity.class);
                                 startActivity(intent);
 
                             } else {

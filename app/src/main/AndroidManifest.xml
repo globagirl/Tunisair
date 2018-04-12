@@ -31,10 +31,6 @@
         </activity>
         <activity android:name=".InscriptionActivity" />
         <activity
-            android:name=".AccountActivity"
-            android:label="Accueil"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".MouvementActivity"
             android:label="Mouvement"
             android:theme="@style/AppTheme" />
