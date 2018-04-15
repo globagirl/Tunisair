@@ -15,17 +15,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ReclamationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 
     {
-EditText naisence;
+
+EditText naisence,id,type_rec,desc,Num_vol,Ref,Tickt,date_vol;
+String iden,type,dec,num,numvol,refe,tic;
         @Override
         protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-            naisence= (EditText) findViewById(R.id.naissance);
         setContentView(R.layout.activity_reclamation);
+        naisence=(EditText) findViewById(R.id.date_rec);
+        id=(EditText) findViewById(R.id.identifiant);
+        type_rec=(EditText) findViewById(R.id.type_rec);
+        desc=(EditText) findViewById(R.id.description);
+        Num_vol=(EditText)findViewById(R.id.num_vol);
+        Ref=(EditText)findViewById(R.id.billet_ref);
+        Tickt=(EditText) findViewById(R.id.ticket_number);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -122,5 +133,55 @@ EditText naisence;
         public void setdate (String date){
         naisence.setText(date);
     }
+
+        public void verifier(View view) {
+            iden=id.getText().toString().trim();
+            type= type_rec.getText().toString().trim();
+            dec=desc.getText().toString().trim();
+            num=Num_vol.getText().toString().trim();
+            refe=Ref.getText().toString().trim();
+            tic=Tickt.getText().toString().trim();
+
+            if (!valider()){
+                Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+        private boolean valider() {
+            boolean valide=true;
+
+            if (iden.isEmpty() ) {
+                id.setError("Veuillez insérer votre identifiant ");
+                valide = false;
+
+            }
+            if (type.isEmpty() ) {
+                type_rec.setError("Veuillez ajoutée votre type de réclamation");
+                valide = false;
+
+            }
+            if (dec.isEmpty() ) {
+                desc.setError("Veuillez ajoutée une description ");
+                valide = false;
+
+            }
+            if (numvol.isEmpty() ) {
+                Num_vol.setError("Veuillez ajoutée votre numéro de vol");
+                valide = false;
+
+            }
+            if (refe.isEmpty() ) {
+                Ref.setError("Veuillez ajoutée votre réferance de billet");
+                valide = false;
+
+            }
+            if (tic.isEmpty() ) {
+                Tickt.setError("Veuillez ajoutée numéro de ticket");
+                valide = false;
+
+            }
+            return valide;
+        }
     }
 

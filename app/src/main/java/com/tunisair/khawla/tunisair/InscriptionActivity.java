@@ -137,8 +137,6 @@ public class InscriptionActivity extends AppCompatActivity {
 
     }
 
-
-
     //contenu d indicatif pays
     public void rempli_code_pays() {
 
@@ -264,8 +262,6 @@ public class InscriptionActivity extends AppCompatActivity {
         faxs=fax.getText().toString().trim();
         soc=sociéte.getText().toString().trim();
         fonc=fonction.getText().toString().trim();
-
-
 
         if (!valider()){
             Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
