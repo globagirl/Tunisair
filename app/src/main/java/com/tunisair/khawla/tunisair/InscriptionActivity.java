@@ -37,7 +37,6 @@ import java.util.regex.Pattern;
 public class InscriptionActivity extends AppCompatActivity {
     EditText naisence,nom,prenom,mail,password,conf_password,num_pass,adresseDo,ville,codepostale,Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction;
     String name,prenoms,email,pass,confirme,pasport,adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc,co,nat,pa;
-    String pays;
     Spinner SpiCode,SpiNatio,SpiPays,Spicode2;
     CheckBox case1,case2;
     Liste_code_payes adapter;
