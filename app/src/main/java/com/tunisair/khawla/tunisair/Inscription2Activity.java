@@ -1,12 +1,17 @@
 package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -18,42 +23,69 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Inscription2Activity extends AppCompatActivity {
-    EditText adresseDo,ville,codepostale,Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction;
-    String adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc,co,nat,pa;
+    EditText Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction,num_bielt,entet_bielt,agence,num_vole,dat_vol;
+    String teldom,telprof,telmobil,faxs,co,nat,pa,num_bielts,entet_bielts,Agence,Num_vole,Dat_vol;
+    boolean chek=false;
     Liste_code_payes adapter;
     Liste_nationnalité adapterN;
     Liste_pays adapterP;
     String[] codes = new String[199];
     String[] nation=new String[175];
     String[] pay=new String[199];
-    Spinner SpiCode,SpiNatio,SpiPays,Spicode2;
-    Spinner Spicode3;
+    Spinner SpiCode,SpiNatio,SpiPays,Spicode2,Spicode3,Spicode4;
+    LinearLayout li_voyage;
+    CheckBox bt_chek;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription2);
 
-        codepostale=(EditText) findViewById(R.id.code_post);
+        prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
+        editor = prefs.edit();
         Tel_dom=(EditText) findViewById(R.id.T_domic);
-        adresseDo=(EditText) findViewById(R.id.adr_domic);
-        ville=(EditText) findViewById(R.id.ville);
         Tel_prof=(EditText) findViewById(R.id.T_prof);
         Tel_mobile=(EditText) findViewById(R.id.T_mobile);
         fax=(EditText) findViewById(R.id.fax);
         sociéte=(EditText) findViewById(R.id.societe);
         fonction=(EditText) findViewById(R.id.fonction);
-        SpiCode = (Spinner) findViewById(R.id.code_pays);
         SpiNatio=(Spinner) findViewById(R.id.natio);
         SpiPays = (Spinner) findViewById(R.id.pays);
+        SpiCode = (Spinner) findViewById(R.id.code_pays_domic);
         Spicode2=(Spinner) findViewById(R.id.code_pays_prof);
         Spicode3= (Spinner)findViewById(R.id.code_pays_mob) ;
+        Spicode4= (Spinner)findViewById(R.id.code_pays_fax) ;
+        li_voyage= (LinearLayout) findViewById(R.id.linear_voyage) ;
+        bt_chek= (CheckBox) findViewById(R.id.check_voyage) ;
+
+        num_bielt=(EditText) findViewById(R.id.num_bielt2);
+        entet_bielt=(EditText) findViewById(R.id.num_bielt);
+        dat_vol=(EditText) findViewById(R.id.date);
+        agence=(EditText) findViewById(R.id.agence);
+        num_vole=(EditText) findViewById(R.id.Nvol);
 
         //Appel des methodes
+        remplirpays();
         remplirspinir();
         remplirnatio();
-        remplirpays();
     }
-
+    public void onCheckboxClicked(View view) {
+        CheckBox checkBox = (CheckBox) view;
+        boolean checked = checkBox.isChecked();
+        if(checked){
+            agence.setError(null);
+            dat_vol.setError(null);
+            num_bielt.setError(null);
+            entet_bielt.setError(null);
+            num_vole.setError(null);
+            li_voyage.setVisibility(View.GONE);
+            chek=true;
+        }else {
+            li_voyage.setVisibility(View.VISIBLE);
+            chek=false;
+        }
+    }
     public void remplirspinir() {
 
         rempli_code_pays();
@@ -62,14 +94,12 @@ public class Inscription2Activity extends AppCompatActivity {
         SpiCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
+                TextView code = (TextView) view.findViewById(R.id.code_payes);
+                editor.putString("Tel_domicile",code.getText().toString());
+                editor.apply();
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                SpiCode.setSelection(-1);
+            public void onNothingSelected(AdapterView<?> adapterView) {SpiCode.setSelection(187);
             }
         });
 
@@ -78,9 +108,9 @@ public class Inscription2Activity extends AppCompatActivity {
         Spicode2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
+                TextView code = (TextView) view.findViewById(R.id.code_payes);
+                editor.putString("Tel_prof",code.getText().toString());
+                editor.apply();
             }
 
             @Override
@@ -94,14 +124,29 @@ public class Inscription2Activity extends AppCompatActivity {
         Spicode3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
+                TextView code = (TextView) view.findViewById(R.id.code_payes);
+                editor.putString("Tel_mobile",code.getText().toString());
+                editor.apply();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 Spicode3.setSelection(-1);
+            }
+        });
+        adapter = new Liste_code_payes(this, codes, Constante.imgs);
+        Spicode4.setAdapter(adapter);
+        Spicode4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView code = (TextView) view.findViewById(R.id.code_payes);
+                editor.putString("Tel_fax",code.getText().toString());
+                editor.apply();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Spicode4.setSelection(-1);
             }
         });
 
@@ -136,9 +181,9 @@ public class Inscription2Activity extends AppCompatActivity {
         SpiNatio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
+                TextView natio = (TextView) view.findViewById(R.id.code_payes);
+                editor.putString("Nationalite",natio.getText().toString());
+                editor.apply();
             }
 
             @Override
@@ -179,10 +224,10 @@ public class Inscription2Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-
-
+                TextView pays = (TextView) view.findViewById(R.id.code_payes);
+                editor.putString("Pays",pays.getText().toString());
+                editor.apply();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 SpiPays.setSelection(-1);
@@ -210,67 +255,112 @@ public class Inscription2Activity extends AppCompatActivity {
         }
 
     }
-
-    public void passer(View view) {
-        Intent intent = new Intent(this, AdhessionActivity.class);
-        startActivity(intent);
-    }
-
     public void veriff(View view) {
         nat=Spicode2.getSelectedItem().toString();
-        adrDO=adresseDo.getText().toString().trim();
-        villes=ville.getText().toString().trim();
-        postale=codepostale.getText().toString().trim();
         co=SpiCode.getSelectedItem().toString();
         teldom=Tel_dom.getText().toString().trim();
         telprof=Tel_prof.getText().toString().trim();
         telmobil=Tel_mobile.getText().toString().trim();
         pa=Spicode3.getSelectedItem().toString();
         faxs=fax.getText().toString().trim();
-        soc=sociéte.getText().toString().trim();
-        fonc=fonction.getText().toString().trim();
 
-        if (!valider()){
-            Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
-        }
-        else{
-            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
+        entet_bielts=entet_bielt.getText().toString().trim();
+        num_bielts=num_bielt.getText().toString().trim();
+        Num_vole=num_vole.getText().toString().trim();
+        Dat_vol=dat_vol.getText().toString().trim();
+        Agence=agence.getText().toString().trim();
 
-            String userId = mDatabase.push().getKey();
-
-            User user = new User(adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc,nat,pa);
-
-            mDatabase.child(userId).setValue(user);
+        if (valider()){
+            remplir_champs();
+//            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
+//
+//            String userId = mDatabase.push().getKey();
+//
+//            User user = new User(adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc,nat,pa);
+//
+//            mDatabase.child(userId).setValue(user);
 
             Intent intent = new Intent(this, AdhessionActivity.class);
             startActivity(intent);
         }
     }
-
+    public void remplir_champs() {
+        editor.putString("Societe", sociéte.getText().toString());
+        editor.putString("Fonction",fonction.getText().toString());
+        editor.putString("Tel_dom", teldom);
+        editor.putString("Tel_prof", telprof);
+        editor.putString("Tel_mobile",telmobil);
+        editor.putString("Tel_fax", faxs);
+        if(chek==false){
+            editor.putString("Agence",Agence);
+            editor.putString("Num_vol", Num_vole);
+            editor.putString("Num_bielt", num_bielts);
+            editor.putString("Entet_bielt",entet_bielts);
+        }else{
+            editor.putString("Agence","");
+            editor.putString("Num_vol", "");
+            editor.putString("Num_bielt", "");
+            editor.putString("Entet_bielt","");
+            editor.putString("Date_vol","" );
+        }
+        editor.apply();
+    }
     // validation et messages d erreur
     private boolean valider() {
         boolean valide = true;
-        if (adrDO.isEmpty()) {
-            adresseDo.setError("Veuillez insérer votre Adresse Domicile");
-            valide = false;
-
-        }
-        if (villes.isEmpty()) {
-            ville.setError("Veuillez insérer votre Ville");
-            valide = false;
-
-        }
-        if (postale.isEmpty() || postale.length() <= 4 && postale.length() >= 6) {
-            codepostale.setError("Veuillez vérifier votre Code Postale");
-            valide = false;
-
-        }
         if (teldom.isEmpty()) {
-            Tel_dom.setError("Veuillez insérer votre N° de Téléphone Domicile");
+            Tel_dom.setError(getString(R.string.champ_obligatoir));
             valide = false;
+        }
+        if(chek==false){
+            if (Agence.isEmpty()) {
+                agence.setError(getString(R.string.champ_obligatoir));
+                valide = false;
+            }
+            if (Num_vole.isEmpty()) {
+                num_vole.setError(getString(R.string.champ_obligatoir));
+                valide = false;
+            }
+            if (entet_bielts.isEmpty()) {
+                entet_bielt.setError(getString(R.string.champ_obligatoir));
+                valide = false;
+            }
+            if (num_bielts.isEmpty()) {
+                num_bielt.setError(getString(R.string.champ_obligatoir));
+                valide = false;
+            }
+            if (Dat_vol.isEmpty()) {
+                dat_vol.setError(getString(R.string.champ_obligatoir));
+                valide = false;
+            }
+            if (!Num_vole.isEmpty() && (Num_vole.length() != 4)) {
+                num_vole.setError(getString(R.string.logure_numero_vole));
+                valide = false;
 
+            }
+            if (!entet_bielts.isEmpty() && (entet_bielts.length() != 3)) {
+                entet_bielt.setError(getString(R.string.logure_entet_bielts_));
+                valide = false;
+
+            }
+            if (!num_bielts.isEmpty() && (num_bielts.length() != 10)) {
+                num_bielt.setError(getString(R.string.logure_numero_bielts));
+                valide = false;
+
+            }
         }
         return valide;
     }
+    public void get_date(View view) {
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+        Calandrier_pop pop = new Calandrier_pop();
+        pop.show(manager, null);
+        InscriptionActivity.p=2;
 
+    }
+    public void setdate2(String date) {
+        dat_vol.setText(date);
+        dat_vol.setError(null);
+        editor.putString("Date_vol", dat_vol.getText().toString());
+    }
 }

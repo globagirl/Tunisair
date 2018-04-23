@@ -1,5 +1,4 @@
-﻿Tunisie
-Afghanistan
+﻿Afghanistan
 Afrique du Sud
 Albanie
 Algeria
@@ -185,6 +184,7 @@ Timor oriental
 Togo
 Tonga
 Trinite-et-Tobago
+Tunisie
 Turkmenistan
 Turquie
 Tuvalu
