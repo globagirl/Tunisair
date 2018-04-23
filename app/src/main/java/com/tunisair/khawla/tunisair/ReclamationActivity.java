@@ -12,9 +12,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReclamationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
@@ -48,6 +52,21 @@ public class ReclamationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        final List<String> spinerarray = new ArrayList<String>();
+        spinerarray.add("Autre Reclamation");
+        spinerarray.add("Bonus non alloue");
+        spinerarray.add("Cloture compte justificatif");
+        spinerarray.add("Demande code pin ");
+        spinerarray.add("Demande de duplicata de carte ");
+        spinerarray.add("Demande revision statut ");
+        spinerarray.add("Regroupement famille avec 20% bonus");
+        spinerarray.add("Catering ");
+        spinerarray.add("Carte non parvenue");
+        spinerarray.add("Voyage non compatabilse");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type_rec.setAdapter(adapter);
+
     }
 
     @Override
@@ -166,17 +185,17 @@ public class ReclamationActivity extends AppCompatActivity
             valide = false;
 
         }
-        if (numvol.isEmpty() ) {
+        if (numvol.isEmpty()||numvol.length()!=4 ) {
             Num_vol.setError("Veuillez ajoutée votre numéro de vol");
             valide = false;
 
         }
-        if (refe.isEmpty() ) {
+        if (refe.isEmpty() ||refe.length()!=6) {
             Ref.setError("Veuillez ajoutée votre réferance de billet");
             valide = false;
 
         }
-        if (tic.isEmpty() ) {
+        if (tic.isEmpty() ||tic.length()!=10 ) {
             Tickt.setError("Veuillez ajoutée numéro de ticket");
             valide = false;
 

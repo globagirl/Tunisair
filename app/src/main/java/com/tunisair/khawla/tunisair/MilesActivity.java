@@ -13,12 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MilesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+Spinner devise;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        devise=(Spinner) findViewById(R.id.spinner4);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_miles);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -33,6 +39,14 @@ public class MilesActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        final List<String> spinerarray = new ArrayList<String>();
+        spinerarray.add("Euro");
+        spinerarray.add("Dinar");
+        spinerarray.add("Dollar");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        devise.setAdapter(adapter);
+
     }
 
     @Override
