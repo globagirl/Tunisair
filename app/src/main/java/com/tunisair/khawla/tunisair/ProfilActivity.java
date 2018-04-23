@@ -41,30 +41,30 @@ public class ProfilActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        nom = (EditText) findViewById(R.id.nom);
-        prenom= (EditText) findViewById(R.id.prenom);
-        mail= (EditText) findViewById(R.id.email);
-        password= (EditText) findViewById(R.id.password);
-        num_pass= (EditText) findViewById(R.id.num_pass);
-        naisence= (EditText) findViewById(R.id.naissance);
-        codepostale=(EditText) findViewById(R.id.code_post);
-        Tel_dom=(EditText) findViewById(R.id.T_domic);
-        adresseDo=(EditText) findViewById(R.id.adr_domic);
-        ville=(EditText) findViewById(R.id.ville);
-        Tel_prof=(EditText) findViewById(R.id.T_prof);
-        Tel_mobile=(EditText) findViewById(R.id.T_mobile);
-        fax=(EditText) findViewById(R.id.fax);
-        sociéte=(EditText) findViewById(R.id.societe);
-        fonction=(EditText) findViewById(R.id.fonction);
-        SpiCode = (Spinner) findViewById(R.id.code_pays);
-        SpiNatio=(Spinner) findViewById(R.id.natio);
-        SpiPays = (Spinner) findViewById(R.id.pays);
-        Spicode2=(Spinner) findViewById(R.id.code_pays_prof);
-        Spicode3= (Spinner)findViewById(R.id.code_pays_mob) ;
-        //Appel des methodes
-        remplirspinir();
-        remplirnatio();
-        remplirpays();
+//        nom = (EditText) findViewById(R.id.nom);
+//        prenom= (EditText) findViewById(R.id.prenom);
+//        mail= (EditText) findViewById(R.id.email);
+//        password= (EditText) findViewById(R.id.password);
+//        num_pass= (EditText) findViewById(R.id.num_pass);
+//        naisence= (EditText) findViewById(R.id.naissance);
+//        codepostale=(EditText) findViewById(R.id.code_post);
+//        Tel_dom=(EditText) findViewById(R.id.T_domic);
+//        adresseDo=(EditText) findViewById(R.id.adr_domic);
+//        ville=(EditText) findViewById(R.id.ville);
+//        Tel_prof=(EditText) findViewById(R.id.T_prof);
+//        Tel_mobile=(EditText) findViewById(R.id.T_mobile);
+//        fax=(EditText) findViewById(R.id.fax);
+//        sociéte=(EditText) findViewById(R.id.societe);
+//        fonction=(EditText) findViewById(R.id.fonction);
+//        SpiCode = (Spinner) findViewById(R.id.code_pays);
+//        SpiNatio=(Spinner) findViewById(R.id.natio);
+//        SpiPays = (Spinner) findViewById(R.id.pays);
+//        Spicode2=(Spinner) findViewById(R.id.code_pays_prof);
+//        Spicode3= (Spinner)findViewById(R.id.code_pays_mob) ;
+//        //Appel des methodes
+//        remplirspinir();
+//        remplirnatio();
+//        remplirpays();
 
 
 

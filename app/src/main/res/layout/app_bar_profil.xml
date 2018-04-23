@@ -20,6 +20,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_profil" />
+    <include
+        layout="@layout/content_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp" />
 
 </android.support.design.widget.CoordinatorLayout>

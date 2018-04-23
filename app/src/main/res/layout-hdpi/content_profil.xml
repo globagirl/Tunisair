@@ -221,7 +221,9 @@
             android:layout_marginTop="28dp"
             android:text="Votre identifiant "
             android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.96"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -235,10 +237,10 @@
             android:layout_marginTop="52dp"
             android:text="125548iuh"
             android:textColor="#fff"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.72"
+            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
@@ -264,8 +266,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="183dp"
-            android:layout_height="68dp"
+            android:layout_width="121dp"
+            android:layout_height="56dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
