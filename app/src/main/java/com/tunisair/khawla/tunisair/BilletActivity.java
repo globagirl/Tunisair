@@ -28,7 +28,7 @@ import java.util.List;
 
 public class BilletActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    Spinner de, vers, adult, enfants, bébé, jeune;
+    Spinner de, vers, adult, enfants, bébé, jeune,classe;
     String[] depart = new String[60];
     String[] ariver = new String[60];
     String[] adl = new String[7];
@@ -51,6 +51,8 @@ public class BilletActivity extends AppCompatActivity
         jeune = (Spinner) findViewById(R.id.N_jeune);
       naissance1=(EditText) findViewById(R.id.dat_dep);
       naissance2=(EditText) findViewById(R.id.dat_arr);
+      classe= (Spinner) findViewById(R.id.classe);
+
         remplirp();
         remplirpys();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,6 +81,17 @@ public class BilletActivity extends AppCompatActivity
         enfants.setAdapter(adapter);
         bébé.setAdapter(adapter);
         jeune.setAdapter(adapter);
+
+        final List<String> spinerarra = new ArrayList<String>();
+        spinerarra.add("affaire");
+        spinerarra.add("Economique");
+
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarra);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        classe.setAdapter(adapter1);
+
+
+
     }
 
     @Override
@@ -203,7 +216,6 @@ public class BilletActivity extends AppCompatActivity
     }
 
 
-
     public void remplirpy() {
 
         try {
@@ -222,7 +234,8 @@ public class BilletActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-    }  public void get_date(View view) {
+    }
+    public void get_date(View view) {
         FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
         Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);

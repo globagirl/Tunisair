@@ -20,35 +20,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InscriptionActivity" />
-        <activity
+        <activity android:name=".InscriptionActivity" android:screenOrientation="portrait" />
+        <activity android:screenOrientation="portrait"
             android:name=".MouvementActivity"
             android:label="Mouvement"
             android:theme="@style/AppTheme" />
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".ProfilActivity"
             android:label="Profil"
             android:theme="@style/AppTheme" />
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".BilletActivity"
             android:label="Achat de Billets Prime"
             android:theme="@style/AppTheme" />
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".MilesActivity"
             android:label="Achat de Miles"
             android:theme="@style/AppTheme" />
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".ReclamationActivity"
             android:label="Reclamations Fidelys"
             android:theme="@style/AppTheme" />
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".AboutActivity"
             android:label="About Fidelys"
             android:theme="@style/AppTheme" />
@@ -64,7 +64,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".Inscription2Activity" />

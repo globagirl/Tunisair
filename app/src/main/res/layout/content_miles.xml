@@ -94,15 +94,14 @@
                     tools:layout_editor_absoluteX="24dp"
                     tools:layout_editor_absoluteY="110dp" />
 
-                <Spinner
-                    android:id="@+id/N_miles"
+                <EditText
+                    android:id="@+id/editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="136dp"
-                    tools:layout_editor_absoluteX="224dp"
-                    tools:layout_editor_absoluteY="110dp" />
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
             <LinearLayout
