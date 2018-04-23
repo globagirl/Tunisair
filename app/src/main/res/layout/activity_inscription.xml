@@ -21,8 +21,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,23 +37,66 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/nom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Nom"
-                        android:inputType="textPersonName" />
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/prenom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Prénom"
-                        android:inputType="textPersonName" />
+                        <EditText
+                            android:id="@+id/nom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="Nom"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textColorHint="@color/colorPrimaryDark" />
+
+                        <EditText
+                            android:id="@+id/prenom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="Prénom"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textColorHint="@color/colorPrimaryDark" />
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1">
+
+                        <RadioButton
+                            android:id="@+id/radioButton3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_weight="1"
+                            android:text="M" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_weight="1"
+                            android:text="Mme" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_weight="1"
+                            android:text="Mlle" />
+                    </RadioGroup>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -59,25 +105,18 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/sexe"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Sexe"
-                        android:inputType="textPersonName" />
-
-                    <EditText
                         android:id="@+id/naissance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:focusableInTouchMode="false"
                         android:cursorVisible="false"
                         android:ems="10"
-                        android:onClick="get_date"
+                        android:focusableInTouchMode="false"
                         android:hint="Date naissance"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:onClick="get_date"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPrimaryDark" />
 
                 </LinearLayout>
 
@@ -94,7 +133,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Adresse Email"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPrimaryDark" />
 
                 </LinearLayout>
 
@@ -110,7 +151,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Mot de passe"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPrimaryDark" />
 
                     <EditText
                         android:id="@+id/conf_password"
@@ -119,7 +162,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Confirmation"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPrimaryDark" />
 
                 </LinearLayout>
 
@@ -129,160 +174,9 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Numero passport"
-                    android:inputType="textPersonName" />
-
-                <Spinner
-                    android:id="@+id/natio"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <EditText
-                    android:id="@+id/adr_domic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Adresse Domicile"
-                    android:inputType="textPersonName" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/pays"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <EditText
-                        android:id="@+id/ville"
-                        android:layout_width="201dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="ville"
-                        android:inputType="textPersonName" />
-
-                    <EditText
-                        android:id="@+id/code_post"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Code Postal"
-                        android:inputType="textPostalAddress|number" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Spinner
-                        android:id="@+id/code_pays"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="2"
-                        android:spinnerMode="dialog">
-
-                    </Spinner>
-
-                    <EditText
-                        android:id="@+id/T_domic"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="4"
-                        android:ems="10"
-                        android:hint="Tél Domicile"
-                        android:inputType="number" />
-                </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Spinner
-                    android:id="@+id/code_pays_prof"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:spinnerMode="dialog">
-
-                </Spinner>
-                <EditText
-                    android:id="@+id/T_prof"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Tél Professionnel"
-                    android:inputType="number" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Spinner
-                    android:id="@+id/code_pays_mob"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:spinnerMode="dialog">
-
-                </Spinner>
-                <EditText
-                    android:id="@+id/T_mobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Tél Mobile"
-                    android:inputType="number" />
-            </LinearLayout>
-                <EditText
-                    android:id="@+id/fax"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Fax"
-                    android:inputType="textPersonName" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/societe"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Société"
-                        android:inputType="textPersonName" />
-
-                    <EditText
-                        android:id="@+id/fonction"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Fonction"
-                        android:inputType="textMultiLine" />
-                </LinearLayout>
-
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="J’accepte de recevoir les nouveautés Fidelys par e-mail" />
-
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="J’accepte les Conditions Générales du Programme" />
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -290,13 +184,14 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/envoyer"
+                        android:id="@+id/annuler"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_weight="1"
                         android:background="@drawable/button"
-                        android:text="Envoyer"
-                        android:onClick="verif"
+                        android:onClick="back"
+                        android:text="annuler"
+
                         android:textColor="@android:color/holo_red_dark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -305,14 +200,14 @@
                         app:layout_constraintVertical_bias="0.968" />
 
                     <Button
-                        android:id="@+id/annuler"
+                        android:id="@+id/suivant"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
                         android:background="@drawable/button"
-                        android:text="Annuler "
+                        android:onClick="verif"
+                        android:text="Suivant"
                         android:textColor="@android:color/holo_red_dark" />
-
                 </LinearLayout>
 
             </LinearLayout>

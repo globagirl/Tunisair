@@ -26,16 +26,7 @@ public class User {
     private String nationalité;
 
 
-    public User(String name1, String s, String name, String prenoms, String email, String pass, String pasport, String adrDO, String villes, String postale, String co, String teldom, String telmobil, String telprof, String faxs, String soc, String fonc, String nationalité, String pays) {
-
-    }
-
-    public User(String name, String prenoms, String email, String pass, String pasport, String adrDO, String villes, String postale, String teldom, String telprof, String telmobil, String faxs, String soc, String fonc, String nationalité, String pays) {
-        this.name = name;
-        this.prenoms = prenoms;
-        this.email = email;
-        this.pass = pass;
-        this.pasport = pasport;
+    public User( String adrDO, String villes, String postale, String teldom, String telprof, String telmobil, String faxs, String soc, String fonc, String nationalité, String pays) {
         this.adrDO = adrDO;
         this.villes = villes;
         this.postale = postale;
@@ -48,6 +39,15 @@ public class User {
         this.code = code;
         this.pays = pays;
         this.nationalité = nationalité;
+    }
+    //,
+
+    public User(String name, String prenoms, String email, String pass, String pasport) {
+        this.name = name;
+        this.prenoms = prenoms;
+        this.email = email;
+        this.pass = pass;
+        this.pasport = pasport;
     }
 
     public String getName() {
