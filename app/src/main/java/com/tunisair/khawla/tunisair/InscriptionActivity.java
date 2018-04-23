@@ -89,6 +89,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, Inscription2Activity.class);
             startActivity(intent);
+
         }
 
     }
