@@ -15,7 +15,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +23,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/profile_layout"
             android:background="#fff"
             android:elevation="4dp"
             android:orientation="vertical"
@@ -52,10 +51,10 @@
 
                 <Spinner
                     android:id="@+id/natio"
-                    android:backgroundTint="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
                     android:spinnerMode="dialog" />
             </LinearLayout>
 
@@ -78,8 +77,8 @@
                     android:id="@+id/pays"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="@color/colorPrimary"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
                     android:spinnerMode="dialog" />
             </LinearLayout>
 
@@ -91,9 +90,9 @@
                     android:id="@+id/code_pays_domic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:spinnerMode="dialog"
+                    android:backgroundTint="@color/colorPrimary"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused">
 
@@ -146,9 +145,9 @@
                     android:id="@+id/code_pays_mob"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="2"
+                    android:backgroundTint="@color/colorPrimary"
                     android:spinnerMode="dialog">
 
                 </Spinner>
@@ -172,9 +171,9 @@
                     android:id="@+id/code_pays_fax"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="2"
+                    android:backgroundTint="@color/colorPrimary"
                     android:spinnerMode="dialog">
 
                 </Spinner>
@@ -223,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backEditText"
-                android:text="Voyage effectuer durant les 4 semaines précédent votre adhésion"
+                android:text="Voyage effectuer durant les 4 semaines précédant votre adhésion"
                 android:textColor="@color/colorAccent" />
 
             <LinearLayout
@@ -322,9 +321,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:buttonTint="@color/colorPrimary"
                     android:onClick="onCheckboxClicked"
                     android:text="Voyage à fournir plus tard"
+                    android:buttonTint="@color/colorPrimary"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
             </LinearLayout>
@@ -348,15 +347,14 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="550dp"
         android:layout_weight="1"
         android:onClick="veriff"
         android:text="Suivant"
         android:textColor="@android:color/background_light"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
