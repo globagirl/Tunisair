@@ -52,6 +52,50 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:274556394391:android:229dbe57fcf86e37",
+        "android_client_info": {
+          "package_name": "com.example.khawla.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274556394391-p777lcb1vf8amqk1r2t4t30vut16u98s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.khawla.myapplication",
+            "certificate_hash": "59d462cde9349049c0d403082de188fac348a724"
+          }
+        },
+        {
+          "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUfbWnPVftjmJWkcCNK7J68n_rHiOfFgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274556394391-81m4f4hgbhmm1ebvfsffos10im3o2gcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:274556394391:android:09de87d152c51296",
         "android_client_info": {
           "package_name": "com.example.khawla.tunisair"
@@ -102,6 +146,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "274556394391-fgd03gqjbffppiqgs19lsmko7j4u35sh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tunisair.khawla.tunisair",
+            "certificate_hash": "59d462cde9349049c0d403082de188fac348a724"
+          }
+        },
         {
           "client_id": "274556394391-sbgvpv8007b40m7u9l4itpmg2pa5q5bu.apps.googleusercontent.com",
           "client_type": 1,

@@ -8,8 +8,9 @@
     tools:context=".Inscription2Activity">
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -22,9 +23,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
+            android:layout_below="@+id/profile_layout"
+            android:background="#fff"
+            android:elevation="4dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent">
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/header_cover_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,17 +46,17 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Nationnalité"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                     android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/natio"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:spinnerMode="dialog" />
             </LinearLayout>
 
             <LinearLayout
@@ -61,17 +70,17 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Pays"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                     android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/pays"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:spinnerMode="dialog" />
             </LinearLayout>
 
             <LinearLayout
@@ -82,10 +91,11 @@
                     android:id="@+id/code_pays_domic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:spinnerMode="dialog"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark">
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused">
 
                 </Spinner>
 
@@ -97,8 +107,8 @@
                     android:ems="10"
                     android:hint="Tél Domicile *"
                     android:inputType="number"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
@@ -111,9 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="2"
-                    android:spinnerMode="dialog"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark">
+                    android:backgroundTint="@color/colorPrimary"
+                    android:spinnerMode="dialog">
 
                 </Spinner>
 
@@ -121,11 +130,12 @@
                     android:id="@+id/T_prof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
                     android:hint="Tél Professionnel"
                     android:inputType="number"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
@@ -136,11 +146,10 @@
                     android:id="@+id/code_pays_mob"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="2"
-                    android:spinnerMode="dialog"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark">
+                    android:spinnerMode="dialog">
 
                 </Spinner>
 
@@ -151,8 +160,8 @@
                     android:ems="10"
                     android:hint="Tél Mobile"
                     android:inputType="number"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,11 +172,10 @@
                     android:id="@+id/code_pays_fax"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="2"
-                    android:spinnerMode="dialog"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark">
+                    android:spinnerMode="dialog">
 
                 </Spinner>
 
@@ -178,8 +186,8 @@
                     android:ems="10"
                     android:hint="Tél Fax"
                     android:inputType="number"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
@@ -195,8 +203,8 @@
                     android:ems="10"
                     android:hint="Société"
                     android:inputType="textPersonName"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                 <EditText
                     android:id="@+id/fonction"
@@ -206,8 +214,8 @@
                     android:ems="10"
                     android:hint="Fonction"
                     android:inputType="textMultiLine"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <TextView
@@ -236,18 +244,22 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="N° Vol"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                     <EditText
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:cursorVisible="false"
                         android:ems="10"
+                        android:focusableInTouchMode="false"
                         android:hint="Date"
                         android:onClick="get_date"
-                        android:cursorVisible="false"
-                        android:focusableInTouchMode="false"/>
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                 </LinearLayout>
 
@@ -261,7 +273,9 @@
                         android:layout_width="164dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Num billet" />
+                        android:text="Num billet"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                     <EditText
                         android:id="@+id/num_bielt"
@@ -270,7 +284,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="199"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                     <EditText
                         android:id="@+id/num_bielt2"
@@ -279,7 +295,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="1234567890"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
                 </LinearLayout>
 
                 <EditText
@@ -289,7 +307,9 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Agence"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
@@ -302,19 +322,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/colorPrimary"
                     android:onClick="onCheckboxClicked"
-                    android:text="Voyage à fournir plus tard" />
+                    android:text="Voyage à fournir plus tard"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
-                <Button
-                    android:id="@+id/suivant"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
-                    android:onClick="veriff"
-                    android:text="Suivant"
-                    android:textColor="@android:color/holo_red_dark" />
             </LinearLayout>
 
             <TextView
@@ -322,9 +334,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="* Tous les champs doivent  être renseignés"
-                android:textColor="?attr/colorError"
-                android:textSize="18sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/suivant"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="56dp"
+        android:layout_weight="1"
+        android:onClick="veriff"
+        android:text="Suivant"
+        android:textColor="@android:color/background_light"
+        android:theme="@style/MyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
 </android.support.constraint.ConstraintLayout>
