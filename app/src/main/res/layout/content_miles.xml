@@ -242,12 +242,13 @@
         android:layout_height="52dp"
         android:layout_marginBottom="48dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/button"
         android:text="Acheter"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:theme="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.526"
-        tools:layout_editor_absoluteX="42dp" />
+        app:layout_constraintVertical_bias="0.518" />
 
 </android.support.constraint.ConstraintLayout>

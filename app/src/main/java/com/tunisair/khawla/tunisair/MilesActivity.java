@@ -45,7 +45,7 @@ Spinner devise;
         spinerarray.add("Dollar");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        devise.setAdapter(adapter);
+//   devise.setAdapter(adapter);
 
     }
 

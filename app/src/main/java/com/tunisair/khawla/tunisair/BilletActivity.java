@@ -29,8 +29,8 @@ import java.util.List;
 public class BilletActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Spinner de, vers, adult, enfants, bébé, jeune,classe;
-    String[] depart = new String[60];
-    String[] ariver = new String[60];
+    String[] depart = new String[36];
+    String[] ariver = new String[36];
     String[] adl = new String[7];
     String[] enf = new String[7];
     String[] bb = new String[7];
