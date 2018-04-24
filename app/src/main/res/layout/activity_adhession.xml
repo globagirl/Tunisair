@@ -32,43 +32,50 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:text="@string/type_adh_sion"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/indiv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
-                        android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_type"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/individuelle"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/fami"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_type"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/familiale"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
                 </RadioGroup>
 
             </LinearLayout>
@@ -81,75 +88,90 @@
                 android:hint="@string/autre_programme"
                 android:inputType="textPersonName"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/langue_de_communication"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/fr"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_langue"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
                     android:text="@string/fran_ais"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
 
                 <RadioButton
                     android:id="@+id/en"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_langue"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
                     android:text="@string/english"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
 
                 <RadioButton
                     android:id="@+id/ar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_langue"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
                     android:text="@string/arabic"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/textView31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/backEditText"
                 android:text="@string/lieu_d_achat_de_vos_billets"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/agence_habit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/agence_habituelle"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -165,7 +187,8 @@
                     android:hint="@string/point_de_vente"
                     android:inputType="textPersonName"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/site"
@@ -176,18 +199,20 @@
                     android:hint="@string/site_vendeur"
                     android:inputType="textPersonName"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textView32"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/pr_f_rence_de_si_ge"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -200,37 +225,46 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/hublot"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_prefe"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/c_t_hublot"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/couloir"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_prefe"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/c_t_couloir"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/indif"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_prefe"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/indiff_rent"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -243,12 +277,13 @@
                     android:id="@+id/textView33"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="Préférence Repas"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -265,11 +300,12 @@
                 android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/classe_habituelle_de_voyage"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -281,29 +317,34 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/affaire"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="90dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="3dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_classe"
-
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/affaire"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/eco"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_classe"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/economique"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -311,10 +352,11 @@
                 android:id="@+id/textView35"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/mode_de_paiement"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -324,37 +366,47 @@
 
                 <RadioGroup
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/carte"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_mode"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/carte_de_cr_dit"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/cashe"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="3dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_mode"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/cashe"
-                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/cheque"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_mode"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/ch_que"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
                 </RadioGroup>
@@ -364,10 +416,11 @@
                 android:id="@+id/textView36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/vos_habitude_de_voyage"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -384,20 +437,25 @@
                     <RadioButton
                         android:id="@+id/seul"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_habi"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/seul"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                     <RadioButton
                         android:id="@+id/accomp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_habi"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:text="@string/accompagn_des_nombres_de_votre_famille"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
                 </RadioGroup>

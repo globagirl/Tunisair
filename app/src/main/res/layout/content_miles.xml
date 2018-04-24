@@ -18,16 +18,100 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_layout"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            
             android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+
+
+                <EditText
+                    android:id="@+id/prix_TND"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Prix unitaire en TND"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+
+
+                <EditText
+                    android:id="@+id/val_devise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Valeur en Devise"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+
+                <EditText
+                    android:id="@+id/Val_TND"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Valeur en TND"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -37,6 +121,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="20dp"
                     android:text="Type des Miles"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
@@ -51,6 +137,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Qualifiant"
+                    android:buttonTint="@color/colorPrimary"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+
                     tools:layout_conversion_absoluteHeight="32dp"
                     tools:layout_conversion_absoluteWidth="117dp"
                     tools:layout_editor_absoluteX="126dp"
@@ -61,77 +150,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/colorPrimary"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+
                     android:text="Prime"
                     tools:layout_conversion_absoluteHeight="32dp"
                     tools:layout_conversion_absoluteWidth="118dp"
                     tools:layout_editor_absoluteX="243dp"
                     tools:layout_editor_absoluteY="78dp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nombre des Miles"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="200dp"
-                    tools:layout_editor_absoluteX="24dp"
-                    tools:layout_editor_absoluteY="110dp" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="number" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-                <TextView
-                    android:id="@+id/tx_naisence"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Prix unitaire en TND"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/prix_TND"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -152,7 +179,8 @@
                     android:layout_height="18dp"
                     android:layout_weight="1"
                     android:text="Séléctionnez la devise"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="213dp"
@@ -164,73 +192,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="123dp"
-                    tools:layout_editor_absoluteX="200dp"
-                    tools:layout_editor_absoluteY="412dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Valeur en Devise"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="279dp" />
-
-                <EditText
-                    android:id="@+id/val_devise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Valeur en TND"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="323dp" />
-
-                <EditText
-                    android:id="@+id/Val_TND"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
         </LinearLayout>
@@ -240,15 +204,13 @@
         android:id="@+id/button3"
         android:layout_width="276dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:text="Acheter"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </android.support.constraint.ConstraintLayout>
