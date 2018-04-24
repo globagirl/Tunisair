@@ -21,7 +21,7 @@ Beninoise
 Bhoutanaise
 Bielorusse
 Birmane
-Bissau-Guinéenne
+Bissau Guinéenne
 Bolivienne
 Bosnienne
 Botswanaise
@@ -121,7 +121,7 @@ Mozambicaine
 Namibienne
 Nauruane
 Neerlandaise
-Neo-zelandaise
+Neo zelandaise
 Nepalaise
 Nicaraguayenne
 Nigeriane
@@ -135,7 +135,7 @@ Pakistanaise
 Palau
 Palestinienne
 Panameenne
-Papouane-neoguineenne
+Papouane neoguineenne
 Paraguayenne
 Peruvienne
 Philippine
@@ -146,9 +146,9 @@ Qatarienne
 Roumaine
 Russe
 Rwandaise
-Saint-lucienne
-Saint-marinaise
-Saint-vincentaise-et-grenadine
+Saint lucienne
+Saint marinaise
+Saint vincentaise et grenadine
 Salomonaise
 Salvadorienne
 Samoane
@@ -157,15 +157,15 @@ Saoudienne
 Senegalaise
 Serbe
 Seychelloise
-Sierra-leonaise
+Sierra leonaise
 Singapourienne
 Slovaque
 Slovene
 Somalienne
 Soudanaise
-Sri-lankaise
-Sud-africaine
-Sud-coréenne
+Sri lankaise
+Sud africaine
+Sud coréenne
 Suedoise
 Suisse
 Surinamaise

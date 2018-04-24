@@ -209,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Adresse Domicile *"
+                android:hint="@string/adresse_domicile"
                 android:inputType="text"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark" />
@@ -221,13 +221,13 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button"
                 android:onClick="verif"
-                android:text="Suivant"
+                android:text="@string/suivant"
                 android:textColor="@android:color/holo_red_dark" />
             <TextView
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="* Tous les champs doivent  être renseignés"
+                android:text="@string/tous_les_champs_doivent_tre_renseign_s"
                 android:textColor="?attr/colorError"
                 android:textSize="18sp"/>
         </LinearLayout>

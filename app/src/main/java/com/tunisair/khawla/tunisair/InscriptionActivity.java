@@ -68,8 +68,6 @@ public class InscriptionActivity extends AppCompatActivity {
         rd_m.setChecked(true);
         editor.putString("sexe", rd_m.getText().toString());
         editor.apply();
-
-
     }
     // controle de saisi
     public void verif(View view) {

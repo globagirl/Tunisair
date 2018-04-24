@@ -30,7 +30,7 @@ public class Inscription2Activity extends AppCompatActivity {
     Liste_nationnalité adapterN;
     Liste_pays adapterP;
     String[] codes = new String[199];
-    String[] nation=new String[175];
+    String[] nation=new String[194];
     String[] pay=new String[199];
     Spinner SpiCode,SpiNatio,SpiPays,Spicode2,Spicode3,Spicode4;
     LinearLayout li_voyage;
@@ -44,6 +44,19 @@ public class Inscription2Activity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
+
+        String val=prefs.getString("Nom","empty");
+        String val2= prefs.getString("sexe","empty");
+        String val3= prefs.getString("Prenom","empty");
+        String val4=prefs.getString("Email","empty");
+        String val5= prefs.getString("Password","empty");
+        String val6= prefs.getString("Passport","empty");
+
+        String val7=prefs.getString("Ville","empty");
+        String val8= prefs.getString("Code_Postal","empty");
+        String val9= prefs.getString("Adresse","empty");
+
+        Toast.makeText(getApplicationContext(),val+"//"+val2+"//"+val3+"//"+val4+"//"+val5+"//"+val6+"//"+val7+"//"+val8+"//"+val9,Toast.LENGTH_LONG).show();
         Tel_dom=(EditText) findViewById(R.id.T_domic);
         Tel_prof=(EditText) findViewById(R.id.T_prof);
         Tel_mobile=(EditText) findViewById(R.id.T_mobile);
@@ -109,7 +122,7 @@ public class Inscription2Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_prof",code.getText().toString());
+                editor.putString("Tel_profe",code.getText().toString());
                 editor.apply();
             }
 
@@ -125,7 +138,7 @@ public class Inscription2Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_mobile",code.getText().toString());
+                editor.putString("Tel_Mobile",code.getText().toString());
                 editor.apply();
             }
 
@@ -140,7 +153,7 @@ public class Inscription2Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_fax",code.getText().toString());
+                editor.putString("Tel_faxe",code.getText().toString());
                 editor.apply();
             }
 
@@ -151,7 +164,6 @@ public class Inscription2Activity extends AppCompatActivity {
         });
 
     }
-
     //contenu d indicatif pays
     public void rempli_code_pays() {
 

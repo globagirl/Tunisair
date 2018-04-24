@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Type adhésion"
+                    android:text="@string/type_adh_sion"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
@@ -50,7 +50,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Individuelle"
+                        android:onClick="onRadioButton_type"
+                        android:text="@string/individuelle"
                         android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
@@ -58,18 +59,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Familiale"
+                        android:onClick="onRadioButton_type"
+                        android:text="@string/familiale"
                         android:textColor="@color/colorPrimaryDark" />
                 </RadioGroup>
 
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/autre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Autre programme ? "
+                android:hint="@string/autre_programme"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -77,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Langue de communication"
+                android:text="@string/langue_de_communication"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
@@ -92,23 +94,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Français"
+                    android:onClick="onRadioButton_langue"
+                    android:text="@string/fran_ais"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/en"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="English"
+                    android:onClick="onRadioButton_langue"
+                    android:text="@string/english"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
-                    android:id="@+id/radioButton7"
+                    android:id="@+id/ar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=" عربى"
+                    android:onClick="onRadioButton_langue"
+                    android:text="@string/arabic"
                     android:textColor="@color/colorPrimaryDark" />
             </RadioGroup>
             <TextView
@@ -116,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backEditText"
-                android:text="Lieu d'achat de vos billets " />
+                android:text="@string/lieu_d_achat_de_vos_billets" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -124,70 +129,75 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editText8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Agence habituelle "
-                    android:inputType="textPersonName" />
-
-                <EditText
-                    android:id="@+id/editText9"
+                    android:id="@+id/agence_habit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="point de vente "
+                    android:hint="@string/agence_habituelle"
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editText10"
+                    android:id="@+id/point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="site vendeur "
+                    android:hint="@string/point_de_vente"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/site"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/site_vendeur"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pr_f_rence_de_si_ge"
+                android:textSize="18sp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView32"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Préférence de siège" />
 
                 <RadioGroup
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/hublot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="côté hublot " />
+                        android:onClick="onRadioButton_prefe"
+                        android:text="@string/c_t_hublot" />
 
                     <RadioButton
                         android:id="@+id/couloir"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="côté couloir " />
+                        android:onClick="onRadioButton_prefe"
+                        android:text="@string/c_t_couloir" />
 
                     <RadioButton
                         android:id="@+id/indif"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Indifférent " />
+                        android:onClick="onRadioButton_prefe"
+                        android:text="@string/indiff_rent" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -201,7 +211,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Préférence Repas" />
+                    android:text="Préférence Repas"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/spinner"
@@ -209,21 +220,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/classe_habituelle_de_voyage" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView34"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Classe habituelle de voyage " />
-
                 <RadioGroup
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1">
@@ -233,32 +242,31 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Affaire" />
+                        android:layout_marginLeft="90dp"
+                        android:onClick="onRadioButton_classe"
+                        android:text="@string/affaire" />
 
                     <RadioButton
                         android:id="@+id/eco"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Economique" />
+                        android:onClick="onRadioButton_classe"
+                        android:text="@string/economique" />
                 </RadioGroup>
-
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/mode_de_paiement" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView35"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Mode de paiement " />
-
                 <RadioGroup
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1" >
@@ -268,87 +276,93 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Carte de crédit " />
+                        android:onClick="onRadioButton_mode"
+                        android:text="@string/carte_de_cr_dit" />
 
                     <RadioButton
                         android:id="@+id/cashe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Cashe" />
+                        android:onClick="onRadioButton_mode"
+                        android:text="@string/cashe" />
 
                     <RadioButton
                         android:id="@+id/cheque"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Chèque" />
+                        android:onClick="onRadioButton_mode"
+                        android:text="@string/ch_que" />
                 </RadioGroup>
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/vos_habitude_de_voyage" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView36"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Vos habitude de voyage" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" >
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/seul"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Seul" />
+                        android:onClick="onRadioButton_habi"
+                        android:text="@string/seul" />
 
                     <RadioButton
                         android:id="@+id/accomp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Accompagné des nombres de votre famille" />
+                        android:onClick="onRadioButton_habi"
+                        android:text="@string/accompagn_des_nombres_de_votre_famille" />
                 </RadioGroup>
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/avez_vous_besoin_d_une_assistance" />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView37"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Avez-vous besoin d'une assistance?" />
-
                 <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" >
-
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
                     <RadioButton
                         android:id="@+id/assis"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Oui" />
+                        android:layout_marginLeft="80dp"
+                        android:text="@string/oui"
+                        android:onClick="onRadioButton_assistance"
+                        android:layout_marginStart="80dp" />
 
                     <RadioButton
                         android:id="@+id/noAssis"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Non" />
+                        android:layout_marginRight="80dp"
+                        android:text="@string/non"
+                        android:onClick="onRadioButton_assistance"
+                        android:layout_marginEnd="80dp" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -357,7 +371,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="J’accepte les Conditions Générales du Programme"
+                android:text="@string/j_accepte_les_conditions_g_n_rales_du_programme"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark" />
 
@@ -366,40 +380,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="J’accepte de recevoir les nouveautés Fidelys par e-mail"
+                android:text="@string/j_accepte_de_recevoir_les_nouveaut_s_fidelys_par_e_mail"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/annuler"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
-                    android:onClick="profil"
-                    android:text="passer"
-                    android:textColor="@android:color/holo_red_dark"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.968" />
-
                 <Button
                     android:id="@+id/envoyer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="60dp"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:background="@drawable/button"
                     android:onClick="terminer"
-                    android:text="terminer "
+                    android:text="@string/terminer"
                     android:textColor="@android:color/holo_red_dark" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
