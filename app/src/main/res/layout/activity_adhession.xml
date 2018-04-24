@@ -55,9 +55,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_type"
                         android:text="@string/individuelle"
+                        android:buttonTint="@color/colorPrimary"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                     <RadioButton
