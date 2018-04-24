@@ -1,40 +1,15 @@
 package com.tunisair.khawla.tunisair;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CheckBox;
+
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class InscriptionActivity extends AppCompatActivity {
     EditText naisence, nom, prenom, mail, password, conf_password, num_pass, ville, code_postale, adresse;
@@ -52,17 +27,16 @@ public class InscriptionActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
-        // mDatabase = FirebaseDatabase.getInstance().getReference();
-        nom = (EditText) findViewById(R.id.nom);
-        prenom = (EditText) findViewById(R.id.prenom);
-        mail = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
-        conf_password = (EditText) findViewById(R.id.conf_password);
-        num_pass = (EditText) findViewById(R.id.num_pass);
-        naisence = (EditText) findViewById(R.id.naissance);
-        ville = (EditText) findViewById(R.id.ville);
-        code_postale = (EditText) findViewById(R.id.code_post);
-        adresse = (EditText) findViewById(R.id.adr_domic);
+        nom =  findViewById(R.id.nom);
+        prenom = findViewById(R.id.prenom);
+        mail =  findViewById(R.id.email);
+        password =findViewById(R.id.password);
+        conf_password =  findViewById(R.id.conf_password);
+        num_pass =  findViewById(R.id.num_pass);
+        naisence = findViewById(R.id.naissance);
+        ville = findViewById(R.id.ville);
+        code_postale =  findViewById(R.id.code_post);
+        adresse =  findViewById(R.id.adr_domic);
 
         rd_m = findViewById(R.id.rd_m);
         rd_m.setChecked(true);
@@ -85,9 +59,6 @@ public class InscriptionActivity extends AppCompatActivity {
 
         if (!valider()) {
             Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
-            //for test
-            Intent intent = new Intent(this, Inscription2Activity.class);
-            startActivity(intent);
         } else {
             remplir_champs();
 //            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");

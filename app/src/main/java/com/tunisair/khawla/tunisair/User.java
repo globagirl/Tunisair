@@ -6,64 +6,111 @@ package com.tunisair.khawla.tunisair;
 
 public class User {
 
-    private String name;
-    private String prenoms;
+    private String nom;
+    private String prenom;
+    private String genre;
+    private String naisence;
     private String email;
     private String pass;
-    private String confirme;
     private String pasport;
-    private String adrDO;
     private String villes;
     private String postale;
+    private String adrDO;
+    private String nationalite;
+    private String pays;
     private String teldom;
     private String telprof;
     private String telmobil;
-    private String faxs;
-    private String soc;
-    private String fonc;
-    private String code;
-    private String pays;
-    private String nationalité;
+    private String telfaxs;
+    private String societe;
+    private String fonction;
+    private String num_vol;
+    private String dat_vol;
+    private String num_bielet;
+    private String agence;
+    private String type_ad;
+    private String autre_prog;
+    private String langue;
+    private String agence_habit;
+    private String point_vent;
+    private String site_vent;
+    private String prefere;
+    private String classe;
+    private String mode_pay;
+    private String habitude;
+    private String besoin;
+    private boolean accepte_mail;
 
-
-    public User( String adrDO, String villes, String postale, String teldom, String telprof, String telmobil, String faxs, String soc, String fonc, String nationalité, String pays) {
-        this.adrDO = adrDO;
-        this.villes = villes;
-        this.postale = postale;
-        this.teldom = teldom;
-        this.telprof = telprof;
-        this.telmobil = telmobil;
-        this.faxs = faxs;
-        this.soc = soc;
-        this.fonc = fonc;
-        this.code = code;
-        this.pays = pays;
-        this.nationalité = nationalité;
+    public User() {
     }
-    //,
 
-    public User(String name, String prenoms, String email, String pass, String pasport) {
-        this.name = name;
-        this.prenoms = prenoms;
+    public User(String nom, String prenom, String genre, String naisence, String email, String pass, String pasport, String villes, String postale, String adrDO, String nationalite, String pays, String teldom, String telprof, String telmobil, String telfaxs, String societe, String fonction, String num_vol, String dat_vol, String num_bielet, String agence, String type_ad, String autre_prog, String langue, String agence_habit, String point_vent, String site_vent, String prefere, String classe, String mode_pay, String habitude, String besoin, boolean accepte_mail) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.genre = genre;
+        this.naisence = naisence;
         this.email = email;
         this.pass = pass;
         this.pasport = pasport;
+        this.villes = villes;
+        this.postale = postale;
+        this.adrDO = adrDO;
+        this.nationalite = nationalite;
+        this.pays = pays;
+        this.teldom = teldom;
+        this.telprof = telprof;
+        this.telmobil = telmobil;
+        this.telfaxs = telfaxs;
+        this.societe = societe;
+        this.fonction = fonction;
+        this.num_vol = num_vol;
+        this.dat_vol = dat_vol;
+        this.num_bielet = num_bielet;
+        this.agence = agence;
+        this.type_ad = type_ad;
+        this.autre_prog = autre_prog;
+        this.langue = langue;
+        this.agence_habit = agence_habit;
+        this.point_vent = point_vent;
+        this.site_vent = site_vent;
+        this.prefere = prefere;
+        this.classe = classe;
+        this.mode_pay = mode_pay;
+        this.habitude = habitude;
+        this.besoin = besoin;
+        this.accepte_mail = accepte_mail;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getPrenoms() {
-        return prenoms;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrenoms(String prenoms) {
-        this.prenoms = prenoms;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getNaisence() {
+        return naisence;
+    }
+
+    public void setNaisence(String naisence) {
+        this.naisence = naisence;
     }
 
     public String getEmail() {
@@ -82,28 +129,12 @@ public class User {
         this.pass = pass;
     }
 
-    public String getConfirme() {
-        return confirme;
-    }
-
-    public void setConfirme(String confirme) {
-        this.confirme = confirme;
-    }
-
     public String getPasport() {
         return pasport;
     }
 
     public void setPasport(String pasport) {
         this.pasport = pasport;
-    }
-
-    public String getAdrDO() {
-        return adrDO;
-    }
-
-    public void setAdrDO(String adrDO) {
-        this.adrDO = adrDO;
     }
 
     public String getVilles() {
@@ -120,6 +151,30 @@ public class User {
 
     public void setPostale(String postale) {
         this.postale = postale;
+    }
+
+    public String getAdrDO() {
+        return adrDO;
+    }
+
+    public void setAdrDO(String adrDO) {
+        this.adrDO = adrDO;
+    }
+
+    public String getNationalite() {
+        return nationalite;
+    }
+
+    public void setNationalite(String nationalite) {
+        this.nationalite = nationalite;
+    }
+
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
     }
 
     public String getTeldom() {
@@ -146,53 +201,155 @@ public class User {
         this.telmobil = telmobil;
     }
 
-    public String getFaxs() {
-        return faxs;
+    public String getTelfaxs() {
+        return telfaxs;
     }
 
-    public void setFaxs(String faxs) {
-        this.faxs = faxs;
+    public void setTelfaxs(String telfaxs) {
+        this.telfaxs = telfaxs;
     }
 
-    public String getSoc() {
-        return soc;
+    public String getSociete() {
+        return societe;
     }
 
-    public void setSoc(String soc) {
-        this.soc = soc;
+    public void setSociete(String societe) {
+        this.societe = societe;
     }
 
-    public String getFonc() {
-        return fonc;
+    public String getFonction() {
+        return fonction;
     }
 
-    public void setFonc(String fonc) {
-        this.fonc = fonc;
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
     }
 
-    public String getCode() {
-        return code;
+    public String getNum_vol() {
+        return num_vol;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setNum_vol(String num_vol) {
+        this.num_vol = num_vol;
     }
 
-    public String getPays() {
-        return pays;
+    public String getDat_vol() {
+        return dat_vol;
     }
 
-    public void setPays(String pays) {
-        this.pays = pays;
+    public void setDat_vol(String dat_vol) {
+        this.dat_vol = dat_vol;
     }
 
-    public String getNationalité() {
-        return nationalité;
+    public String getNum_bielet() {
+        return num_bielet;
     }
 
-    public void setNationalité(String nationalité) {
-        this.nationalité = nationalité;
+    public void setNum_bielet(String num_bielet) {
+        this.num_bielet = num_bielet;
     }
 
+    public String getAgence() {
+        return agence;
+    }
 
+    public void setAgence(String agence) {
+        this.agence = agence;
+    }
+
+    public String getType_ad() {
+        return type_ad;
+    }
+
+    public void setType_ad(String type_ad) {
+        this.type_ad = type_ad;
+    }
+
+    public String getAutre_prog() {
+        return autre_prog;
+    }
+
+    public void setAutre_prog(String autre_prog) {
+        this.autre_prog = autre_prog;
+    }
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public void setLangue(String langue) {
+        this.langue = langue;
+    }
+
+    public String getAgence_habit() {
+        return agence_habit;
+    }
+
+    public void setAgence_habit(String agence_habit) {
+        this.agence_habit = agence_habit;
+    }
+
+    public String getPoint_vent() {
+        return point_vent;
+    }
+
+    public void setPoint_vent(String point_vent) {
+        this.point_vent = point_vent;
+    }
+
+    public String getSite_vent() {
+        return site_vent;
+    }
+
+    public void setSite_vent(String site_vent) {
+        this.site_vent = site_vent;
+    }
+
+    public String getPrefere() {
+        return prefere;
+    }
+
+    public void setPrefere(String prefere) {
+        this.prefere = prefere;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public String getMode_pay() {
+        return mode_pay;
+    }
+
+    public void setMode_pay(String mode_pay) {
+        this.mode_pay = mode_pay;
+    }
+
+    public String getHabitude() {
+        return habitude;
+    }
+
+    public void setHabitude(String habitude) {
+        this.habitude = habitude;
+    }
+
+    public String getBesoin() {
+        return besoin;
+    }
+
+    public void setBesoin(String besoin) {
+        this.besoin = besoin;
+    }
+
+    public boolean isAccepte_mail() {
+        return accepte_mail;
+    }
+
+    public void setAccepte_mail(boolean accepte_mail) {
+        this.accepte_mail = accepte_mail;
+    }
 }

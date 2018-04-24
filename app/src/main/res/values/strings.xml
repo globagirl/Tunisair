@@ -58,5 +58,7 @@
     <string name="tous_les_champs_doivent_tre_renseign_s">* Tous les champs doivent être renseignés</string>
     <string name="adresse_domicile">Adresse Domicile *</string>
     <string name="accepter_les_conditions">Veuillez accepter les Conditions Générales du Programme</string>
+    <string name="homme">Homme</string>
+    <string name="femme">femme</string>
 
 </resources>

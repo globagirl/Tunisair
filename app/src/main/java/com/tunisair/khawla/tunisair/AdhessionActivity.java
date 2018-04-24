@@ -19,8 +19,12 @@ public class AdhessionActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     EditText autre, site, pointe, agencee;
-    String Autre,Site,Pointe,Agencee;
+    String Autre, Site, Pointe, Agencee, nom, sexe, prenom, email, naissence, habitude, besoin;
+    String payement, type_adh, classe, lan, pref, date_vol, entet_bielt, num_bielt, pass, num_vol, agence, fonction;
+    String societe, cod_tel_fax, tel_fax, cod_tel_mobile, passport, tel_mobile, cod_tel_prof, ville, code_p, tel_prof, adr_dom, natio, pays, tel_dom, cod_tel_dom;
     RadioButton rd_indiv, rd_lang, rd_hub, rd_eco, rd_cache, rd_seul, rd_assis;
+    Boolean accepte_mail;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +33,7 @@ public class AdhessionActivity extends AppCompatActivity {
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
-        String val=prefs.getString("Agence","empty");
-        String val2= prefs.getString("Num_vol","empty");
-        String val3= prefs.getString("Num_bielt","empty");
-        String val4=prefs.getString("Tel_prof","empty");
-        String val5= prefs.getString("Entet_bielt","empty");
-        String val6= prefs.getString("Date_vol","empty");
-
-//        String val7=prefs.getString("Tel_Mobile","empty");
-//        String val8= prefs.getString("Tel_domicile","empty");
-//        String val9= prefs.getString("Tel_faxe","empty");
-//        String val10= prefs.getString("Tel_profe","empty");
-
-        Toast.makeText(getApplicationContext(),val+"//"+val2+"//"+val3+"//"+val4+"//"+val5+"//"+val6,Toast.LENGTH_LONG).show();
+        reference = FirebaseDatabase.getInstance().getReference("users");
 
         autre = (EditText) findViewById(R.id.autre);
         agencee = (EditText) findViewById(R.id.agence_habit);
@@ -194,13 +186,23 @@ public class AdhessionActivity extends AppCompatActivity {
     }
 
     public void terminer(View view) {
-        Agencee=agencee.getText().toString().trim();
-        Site=site.getText().toString().trim();
-        Autre=autre.getText().toString().trim();
-        Pointe=pointe.getText().toString().trim();
+        Agencee = agencee.getText().toString().trim();
+        Site = site.getText().toString().trim();
+        Autre = autre.getText().toString().trim();
+        Pointe = pointe.getText().toString().trim();
+        recupechmps();
+        String tel_dom_final = cod_tel_dom + " " + tel_dom;
+        String tel_pro_final = cod_tel_prof + " " + tel_prof;
+        String tel_mobil_final = cod_tel_mobile + " " + tel_mobile;
+        String tel_fax_final = cod_tel_fax + " " + tel_fax;
+        String num_biellt_final = entet_bielt + "/" + num_bielt;
         if (!valider()) {
             Toast.makeText(getApplicationContext(), "Accepter les conditions", Toast.LENGTH_LONG).show();
         } else {
+            User user = new User(nom, prenom, sexe, naissence, email, pass, passport, ville, code_p, adr_dom, natio,
+                    pays, tel_dom_final, tel_pro_final, tel_mobil_final, tel_fax_final, societe, fonction, num_vol, date_vol,
+                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, accepte_mail);
+             reference.push().setValue(user);
             remplir_champs();
             Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
@@ -209,13 +211,13 @@ public class AdhessionActivity extends AppCompatActivity {
     }
     public void remplir_champs() {
         editor.putString("Agence_habit", Agencee);
-        editor.putString("Site",Site);
+        editor.putString("Site", Site);
         editor.putString("Autre_prog", Autre);
         editor.putString("Pointe", Pointe);
-        if(case1.isChecked()){
-            editor.putBoolean("Accepter_mail",true);
-        }else {
-            editor.putBoolean("Accepter_mail",false);
+        if (case1.isChecked()) {
+            editor.putBoolean("Accepter_mail", true);
+        } else {
+            editor.putBoolean("Accepter_mail", false);
         }
         editor.apply();
     }
@@ -230,4 +232,43 @@ public class AdhessionActivity extends AppCompatActivity {
 
         return valide;
     }
+
+    private void recupechmps() {
+        nom = prefs.getString("Nom", "empty");
+        sexe = prefs.getString("sexe", "empty");
+        prenom = prefs.getString("Prenom", "empty");
+        email = prefs.getString("Email", "empty");
+        naissence = prefs.getString("Naissence", "empty");
+        pass = prefs.getString("Password", "empty");
+        passport = prefs.getString("Passport", "empty");
+        ville = prefs.getString("Ville", "empty");
+        code_p = prefs.getString("Code_Postal", "empty");
+        adr_dom = prefs.getString("Adresse", "empty");
+        natio = prefs.getString("Nationalite", "");
+        pays = prefs.getString("Pays", "");
+        tel_dom = prefs.getString("Tel_dom", "empty");
+        cod_tel_dom = prefs.getString("Tel_domicile", "empty");
+        tel_prof = prefs.getString("Tel_prof", "");
+        cod_tel_prof = prefs.getString("Tel_profe", "");
+        tel_mobile = prefs.getString("Tel_mobile", "");
+        cod_tel_mobile = prefs.getString("Tel_Mobile", "");
+        tel_fax = prefs.getString("Tel_fax", "");
+        cod_tel_fax = prefs.getString("Tel_faxe", "");
+        societe = prefs.getString("Societe", "");
+        fonction = prefs.getString("Fonction", "");
+        agence = prefs.getString("Agence", "");
+        num_vol = prefs.getString("Num_vol", "");
+        num_bielt = prefs.getString("Num_bielt", "");
+        entet_bielt = prefs.getString("Entet_bielt", "");
+        date_vol = prefs.getString("Date_vol", "");
+        type_adh = prefs.getString("Type_adhession", "");
+        lan = prefs.getString("Langue", "");
+        pref = prefs.getString("Preference", "");
+        classe = prefs.getString("Classe_voyage", "");
+        payement = prefs.getString("Mode_pays", "");
+        habitude = prefs.getString("Habitude", "");
+        besoin = prefs.getString("Assistance", "");
+        accepte_mail = prefs.getBoolean("Accepter_mail", false);
+    }
+
 }

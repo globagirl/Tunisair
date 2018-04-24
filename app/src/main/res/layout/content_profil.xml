@@ -27,7 +27,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tx_prenom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -37,10 +37,10 @@
             android:text="Prénom"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/tx_nom" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/tx_naisence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -49,10 +49,10 @@
             android:text="Date de naissance:"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/tx_sexe" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/tx_sexe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -63,10 +63,10 @@
             android:text="Gender: "
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/tx_prenom" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/tx_nom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -79,7 +79,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/blood_group"
+            android:id="@+id/nom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -87,18 +87,18 @@
             android:layout_marginTop="8dp"
             android:clickable="true"
             android:text="O+"
-            app:layout_constraintLeft_toRightOf="@+id/textView10"
+            app:layout_constraintLeft_toRightOf="@+id/tx_nom"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dob"
+            android:id="@+id/naisence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:clickable="true"
             android:text="01/01/2017"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toTopOf="@+id/textView16" />
+            app:layout_constraintStart_toEndOf="@+id/tx_naisence"
+            app:layout_constraintTop_toTopOf="@+id/tx_naisence" />
 
         <TextView
             android:id="@+id/gender"
@@ -109,11 +109,11 @@
             android:layout_marginTop="8dp"
             android:clickable="true"
             android:text="Male"
-            app:layout_constraintLeft_toRightOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/education" />
+            app:layout_constraintLeft_toRightOf="@+id/tx_sexe"
+            app:layout_constraintTop_toBottomOf="@+id/prenom" />
 
         <TextView
-            android:id="@+id/approved_by"
+            android:id="@+id/num_tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -132,7 +132,7 @@
             android:clickable="true"
             android:text="marothiatechs@gmail.com"
             app:layout_constraintStart_toEndOf="@+id/textView27"
-            app:layout_constraintTop_toBottomOf="@+id/dob" />
+            app:layout_constraintTop_toBottomOf="@+id/naisence" />
 
         <TextView
             android:id="@+id/textView26"
@@ -157,10 +157,10 @@
             android:text="Email: "
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintTop_toBottomOf="@+id/tx_naisence" />
 
         <TextView
-            android:id="@+id/education"
+            android:id="@+id/prenom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -168,8 +168,8 @@
             android:layout_marginTop="8dp"
             android:clickable="true"
             android:text="B.Tech"
-            app:layout_constraintLeft_toRightOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintLeft_toRightOf="@+id/tx_prenom"
+            app:layout_constraintTop_toBottomOf="@+id/tx_nom" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -185,25 +185,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nav_menu_header_bg" />
-
-    <!--<de.hdodenhof.circleimageview.CircleImageView-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-
-    <!--android:clickable="true"-->
-    <!--app:civ_border_width="3dp"-->
-    <!--app:civ_border_color="#FFFFFFFF"-->
-
-    <!--android:id="@+id/profile"-->
-    <!--android:layout_width="200dp"-->
-    <!--android:layout_height="200dp"-->
-    <!--android:layout_below="@+id/header_cover_image"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_marginTop="-130dp"-->
-    <!--android:elevation="5dp"-->
-    <!--android:padding="20dp"-->
-    <!--android:scaleType="centerCrop"-->
-    <!--android:src="@drawable/man" />-->
-
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -259,9 +240,7 @@
             android:id="@+id/name4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/imageView3"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/imageView3"
             android:layout_marginTop="52dp"
             android:text="125548iuh"
             android:textColor="#fff"
