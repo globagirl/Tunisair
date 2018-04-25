@@ -36,7 +36,7 @@ public class MilesActivity extends AppCompatActivity
         toggle.syncState();
 
         rd_type = findViewById(R.id.dinar);
-        rd_type.setChecked(true);
+//        rd_type.setChecked(true);
 
     }
     public void onRadioButtonClicked(View view) {

@@ -11,18 +11,15 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="293dp"
+        android:layout_height="397dp"
         android:layout_below="@+id/profile_layout"
 
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="5dp"
         android:background="#fff"
         android:elevation="4dp"
         android:orientation="vertical"
-        android:paddingBottom="30dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="30dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +27,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/tx_prenom"
@@ -38,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/de"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <Spinner
@@ -54,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/vers"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <Spinner
@@ -68,46 +68,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:paddingTop="5dp"
                 android:text="Type de voyage"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/rd_aller"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
-                    android:onClick="onRadioButtonClicked"
                     android:buttonTint="@color/colorPrimary"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Aller simple"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
 
                 <RadioButton
                     android:id="@+id/rd_retour"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
-                    android:onClick="onRadioButtonClicked"
                     android:buttonTint="@color/colorPrimary"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Aller retour"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -116,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Départ"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -128,10 +136,11 @@
                 android:ems="10"
                 android:focusable="auto"
                 android:focusableInTouchMode="false"
+                android:hint="Date"
                 android:inputType="textPersonName"
                 android:onClick="get_date"
-                android:hint="Date"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/time_dep"
@@ -141,16 +150,17 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
-                android:onClick="get_time"
                 android:focusableInTouchMode="false"
-                android:inputType="time"
                 android:hint="Time"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                android:inputType="time"
+                android:onClick="get_time"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:orientation="horizontal">
 
             <TextView
@@ -159,6 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Retour"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -170,10 +181,11 @@
                 android:cursorVisible="false"
                 android:ems="10"
                 android:focusableInTouchMode="false"
+                android:hint="Date"
                 android:inputType="textPersonName"
                 android:onClick="get_date2"
-                android:hint="Date"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/time_arr"
@@ -183,11 +195,12 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
-                android:onClick="get_time2"
                 android:focusableInTouchMode="false"
-                android:inputType="textPersonName"
                 android:hint="Time"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                android:inputType="textPersonName"
+                android:onClick="get_time2"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -201,6 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Passagers"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -214,7 +228,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Adultes" />
+                    android:text="Adultes"
+                    android:textSize="12sp" />
 
                 <Spinner
                     android:id="@+id/N_adult"
@@ -237,7 +252,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Jeunes" />
+                    android:text="Jeunes"
+                    android:textSize="12sp" />
 
                 <Spinner
                     android:id="@+id/N_jeune"
@@ -256,10 +272,11 @@
 
                 <TextView
                     android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
+                    android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Enfants" />
+                    android:text="Enfants"
+                    android:textSize="12sp" />
 
                 <Spinner
                     android:id="@+id/N_enfant"
@@ -281,7 +298,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Bébés" />
+                    android:text="Bébés"
+                    android:textSize="12sp" />
 
                 <Spinner
                     android:id="@+id/N_bebe"
@@ -297,13 +315,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingTop="5dp">
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:text="Classe"
                 android:textStyle="bold" />
 
@@ -311,7 +330,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/affaire"
@@ -348,7 +367,8 @@
             android:layout_height="wrap_content"
             android:buttonTint="@color/colorPrimary"
             android:text="Simulation"
-            android:textColor="@color/common_google_signin_btn_text_light_focused" />
+            android:textColor="@color/common_google_signin_btn_text_light_focused"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView13"
@@ -362,18 +382,19 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="300dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="222dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:onClick="valide"
         android:text="Valider"
         android:textColor="@color/ic_launcher_background"
+        android:textSize="12sp"
         android:theme="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
