@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,35 +11,26 @@
     tools:showIn="@layout/app_bar_reclamation">
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="111dp">
-
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#fff"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,7 +46,8 @@
                     android:ems="10"
                     android:hint="Votre identifiant "
                     android:inputType="textPersonName"
-                    android:textColorHint="#fff" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                 <EditText
                     android:id="@+id/date_rec"
@@ -66,28 +58,35 @@
                     android:hint="Date"
                     android:inputType="textPersonName"
                     android:onClick="get_date"
-                    android:textColorHint="#fff" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
-                <EditText
+                <TextView
                     android:id="@+id/editText2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:textColor="#fff"
-                    android:text="Type de Réclamation" />
+                    android:text="Type de Réclamation"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/typeRec"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:spinnerMode="dialog"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <EditText
@@ -98,7 +97,8 @@
                 android:ems="10"
                 android:hint="Description "
                 android:inputType="textMultiLine"
-                android:textColorHint="#fff" />
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -114,7 +114,8 @@
                     android:ems="10"
                     android:hint="Numéro du Vol"
                     android:inputType="number"
-                    android:textColorHint="#fff" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                 <EditText
                     android:id="@+id/date_vol"
@@ -125,7 +126,8 @@
                     android:hint="Date du Vol"
                     android:inputType="textPersonName"
                     android:onClick="get_date"
-                    android:textColorHint="#fff" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
 
             <LinearLayout
@@ -147,7 +149,8 @@
                         android:ems="10"
                         android:hint="Réf Billet"
                         android:inputType="number"
-                        android:textColorHint="#fff" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                     <EditText
                         android:id="@+id/ticket_number"
@@ -157,39 +160,49 @@
                         android:ems="10"
                         android:hint="Ticket N°"
                         android:inputType="number"
-                        android:textColorHint="#fff" />
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_valider"
-                    android:layout_width="200dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
-                    android:text="Valider"
-                    android:textColor="@android:color/holo_red_dark"
-                    tools:ignore="OnClick" />
-
-                <Button
-                    android:id="@+id/button_annuler"
-                    android:layout_width="200dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
-                    android:text="Annuler"
-                    android:textColor="@android:color/holo_red_dark" />
-            </LinearLayout>
-
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/button_valider"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="412dp"
+        android:layout_weight="1"
+        android:text="Valider"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:theme="@style/MyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_annuler"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:text="Annuler"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:theme="@style/MyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_valider" />
+
+</android.support.constraint.ConstraintLayout>

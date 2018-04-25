@@ -50,7 +50,7 @@
             android:theme="@style/AppTheme" />
         <activity android:screenOrientation="portrait"
             android:name=".AboutActivity"
-            android:label="About Fidelys"
+            android:label="A propos Fidelys"
             android:theme="@style/AppTheme" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
