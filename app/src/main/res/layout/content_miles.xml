@@ -27,17 +27,6 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp">
 
-            <EditText
-                android:id="@+id/nb_miles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Nombre des miles"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
-
             <LinearLayout
                 android:id="@+id/linearLayout6"
                 android:layout_width="match_parent"
@@ -49,6 +38,7 @@
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:text="Séléctionnez la devise"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
@@ -59,6 +49,7 @@
                     android:id="@+id/spinner4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
@@ -69,6 +60,7 @@
                 android:id="@+id/tx_sexe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:paddingBottom="5dp"
                 android:paddingTop="20dp"
@@ -85,6 +77,7 @@
                     android:id="@+id/typeQua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Qualifiant"
@@ -94,6 +87,7 @@
                     android:id="@+id/typePri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Prime"
@@ -101,10 +95,27 @@
             </RadioGroup>
 
             <EditText
+                android:id="@+id/nb_miles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:ems="10"
+                android:hint="Nombre des miles"
+                android:inputType="textPersonName"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+
+            <EditText
                 android:id="@+id/prix_TND"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
                 android:hint="Prix unitaire en TND"
                 android:inputType="textPersonName"
@@ -115,7 +126,10 @@
                 android:id="@+id/val_devise"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
                 android:hint="Valeur en Devise"
                 android:inputType="textPersonName"
@@ -126,7 +140,10 @@
                 android:id="@+id/Val_TND"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
                 android:hint="Valeur en TND"
                 android:inputType="textPersonName"
@@ -138,8 +155,8 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="276dp"
-        android:layout_height="52dp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Acheter"
         android:textColor="@color/common_google_signin_btn_text_dark_default"

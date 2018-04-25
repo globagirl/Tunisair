@@ -15,6 +15,10 @@
         android:layout_height="0dp"
         android:layout_below="@+id/profile_layout"
 
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="72dp"
         android:background="#fff"
         android:elevation="4dp"
@@ -79,25 +83,33 @@
                 android:text="Type de voyage"
                 android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingLeft="10dp"
-                android:text="Aller simple"
-                android:buttonTint="@color/colorPrimary"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:buttonTint="@color/colorPrimary"
-                android:paddingLeft="10dp"
-                android:text="Aller retour"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorPrimary"
+                    android:paddingLeft="10dp"
+                    android:text="Aller simple"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorPrimary"
+                    android:paddingLeft="10dp"
+                    android:text="Aller retour"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
+            </RadioGroup>
+
         </LinearLayout>
 
         <LinearLayout
@@ -117,6 +129,8 @@
                 android:id="@+id/dat_dep"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
@@ -132,6 +146,8 @@
                 android:id="@+id/time_dep"
                 android:layout_width="126dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
@@ -159,6 +175,8 @@
                 android:id="@+id/dat_arr"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
@@ -173,6 +191,8 @@
                 android:id="@+id/time_arr"
                 android:layout_width="126dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
@@ -328,17 +348,17 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="300dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
         android:text="Valider"
         android:textColor="@color/ic_launcher_background"
         android:theme="@style/MyButton"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </android.support.constraint.ConstraintLayout>
