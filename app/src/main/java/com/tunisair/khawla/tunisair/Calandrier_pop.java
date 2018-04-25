@@ -26,7 +26,6 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
     View view;
     Button ok, anuller;
     DatePicker naisence;
-    SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +58,12 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
                 inscr.setdate(date);
             }else if (InscriptionActivity.p== 2) {
                 Inscription2Activity inscrr = (Inscription2Activity) getActivity();
+                inscrr.setdate2(date);
+            }else if (InscriptionActivity.p== 3) {
+                BilletActivity inscrr = (BilletActivity) getActivity();
+                inscrr.setdate(date);
+            }else if (InscriptionActivity.p== 4) {
+                BilletActivity inscrr = (BilletActivity) getActivity();
                 inscrr.setdate2(date);
             }
                 this.dismiss();

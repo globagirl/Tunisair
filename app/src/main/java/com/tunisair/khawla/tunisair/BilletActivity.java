@@ -1,6 +1,7 @@
 package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,8 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,33 +32,56 @@ import java.util.List;
 
 public class BilletActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    Spinner de, vers, adult, enfants, bébé, jeune,classe;
+
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+
+    Spinner de, vers, adult, enfants, bebe, jeune;
     String[] depart = new String[36];
     String[] ariver = new String[36];
-    String[] adl = new String[7];
-    String[] enf = new String[7];
     String[] bb = new String[7];
-    String[] jne = new String[7];
     Liste_pays adapterP;
     Liste_pays adapterPy;
-    EditText naissance1,naissance2;
+    EditText naissance1,naissance2,time1,time2;
+    String Naissance1, Naissance2, Time1, Time2;
+    RadioButton rd_all,rd_eco;
+    CheckBox chek_simul;
+    static int t=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_billet);
+        prefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE);
+        editor = prefs.edit();
+
         de = (Spinner) findViewById(R.id.P_depart);
         vers = (Spinner) findViewById(R.id.p_arrive);
+        rd_all=findViewById(R.id.rd_aller);
+        naissance1=(EditText) findViewById(R.id.dat_dep);
+        naissance2=(EditText) findViewById(R.id.dat_arr);
+        time1=(EditText) findViewById(R.id.time_dep);
+        time2=(EditText) findViewById(R.id.time_arr);
+        rd_eco = (RadioButton) findViewById(R.id.eco);
+        chek_simul = (CheckBox) findViewById(R.id.simul);
+
         adult = (Spinner) findViewById(R.id.N_adult);
         enfants = (Spinner) findViewById(R.id.N_enfant);
-        bébé = (Spinner) findViewById(R.id.N_bebe);
+        bebe = (Spinner) findViewById(R.id.N_bebe);
         jeune = (Spinner) findViewById(R.id.N_jeune);
-      naissance1=(EditText) findViewById(R.id.dat_dep);
-      naissance2=(EditText) findViewById(R.id.dat_arr);
-      classe= (Spinner) findViewById(R.id.classe);
+
+
 
         remplirp();
         remplirpys();
+
+        rd_all.setChecked(true);
+        editor.putString("Type_voyage", rd_all.getText().toString());
+        rd_eco.setChecked(true);
+        editor.putString("Classe_voyage", rd_eco.getText().toString());
+        editor.apply();
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -79,21 +106,34 @@ public class BilletActivity extends AppCompatActivity
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adult.setAdapter(adapter);
         enfants.setAdapter(adapter);
-        bébé.setAdapter(adapter);
+        bebe.setAdapter(adapter);
         jeune.setAdapter(adapter);
 
-        final List<String> spinerarra = new ArrayList<String>();
-        spinerarra.add("affaire");
-        spinerarra.add("Economique");
-
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarra);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        classe.setAdapter(adapter1);
-
-
-
+    } public void onRadioButton_classe(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.affaire:
+                if (checked) {
+                    RadioButton rd_aff = (RadioButton) findViewById(R.id.affaire);
+                    editor.putString("Classe_voyage", rd_aff.getText().toString());
+                    editor.apply();
+                }
+                break;
+        }
     }
 
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.rd_retour:
+                if (checked) {
+                    RadioButton rd_r = (RadioButton) findViewById(R.id.rd_retour);
+                    editor.putString("Type_voyage", rd_r.getText().toString());
+                    editor.apply();
+                }
+                break;
+        }
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -172,9 +212,6 @@ public class BilletActivity extends AppCompatActivity
         });
 
     }
-
-
-
     public void remplir() {
 
         try {
@@ -214,8 +251,6 @@ public class BilletActivity extends AppCompatActivity
         });
 
     }
-
-
     public void remplirpy() {
 
         try {
@@ -239,12 +274,94 @@ public class BilletActivity extends AppCompatActivity
         FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
         Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
+        InscriptionActivity.p=3;
 
     }
     public void setdate(String date) {
         naissance1.setText(date);
+        naissance1.setError(null);
+    }
+    public void get_date2(View view) {
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+        Calandrier_pop pop = new Calandrier_pop();
+        pop.show(manager, null);
+        InscriptionActivity.p=4;
+
+    }
+    public void setdate2(String date) {
         naissance2.setText(date);
+        naissance2.setError(null);
     }
 
+    public void get_time(View view) {
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+        Timer_pop pop = new Timer_pop();
+        pop.show(manager, null);
+        t=1;
+    }
+    public void settime(String time) {
+        time1.setText(time);
+        time1.setError(null);
+    }
+    public void get_time2(View view) {
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+        Timer_pop pop = new Timer_pop();
+        pop.show(manager, null);
+        t=2;
+    }
+    public void settime2(String time) {
+        time2.setText(time);
+        time2.setError(null);
+    }
 
+    public void valide(View view) {
+        Naissance1 = naissance1.getText().toString().trim();
+        Naissance2= naissance2.getText().toString().trim();
+        Time1 = time1.getText().toString().trim();
+        Time2 = time2.getText().toString().trim();
+        if (!valider()) {
+            Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
+        } else {
+            remplir_champs();
+            if (chek_simul.isChecked()) {
+                Toast.makeText(getApplicationContext(), "simulation cocher", Toast.LENGTH_LONG).show();
+
+            }else{
+                Toast.makeText(getApplicationContext(),"simulation nom cocher", Toast.LENGTH_LONG).show();
+
+            }
+        }
+
+    }
+    public void remplir_champs() {
+        editor.putString("Date_dep", Naissance1);
+        editor.putString("Time_dep",Time1);
+        editor.putString("Date_arr", Naissance2);
+        editor.putString("Time_ariv", Time2);
+        editor.apply();
+    }
+    private boolean valider() {
+        boolean valide = true;
+
+        if (Naissance1.isEmpty()) {
+            naissance1.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+
+        }
+        if (Naissance2.isEmpty()) {
+            naissance2.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+
+        }
+        if (Time1.isEmpty()) {
+            time1.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+
+        }
+        if (Time2.isEmpty()) {
+            time2.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        return valide;
+    }
 }

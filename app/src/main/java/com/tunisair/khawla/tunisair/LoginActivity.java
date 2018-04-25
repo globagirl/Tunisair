@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
          email=login.getText().toString().trim();
          pass=password.getText().toString().trim();
         if (!valider()){
-            Toast.makeText(getApplicationContext(),"verifier tout les champs",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.verifier_tout_les_champs,Toast.LENGTH_LONG).show();
             //login without email and password for test
             Intent intent = new Intent(LoginActivity.this, ProfilActivity.class);
             startActivity(intent);
@@ -67,12 +67,12 @@ public class LoginActivity extends AppCompatActivity {
     private boolean valider() {
         boolean valide = true;
         if (email.isEmpty() || (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
-            login.setError("remplir votre email");
+            login.setError(getString(R.string.champ_obligatoir));
             valide = false;
 
         }
         if (pass.isEmpty()) {
-            password.setError("remplir votre password");
+            password.setError(getString(R.string.champ_obligatoir));
             valide = false;
 
         }

@@ -60,5 +60,7 @@
     <string name="accepter_les_conditions">Veuillez accepter les Conditions Générales du Programme</string>
     <string name="homme">Homme</string>
     <string name="femme">femme</string>
+    <string name="vers">Vers</string>
+    <string name="de">De</string>
 
 </resources>

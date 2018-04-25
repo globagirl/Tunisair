@@ -3,23 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:backgroundTint="@android:color/transparent"
-    android:background="@android:color/transparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <DatePicker
-        android:id="@+id/datePicker"
+    <TimePicker
+        android:id="@+id/timepic"
         android:layout_width="345dp"
         android:layout_height="443dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:calendarViewShown="true"
-        android:headerBackground="@color/colorPrimary"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/bt_anuler"
         android:layout_width="wrap_content"
@@ -32,7 +26,8 @@
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/timepic"
+        android:layout_marginRight="84dp" />
 
     <Button
         android:id="@+id/bt_ok"
@@ -49,6 +44,5 @@
         app:layout_constraintEnd_toStartOf="@+id/bt_anuler"
         app:layout_constraintHorizontal_bias="0.702"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
-
+        app:layout_constraintTop_toBottomOf="@+id/timepic" />
 </android.support.constraint.ConstraintLayout>
