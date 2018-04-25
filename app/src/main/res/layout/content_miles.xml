@@ -131,33 +131,39 @@
                     tools:layout_editor_absoluteX="24dp"
                     tools:layout_editor_absoluteY="84dp" />
 
-                <RadioButton
-                    android:id="@+id/typeQua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Qualifiant"
-                    android:buttonTint="@color/colorPrimary"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
 
-                    tools:layout_conversion_absoluteHeight="32dp"
-                    tools:layout_conversion_absoluteWidth="117dp"
-                    tools:layout_editor_absoluteX="126dp"
-                    tools:layout_editor_absoluteY="78dp" />
+                    <RadioButton
+                        android:id="@+id/typeQua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="Qualifiant"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
 
-                <RadioButton
-                    android:id="@+id/typePri"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="@color/colorPrimary"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        tools:layout_conversion_absoluteHeight="32dp"
+                        tools:layout_conversion_absoluteWidth="117dp"
+                        tools:layout_editor_absoluteX="126dp"
+                        tools:layout_editor_absoluteY="78dp" />
 
-                    android:text="Prime"
-                    tools:layout_conversion_absoluteHeight="32dp"
-                    tools:layout_conversion_absoluteWidth="118dp"
-                    tools:layout_editor_absoluteX="243dp"
-                    tools:layout_editor_absoluteY="78dp" />
+                    <RadioButton
+                        android:id="@+id/typePri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="Prime"
+
+                        android:textColor="@color/common_google_signin_btn_text_light_focused"
+                        tools:layout_conversion_absoluteHeight="32dp"
+                        tools:layout_conversion_absoluteWidth="118dp"
+                        tools:layout_editor_absoluteX="243dp"
+                        tools:layout_editor_absoluteY="78dp" />
+                </RadioGroup>
 
             </LinearLayout>
 
