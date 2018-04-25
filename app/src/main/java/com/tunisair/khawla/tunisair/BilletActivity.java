@@ -331,7 +331,6 @@ public class BilletActivity extends AppCompatActivity
 
             }
         }
-
     }
     public void remplir_champs() {
         editor.putString("Date_dep", Naissance1);

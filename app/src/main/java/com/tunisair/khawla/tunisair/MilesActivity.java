@@ -2,8 +2,6 @@ package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,25 +9,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.EditText;
+import android.widget.RadioButton;
 
 public class MilesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-Spinner devise;
+
+    RadioButton rd_type;
+    EditText nb_miles;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        devise=(Spinner) findViewById(R.id.spinner4);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_miles);
+
+        nb_miles = findViewById(R.id.nb_miles);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -37,16 +35,26 @@ Spinner devise;
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        final List<String> spinerarray = new ArrayList<String>();
-        spinerarray.add("Euro");
-        spinerarray.add("Dinar");
-        spinerarray.add("Dollar");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//   devise.setAdapter(adapter);
+        rd_type = findViewById(R.id.dinar);
+        rd_type.setChecked(true);
 
+    }
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.eruo:
+                if (checked) {
+                    RadioButton rd_type = (RadioButton) findViewById(R.id.eruo);
+
+                }
+                break;
+            case R.id.dolar:
+                if (checked) {
+                    RadioButton rd_type = (RadioButton) findViewById(R.id.dolar);
+
+                }
+                break;
+        }
     }
 
     @Override
@@ -58,21 +66,6 @@ Spinner devise;
             super.onBackPressed();
         }
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -121,5 +114,8 @@ Spinner devise;
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void acheter(View view) {
     }
 }

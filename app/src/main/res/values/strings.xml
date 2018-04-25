@@ -62,5 +62,7 @@
     <string name="femme">femme</string>
     <string name="vers">Vers</string>
     <string name="de">De</string>
+    <string name="logure_reference">Votre numero de vol doit contenir 6 caractaire</string>
+    <string name="longure_ticket">Votre numero de vol doit contenir 10 caractaire</string>
 
 </resources>

@@ -56,24 +56,13 @@ public class InscriptionActivity extends AppCompatActivity {
         code_p = code_postale.getText().toString().trim();
         Naisence = naisence.getText().toString().trim();
 
-
         if (!valider()) {
             Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
         } else {
             remplir_champs();
-//            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
-//
-//            String userId = mDatabase.push().getKey();
-//
-//            User user = new User(name,prenoms,email,pass,pasport);
-//
-//            mDatabase.child(userId).setValue(user);
-//
             Intent intent = new Intent(this, Inscription2Activity.class);
             startActivity(intent);
-
         }
-
     }
     public void remplir_champs() {
         editor.putString("Nom", name);

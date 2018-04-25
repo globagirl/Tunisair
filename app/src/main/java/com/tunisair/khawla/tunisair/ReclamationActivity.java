@@ -25,20 +25,23 @@ public class ReclamationActivity extends AppCompatActivity
 
 {
 
-    EditText naisence,id,desc,Num_vol,Ref,Tickt,date_vol;
-    String iden,type,dec,num,numvol,refe,tic;
+    EditText dat,identif,desc,Num_vol,Ref,Tickt,date_vol;
+    String iden,type,dec,num,numvol,refe,tic,dt_vol,dat_rec;
     Spinner type_rec;
     @Override
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reclamation);
-        naisence=(EditText) findViewById(R.id.date_rec);
-        id=(EditText) findViewById(R.id.identifiant);
-        type_rec=(Spinner) findViewById(R.id.typeRec);
+
+        dat=(EditText) findViewById(R.id.date_rec);
+        identif=(EditText) findViewById(R.id.identifiant);
         desc=(EditText) findViewById(R.id.description);
         Num_vol=(EditText)findViewById(R.id.num_vol);
         Ref=(EditText)findViewById(R.id.billet_ref);
         Tickt=(EditText) findViewById(R.id.ticket_number);
+        date_vol=(EditText) findViewById(R.id.date_vol);
+
+        type_rec=(Spinner) findViewById(R.id.typeRec);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -78,22 +81,6 @@ public class ReclamationActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -143,26 +130,39 @@ public class ReclamationActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void get_date (View view){
+
+    public void get_date(View view){
         FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
         Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
+        InscriptionActivity.p=5;
 
     }
     public void setdate (String date){
-        naisence.setText(date);
+        dat.setText(date);
+    }
+    public void get_date2(View view){
+        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
+        Calandrier_pop pop = new Calandrier_pop();
+        pop.show(manager, null);
+        InscriptionActivity.p=6;
+
+    }
+    public void setdate2(String date){
+        date_vol.setText(date);
     }
 
     public void verifier(View view) {
-        iden=id.getText().toString().trim();
-       // type= type_rec.getText().toString().trim();
+        iden=identif.getText().toString().trim();
         dec=desc.getText().toString().trim();
         num=Num_vol.getText().toString().trim();
         refe=Ref.getText().toString().trim();
         tic=Tickt.getText().toString().trim();
+        dt_vol=date_vol.getText().toString().trim();
+        dat_rec=dat.getText().toString().trim();
 
         if (!valider()){
-            Toast.makeText(getApplicationContext(),"Veuillez vérifier tout les champs",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.verifier_tout_les_champs,Toast.LENGTH_LONG).show();
         }
 
     }
@@ -171,32 +171,40 @@ public class ReclamationActivity extends AppCompatActivity
         boolean valide=true;
 
         if (iden.isEmpty() ) {
-            id.setError("Veuillez insérer votre identifiant ");
+            identif.setError(getString(R.string.champ_obligatoir));
             valide = false;
-
         }
-//        if (type.isEmpty() ) {
-//            type_rec.setError("Veuillez ajoutée votre type de réclamation");
-//            valide = false;
-//
-//        }
+        if (dat_rec.isEmpty() ) {
+            dat.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
         if (dec.isEmpty() ) {
-            desc.setError("Veuillez ajoutée une description ");
+            desc.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        if (numvol.isEmpty() ) {
+            Num_vol.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        if (refe.isEmpty() ) {
+            Ref.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        if (tic.isEmpty() ) {
+            Tickt.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        if (!numvol.isEmpty() && (numvol.length() != 4)) {
+            Num_vol.setError(getString(R.string.logure_numero_vole));
+            valide = false;
+        }
+        if (!refe.isEmpty() && (refe.length() != 6)) {
+            Ref.setError(getString(R.string.logure_reference));
             valide = false;
 
         }
-        if (numvol.isEmpty()||numvol.length()!=4 ) {
-            Num_vol.setError("Veuillez ajoutée votre numéro de vol");
-            valide = false;
-
-        }
-        if (refe.isEmpty() ||refe.length()!=6) {
-            Ref.setError("Veuillez ajoutée votre réferance de billet");
-            valide = false;
-
-        }
-        if (tic.isEmpty() ||tic.length()!=10 ) {
-            Tickt.setError("Veuillez ajoutée numéro de ticket");
+        if (!tic.isEmpty() && (tic.length() != 10)) {
+            Tickt.setError(getString(R.string.longure_ticket));
             valide = false;
 
         }

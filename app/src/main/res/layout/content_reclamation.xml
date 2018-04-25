@@ -61,6 +61,8 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
+                    android:cursorVisible="false"
+                    android:focusableInTouchMode="false"
                     android:hint="Date"
                     android:inputType="textPersonName"
                     android:onClick="get_date"
@@ -97,14 +99,14 @@
 
             <EditText
                 android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="327dp"
+                android:layout_height="115dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
-                android:hint="Description "
+                android:hint="Description"
                 android:inputType="textMultiLine"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -138,17 +140,14 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
-                    android:hint="Date du Vol"
+                    android:hint="Date du Vole"
+                    android:cursorVisible="false"
+                    android:focusableInTouchMode="false"
                     android:inputType="textPersonName"
-                    android:onClick="get_date"
+                    android:onClick="get_date2"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,9 +184,6 @@
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
                 </LinearLayout>
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 
@@ -199,8 +195,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="412dp"
+        android:layout_marginTop="450dp"
         android:layout_weight="1"
+        android:onClick="verifier"
         android:text="Valider"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"

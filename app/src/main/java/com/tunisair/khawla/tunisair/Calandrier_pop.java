@@ -65,6 +65,12 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
             }else if (InscriptionActivity.p== 4) {
                 BilletActivity inscrr = (BilletActivity) getActivity();
                 inscrr.setdate2(date);
+            }else if (InscriptionActivity.p== 5) {
+                ReclamationActivity inscrr = (ReclamationActivity) getActivity();
+                inscrr.setdate(date);
+            }else if (InscriptionActivity.p== 6) {
+                ReclamationActivity inscrr = (ReclamationActivity) getActivity();
+                inscrr.setdate2(date);
             }
                 this.dismiss();
         }
