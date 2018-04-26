@@ -6,13 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdhessionActivity extends AppCompatActivity {
     CheckBox case1, case2;
@@ -26,13 +31,14 @@ public class AdhessionActivity extends AppCompatActivity {
     Boolean accepte_mail;
     DatabaseReference reference;
 
+    Spinner Repa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adhession);
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
-
+Repa=(Spinner) findViewById(R.id.spinner);
         reference = FirebaseDatabase.getInstance().getReference("users");
 
         autre = (EditText) findViewById(R.id.autre);
@@ -71,6 +77,18 @@ public class AdhessionActivity extends AppCompatActivity {
         case1 = (CheckBox) findViewById(R.id.checkBox);
         case2 = (CheckBox) findViewById(R.id.checkBox2);
 
+
+        final List<String> spinerarray = new ArrayList<String>();
+        spinerarray.add("Bébé");
+        spinerarray.add("Sans sel");
+        spinerarray.add("Diabète");
+        spinerarray.add("Cachére");
+
+
+        ArrayAdapter<String> adapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
+        adapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Repa.setAdapter(adapterR);
+
     }
 
     public void onRadioButton_type(View view) {
@@ -84,6 +102,7 @@ public class AdhessionActivity extends AppCompatActivity {
                 }
                 break;
         }
+
     }
 
     public void onRadioButton_langue(View view) {
