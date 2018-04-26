@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="femme">Women</string>
+    <string name="homme">Male</string>
+    <string name="accepter_les_conditions">Please accept the Terms and Conditions of the Program</string>
+    <string name="adresse_domicile">"Home adress "</string>
+    <string name="tous_les_champs_doivent_tre_renseign_s">" * All fields must be completed"</string>
+    <string name="suivant">Next</string>
+    <string name="terminer">Finish</string>
+    <string name="j_accepte_de_recevoir_les_nouveaut_s_fidelys_par_e_mail">I accept to receive Fidelys news by e-mail</string>
+    <string name="j_accepte_les_conditions_g_n_rales_du_programme">" I accept the General Conditions of the Program"</string>
+    <string name="non">No</string>
+    <string name="oui">Yes</string>
+    <string name="avez_vous_besoin_d_une_assistance">Do you need assistance?</string>
+    <string name="accompagn_des_nombres_de_votre_famille">" Accompanied by family's numbers"</string>
+    <string name="seul">unaccompanied</string>
+    <string name="vos_habitude_de_voyage">Your travel habits</string>
+    <string name="ch_que">Check</string>
+    <string name="cashe">Cashe</string>
+    <string name="carte_de_cr_dit">"Credit card "</string>
+    <string name="mode_de_paiement">"Payment method "</string>
+</resources>
