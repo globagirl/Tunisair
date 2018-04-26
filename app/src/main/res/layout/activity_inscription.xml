@@ -184,7 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Numero passport *"
+                android:hint="Numero passport "
                 android:inputType="textPersonName"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused" />

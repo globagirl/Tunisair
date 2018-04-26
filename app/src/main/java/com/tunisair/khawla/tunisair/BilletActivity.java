@@ -42,11 +42,10 @@ public class BilletActivity extends AppCompatActivity
     String[] bb = new String[7];
     Liste_pays adapterP;
     Liste_pays adapterPy;
-    EditText naissance1,naissance2,time1,time2;
-    String Naissance1, Naissance2, Time1, Time2;
+    EditText naissance1,naissance2;
+    String Naissance1, Naissance2;
     RadioButton rd_all,rd_eco;
     CheckBox chek_simul;
-    static int t=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +59,6 @@ public class BilletActivity extends AppCompatActivity
         rd_all=findViewById(R.id.rd_aller);
         naissance1=(EditText) findViewById(R.id.dat_dep);
         naissance2=(EditText) findViewById(R.id.dat_arr);
-        time1=(EditText) findViewById(R.id.time_dep);
-        time2=(EditText) findViewById(R.id.time_arr);
         rd_eco = (RadioButton) findViewById(R.id.eco);
         chek_simul = (CheckBox) findViewById(R.id.simul);
 
@@ -293,32 +290,9 @@ public class BilletActivity extends AppCompatActivity
         naissance2.setError(null);
     }
 
-    public void get_time(View view) {
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-        Timer_pop pop = new Timer_pop();
-        pop.show(manager, null);
-        t=1;
-    }
-    public void settime(String time) {
-        time1.setText(time);
-        time1.setError(null);
-    }
-    public void get_time2(View view) {
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-        Timer_pop pop = new Timer_pop();
-        pop.show(manager, null);
-        t=2;
-    }
-    public void settime2(String time) {
-        time2.setText(time);
-        time2.setError(null);
-    }
-
     public void valide(View view) {
         Naissance1 = naissance1.getText().toString().trim();
         Naissance2= naissance2.getText().toString().trim();
-        Time1 = time1.getText().toString().trim();
-        Time2 = time2.getText().toString().trim();
         if (!valider()) {
             Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
         } else {
@@ -334,9 +308,7 @@ public class BilletActivity extends AppCompatActivity
     }
     public void remplir_champs() {
         editor.putString("Date_dep", Naissance1);
-        editor.putString("Time_dep",Time1);
         editor.putString("Date_arr", Naissance2);
-        editor.putString("Time_ariv", Time2);
         editor.apply();
     }
     private boolean valider() {
@@ -351,15 +323,6 @@ public class BilletActivity extends AppCompatActivity
             naissance2.setError(getString(R.string.champ_obligatoir));
             valide = false;
 
-        }
-        if (Time1.isEmpty()) {
-            time1.setError(getString(R.string.champ_obligatoir));
-            valide = false;
-
-        }
-        if (Time2.isEmpty()) {
-            time2.setError(getString(R.string.champ_obligatoir));
-            valide = false;
         }
         return valide;
     }

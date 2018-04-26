@@ -116,16 +116,6 @@ public class InscriptionActivity extends AppCompatActivity {
             mail.setError(getString(R.string.mail_invalide));
             valide = false;
         }
-        if (pasport.isEmpty()) {
-            num_pass.setError(getString(R.string.champ_obligatoir));
-            valide = false;
-
-        }
-        if (!pasport.isEmpty() && (pasport.length() != 8)) {
-            num_pass.setError(getString(R.string.logure_pasport));
-            valide = false;
-
-        }
         if (Ville.isEmpty()) {
             ville.setError(getString(R.string.champ_obligatoir));
             valide = false;
