@@ -16,7 +16,7 @@ import android.widget.RadioButton;
 public class MilesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    RadioButton rd_type;
+    RadioButton rd_type,rd_mile;
     EditText nb_miles;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +34,17 @@ public class MilesActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         rd_type = findViewById(R.id.dinar);
-//        rd_type.setChecked(true);
+        rd_type.setChecked(true);
+
+        rd_mile = findViewById(R.id.typePri);
+        rd_mile.setChecked(true);
 
     }
-    public void onRadioButtonClicked(View view) {
+    public void onRadioButton_type(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
             case R.id.eruo:
@@ -51,6 +56,17 @@ public class MilesActivity extends AppCompatActivity
             case R.id.dolar:
                 if (checked) {
                     RadioButton rd_type = (RadioButton) findViewById(R.id.dolar);
+
+                }
+                break;
+        }
+    }
+    public void onRadioButton_miles(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.typeQua:
+                if (checked) {
+                    RadioButton rd_miles = (RadioButton) findViewById(R.id.typeQua);
 
                 }
                 break;

@@ -155,7 +155,7 @@ public class ReclamationActivity extends AppCompatActivity
     public void verifier(View view) {
         iden=identif.getText().toString().trim();
         dec=desc.getText().toString().trim();
-        num=Num_vol.getText().toString().trim();
+        numvol=Num_vol.getText().toString().trim();
         refe=Ref.getText().toString().trim();
         tic=Tickt.getText().toString().trim();
         dt_vol=date_vol.getText().toString().trim();
@@ -166,7 +166,6 @@ public class ReclamationActivity extends AppCompatActivity
         }
 
     }
-
     private boolean valider() {
         boolean valide=true;
 

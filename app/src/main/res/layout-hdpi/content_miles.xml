@@ -27,34 +27,64 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp">
 
-            <LinearLayout
-                android:id="@+id/linearLayout6"
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="Séléctionnez la devise"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView15"
+                <RadioButton
+                    android:id="@+id/eruo"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
-                    android:text="Séléctionnez la devise"
+                    android:buttonTint="@color/colorPrimary"
+                    android:onClick="onRadioButton_type"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:text="Euro"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp" />
 
-                <Spinner
-                    android:id="@+id/spinner4"
+                <RadioButton
+                    android:id="@+id/dolar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:buttonTint="@color/colorPrimary"
+                    android:onClick="onRadioButton_type"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:text="Dollar"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
-            </LinearLayout>
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/dinar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorPrimary"
+                    android:onClick="onRadioButton_type"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:text="Dinar"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
 
             <TextView
                 android:id="@+id/tx_sexe"
@@ -80,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:onClick="onRadioButton_miles"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Qualifiant"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
@@ -91,6 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:onClick="onRadioButton_miles"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Prime"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
