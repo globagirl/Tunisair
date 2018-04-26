@@ -37,8 +37,8 @@ public class BilletActivity extends AppCompatActivity
     SharedPreferences.Editor editor;
 
     Spinner de, vers, adult, enfants, bebe, jeune;
-    String[] depart = new String[36];
-    String[] ariver = new String[36];
+    String[] depart = new String[62];
+    String[] ariver = new String[62];
     String[] bb = new String[7];
     Liste_pays adapterP;
     Liste_pays adapterPy;
