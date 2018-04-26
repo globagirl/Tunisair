@@ -53,7 +53,8 @@ public class ReclamationActivity extends AppCompatActivity
         type_rec = (Spinner) findViewById(R.id.typeRec);
 
         Calendar cal = Calendar.getInstance();
-        dt_rec=cal.get(Calendar.DAY_OF_MONTH)+"/"+cal.get(Calendar.MONTH+1)+"/"+cal.get(Calendar.YEAR);
+        int month=cal.get(Calendar.MONTH)+1;
+        dt_rec=cal.get(Calendar.DAY_OF_MONTH)+"/"+month+"/"+cal.get(Calendar.YEAR);
         identif= prefs.getString("Identifiant","empty");
 
         reference = FirebaseDatabase.getInstance().getReference("reclamation");

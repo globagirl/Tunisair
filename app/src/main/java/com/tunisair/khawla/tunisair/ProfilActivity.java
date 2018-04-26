@@ -13,11 +13,19 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class ProfilActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-    TextView  tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel,identif;
+    TextView tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel, identif;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,35 +33,15 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
-        tx_noms =  findViewById(R.id.nom);
+        tx_noms = findViewById(R.id.nom);
         tx_prnom = findViewById(R.id.prenom);
-        tx_mail =  findViewById(R.id.email);
-        tx_genre =findViewById(R.id.gender);
-        tx_naisenc =  findViewById(R.id.naisence);
-        tx_numtel =  findViewById(R.id.num_tel);
-        identif =  findViewById(R.id.name4);
-        editor.putString("Identifiant", identif.getText().toString());
-        editor.apply();
+        tx_mail = findViewById(R.id.email);
+        tx_genre = findViewById(R.id.gender);
+        tx_naisenc = findViewById(R.id.naisence);
+        tx_numtel = findViewById(R.id.num_tel);
+        identif = findViewById(R.id.name4);
 
-        String nom=prefs.getString("Nom","empty");
-        String sexe= prefs.getString("sexe","empty");
-        String prenom= prefs.getString("Prenom","empty");
-        String email=prefs.getString("Email","empty");
-        String naissence= prefs.getString("Naissence","empty");
-        String numtel= prefs.getString("Tel_dom","empty");
-        String code_numtel= prefs.getString("Tel_domicile","empty");
-
-        tx_noms.setText(nom);
-        tx_prnom.setText(prenom);
-        tx_naisenc.setText(naissence);
-        tx_mail.setText(email);
-        tx_numtel.setText(code_numtel+" "+numtel);
-        if(sexe.equals("M")){
-
-            tx_genre.setText(R.string.homme);
-        }else{
-            tx_genre.setText(R.string.femme);
-        }
+        getUser();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,8 +56,42 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void getUser() {
+        String email = prefs.getString("Email", "empty");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query query = reference.orderByChild("email").equalTo(email);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        User user = snapshot.getValue(User.class);
+                        identif.setText(snapshot.getKey());
+                        tx_noms.setText(user.getNom());
+                        tx_prnom.setText(user.getPrenom());
+                        tx_naisenc.setText(user.getNaisence());
+                        tx_mail.setText(user.getEmail());
+                        tx_numtel.setText(user.getTeldom());
+                        if (user.getGenre().equals("M")) {
+                            tx_genre.setText(R.string.homme);
+                        } else {
+                            tx_genre.setText(R.string.femme);
+                        }
+                        editor.putString("Identifiant", identif.getText().toString());
+                        editor.apply();
+                    }
+                }
+            }
 
-//side bar
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    //side bar
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -79,6 +101,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
             super.onBackPressed();
         }
     }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -89,29 +112,27 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
             Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_billet) {
+        } else if (id == R.id.nav_billet) {
 
             Intent intent = new Intent(this, BilletActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_miles) {
+        } else if (id == R.id.nav_miles) {
 
             Intent intent = new Intent(this, MilesActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_mouv) {
+        } else if (id == R.id.nav_mouv) {
 
             Intent intent = new Intent(this, MouvementActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_rec) {
+        } else if (id == R.id.nav_rec) {
 
             Intent intent = new Intent(this, ReclamationActivity.class);
             startActivity(intent);
 
-        }
-
-        else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) {
 
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
