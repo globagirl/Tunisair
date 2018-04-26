@@ -17,7 +17,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-    TextView  tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel;
+    TextView  tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel,identif;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,9 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
         tx_genre =findViewById(R.id.gender);
         tx_naisenc =  findViewById(R.id.naisence);
         tx_numtel =  findViewById(R.id.num_tel);
+        identif =  findViewById(R.id.name4);
+        editor.putString("Identifiant", identif.getText().toString());
+        editor.apply();
 
         String nom=prefs.getString("Nom","empty");
         String sexe= prefs.getString("sexe","empty");

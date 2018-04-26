@@ -27,6 +27,7 @@
     <string name="fran_ais">Français</string>
     <string name="english">English</string>
     <string name="arabic">عربى</string>
+    <string name="chek_internet">Vous n\'êtes pas connectés à Internet</string>
     <string name="lieu_d_achat_de_vos_billets">Lieu d\'achat de vos billets</string>
     <string name="langue_de_communication">Langue de communication</string>
     <string name="type_adh_sion">Type adhésion</string>
@@ -63,5 +64,6 @@
     <string name="de">De</string>
     <string name="logure_reference">Votre numero de vol doit contenir 6 caractaire</string>
     <string name="longure_ticket">Votre numero de vol doit contenir 10 caractaire</string>
+    <string name="chek_reclamation">Votre Reclamation a été envoyer avec succée</string>
 
 </resources>

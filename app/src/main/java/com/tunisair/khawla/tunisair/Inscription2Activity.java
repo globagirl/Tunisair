@@ -24,7 +24,7 @@ import java.io.InputStreamReader;
 
 public class Inscription2Activity extends AppCompatActivity {
     EditText Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction,num_bielt,entet_bielt,agence,num_vole,dat_vol;
-    String teldom,telprof,telmobil,faxs,co,nat,pa,num_bielts,entet_bielts,Agence,Num_vole,Dat_vol;
+    String teldom,telprof,telmobil,faxs,num_bielts,entet_bielts,Agence,Num_vole,Dat_vol;
     boolean chek=false;
     Liste_code_payes adapter;
     Liste_nationnalité adapterN;
@@ -268,12 +268,9 @@ public class Inscription2Activity extends AppCompatActivity {
 
     }
     public void veriff(View view) {
-        nat=Spicode2.getSelectedItem().toString();
-        co=SpiCode.getSelectedItem().toString();
         teldom=Tel_dom.getText().toString().trim();
         telprof=Tel_prof.getText().toString().trim();
         telmobil=Tel_mobile.getText().toString().trim();
-        pa=Spicode3.getSelectedItem().toString();
         faxs=fax.getText().toString().trim();
 
         entet_bielts=entet_bielt.getText().toString().trim();
@@ -284,14 +281,6 @@ public class Inscription2Activity extends AppCompatActivity {
 
         if (valider()){
             remplir_champs();
-//            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
-//
-//            String userId = mDatabase.push().getKey();
-//
-//            User user = new User(adrDO,villes,postale,teldom,telprof,telmobil,faxs,soc,fonc,nat,pa);
-//
-//            mDatabase.child(userId).setValue(user);
-
             Intent intent = new Intent(this, AdhessionActivity.class);
             startActivity(intent);
         }

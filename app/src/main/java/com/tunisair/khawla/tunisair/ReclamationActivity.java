@@ -1,8 +1,11 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -12,37 +15,48 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ReclamationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-{
-
-    EditText dat,identif,desc,Num_vol,Ref,Tickt,date_vol;
-    String iden,type,dec,num,numvol,refe,tic,dt_vol,dat_rec;
+    EditText desc, Num_vol, Ref, Tickt, date_vol;
+    String type, dec, numvol, refe, tic, dt_vol,dt_rec,identif;
     Spinner type_rec;
+    DatabaseReference reference;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reclamation);
 
-        dat=(EditText) findViewById(R.id.date_rec);
-        identif=(EditText) findViewById(R.id.identifiant);
-        desc=(EditText) findViewById(R.id.description);
-        Num_vol=(EditText)findViewById(R.id.num_vol);
-        Ref=(EditText)findViewById(R.id.billet_ref);
-        Tickt=(EditText) findViewById(R.id.ticket_number);
-        date_vol=(EditText) findViewById(R.id.date_vol);
+        prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
 
-        type_rec=(Spinner) findViewById(R.id.typeRec);
+        desc = (EditText) findViewById(R.id.description);
+        Num_vol = (EditText) findViewById(R.id.num_vol);
+        Ref = (EditText) findViewById(R.id.billet_ref);
+        Tickt = (EditText) findViewById(R.id.ticket_number);
+        date_vol = (EditText) findViewById(R.id.date_vol);
+        type_rec = (Spinner) findViewById(R.id.typeRec);
 
+        Calendar cal = Calendar.getInstance();
+        dt_rec=cal.get(Calendar.DAY_OF_MONTH)+"/"+cal.get(Calendar.MONTH+1)+"/"+cal.get(Calendar.YEAR);
+        identif= prefs.getString("Identifiant","empty");
+
+        reference = FirebaseDatabase.getInstance().getReference("reclamation");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -70,10 +84,22 @@ public class ReclamationActivity extends AppCompatActivity
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         type_rec.setAdapter(adapter);
 
+        type_rec.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                type = type_rec.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                type_rec.setSelection(-1);
+            }
+        });
+
     }
 
     @Override
-    public void onBackPressed () {
+    public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -84,7 +110,7 @@ public class ReclamationActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected (MenuItem item){
+    public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_profil) {
@@ -92,29 +118,27 @@ public class ReclamationActivity extends AppCompatActivity
             Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_billet) {
+        } else if (id == R.id.nav_billet) {
 
             Intent intent = new Intent(this, BilletActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_miles) {
+        } else if (id == R.id.nav_miles) {
 
             Intent intent = new Intent(this, MilesActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_mouv) {
+        } else if (id == R.id.nav_mouv) {
 
             Intent intent = new Intent(this, MouvementActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_rec) {
+        } else if (id == R.id.nav_rec) {
 
             Intent intent = new Intent(this, ReclamationActivity.class);
             startActivity(intent);
 
-        }
-
-        else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) {
 
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
@@ -131,65 +155,71 @@ public class ReclamationActivity extends AppCompatActivity
         return true;
     }
 
-    public void get_date(View view){
+    public void get_date2(View view) {
         FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
         Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
-        InscriptionActivity.p=5;
+        InscriptionActivity.p = 6;
 
     }
-    public void setdate (String date){
-        dat.setText(date);
-    }
-    public void get_date2(View view){
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-        Calandrier_pop pop = new Calandrier_pop();
-        pop.show(manager, null);
-        InscriptionActivity.p=6;
 
-    }
-    public void setdate2(String date){
+    public void setdate2(String date) {
         date_vol.setText(date);
+        date_vol.setError(null);
     }
 
     public void verifier(View view) {
-        iden=identif.getText().toString().trim();
-        dec=desc.getText().toString().trim();
-        numvol=Num_vol.getText().toString().trim();
-        refe=Ref.getText().toString().trim();
-        tic=Tickt.getText().toString().trim();
-        dt_vol=date_vol.getText().toString().trim();
-        dat_rec=dat.getText().toString().trim();
+        dec = desc.getText().toString().trim();
+        numvol = Num_vol.getText().toString().trim();
+        refe = Ref.getText().toString().trim();
+        tic = Tickt.getText().toString().trim();
+        dt_vol = date_vol.getText().toString().trim();
 
-        if (!valider()){
-            Toast.makeText(getApplicationContext(),R.string.verifier_tout_les_champs,Toast.LENGTH_LONG).show();
+
+        if (!valider()) {
+            Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
+        } else {
+            if (isOnline()) {
+                Reclamation reclamation = new Reclamation(identif,dt_rec,type, numvol, dt_vol, refe, tic, dec);
+                reference.push().setValue(reclamation);
+                Toast.makeText(this, R.string.chek_reclamation, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, ProfilActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, R.string.chek_internet, Toast.LENGTH_SHORT).show();
+
+            }
         }
-
     }
-    private boolean valider() {
-        boolean valide=true;
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        if (iden.isEmpty() ) {
-            identif.setError(getString(R.string.champ_obligatoir));
-            valide = false;
-        }
-        if (dat_rec.isEmpty() ) {
-            dat.setError(getString(R.string.champ_obligatoir));
-            valide = false;
-        }
-        if (dec.isEmpty() ) {
+    private boolean valider() {
+        boolean valide = true;
+        if (dec.isEmpty()) {
             desc.setError(getString(R.string.champ_obligatoir));
             valide = false;
         }
-        if (numvol.isEmpty() ) {
+        if (numvol.isEmpty()) {
             Num_vol.setError(getString(R.string.champ_obligatoir));
             valide = false;
         }
-        if (refe.isEmpty() ) {
+        if (refe.isEmpty()) {
             Ref.setError(getString(R.string.champ_obligatoir));
             valide = false;
         }
-        if (tic.isEmpty() ) {
+        if (dt_vol.isEmpty()) {
+            date_vol.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        if (tic.isEmpty()) {
             Tickt.setError(getString(R.string.champ_obligatoir));
             valide = false;
         }
