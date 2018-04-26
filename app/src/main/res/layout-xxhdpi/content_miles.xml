@@ -13,7 +13,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
@@ -39,7 +39,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
                 android:hint="Nombre des miles"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="14sp" />
@@ -203,7 +203,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="0"
-                android:text="1 EUR =1 DNT " />
+                android:text="1 EUR =3.00 DNT " />
 
             <TextView
                 android:id="@+id/textView11"
@@ -213,7 +213,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="1 USD =1 DNT " />
+                android:text="1 USD =2.47 DNT " />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -226,7 +226,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="120dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="0"
                     android:text="Prix total ="
@@ -234,14 +233,14 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/prix_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="0"
-                    android:text="25 DT"
+                    android:text="00.0 DT"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold" />

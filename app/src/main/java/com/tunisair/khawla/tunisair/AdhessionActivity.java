@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +26,7 @@ public class AdhessionActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     EditText autre, site, pointe, agencee;
-    String Autre, Site, Pointe, Agencee, nom, sexe, prenom, email, naissence, habitude, besoin;
+    String Autre, Site, Pointe, Agencee, nom, sexe, prenom, email, naissence, habitude, besoin, repas;
     String payement, type_adh, classe, lan, pref, date_vol, entet_bielt, num_bielt, pass, num_vol, agence, fonction;
     String societe, cod_tel_fax, tel_fax, cod_tel_mobile, passport, tel_mobile, cod_tel_prof, ville, code_p, tel_prof, adr_dom, natio, pays, tel_dom, cod_tel_dom;
     RadioButton rd_indiv, rd_lang, rd_hub, rd_eco, rd_cache, rd_seul, rd_assis;
@@ -32,19 +34,22 @@ public class AdhessionActivity extends AppCompatActivity {
     DatabaseReference reference;
 
     Spinner Repa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adhession);
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
-Repa=(Spinner) findViewById(R.id.spinner);
+
         reference = FirebaseDatabase.getInstance().getReference("users");
 
         autre = (EditText) findViewById(R.id.autre);
         agencee = (EditText) findViewById(R.id.agence_habit);
         pointe = (EditText) findViewById(R.id.point);
         site = (EditText) findViewById(R.id.site);
+        Repa = (Spinner) findViewById(R.id.spinner);
+
         rd_indiv = (RadioButton) findViewById(R.id.indiv);
         rd_indiv.setChecked(true);
         editor.putString("Type_adhession", rd_indiv.getText().toString());
@@ -83,12 +88,22 @@ Repa=(Spinner) findViewById(R.id.spinner);
         spinerarray.add("Sans sel");
         spinerarray.add("Diabète");
         spinerarray.add("Cachére");
-
-
         ArrayAdapter<String> adapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
         adapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Repa.setAdapter(adapterR);
+        Repa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                repas = Repa.getSelectedItem().toString();
+                editor.putString("Repas", repas);
+                editor.apply();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Repa.setSelection(187);
+            }
+        });
     }
 
     public void onRadioButton_type(View view) {
@@ -101,8 +116,14 @@ Repa=(Spinner) findViewById(R.id.spinner);
                     editor.apply();
                 }
                 break;
+            case R.id.indiv:
+                if (checked) {
+                    RadioButton rd_fami = (RadioButton) findViewById(R.id.indiv);
+                    editor.putString("Type_adhession", rd_fami.getText().toString());
+                    editor.apply();
+                }
+                break;
         }
-
     }
 
     public void onRadioButton_langue(View view) {
@@ -118,6 +139,13 @@ Repa=(Spinner) findViewById(R.id.spinner);
             case R.id.ar:
                 if (checked) {
                     RadioButton rd_l = (RadioButton) findViewById(R.id.ar);
+                    editor.putString("Langue", rd_l.getText().toString());
+                    editor.apply();
+                }
+                break;
+            case R.id.fr:
+                if (checked) {
+                    RadioButton rd_l = (RadioButton) findViewById(R.id.fr);
                     editor.putString("Langue", rd_l.getText().toString());
                     editor.apply();
                 }
@@ -142,6 +170,13 @@ Repa=(Spinner) findViewById(R.id.spinner);
                     editor.apply();
                 }
                 break;
+            case R.id.hublot:
+                if (checked) {
+                    RadioButton rd_l = (RadioButton) findViewById(R.id.hublot);
+                    editor.putString("Preference", rd_l.getText().toString());
+                    editor.apply();
+                }
+                break;
         }
     }
 
@@ -151,6 +186,13 @@ Repa=(Spinner) findViewById(R.id.spinner);
             case R.id.affaire:
                 if (checked) {
                     RadioButton rd_aff = (RadioButton) findViewById(R.id.affaire);
+                    editor.putString("Classe_voyage", rd_aff.getText().toString());
+                    editor.apply();
+                }
+                break;
+            case R.id.eco:
+                if (checked) {
+                    RadioButton rd_aff = (RadioButton) findViewById(R.id.eco);
                     editor.putString("Classe_voyage", rd_aff.getText().toString());
                     editor.apply();
                 }
@@ -175,6 +217,13 @@ Repa=(Spinner) findViewById(R.id.spinner);
                     editor.apply();
                 }
                 break;
+            case R.id.cashe:
+                if (checked) {
+                    RadioButton rd_mode = (RadioButton) findViewById(R.id.cashe);
+                    editor.putString("Mode_pays", rd_mode.getText().toString());
+                    editor.apply();
+                }
+                break;
         }
     }
 
@@ -188,6 +237,13 @@ Repa=(Spinner) findViewById(R.id.spinner);
                     editor.apply();
                 }
                 break;
+            case R.id.seul:
+                if (checked) {
+                    RadioButton rd_hab = (RadioButton) findViewById(R.id.seul);
+                    editor.putString("Habitude", rd_hab.getText().toString());
+                    editor.apply();
+                }
+                break;
         }
     }
 
@@ -197,6 +253,13 @@ Repa=(Spinner) findViewById(R.id.spinner);
             case R.id.noAssis:
                 if (checked) {
                     RadioButton rd_no = (RadioButton) findViewById(R.id.noAssis);
+                    editor.putString("Assistance", rd_no.getText().toString());
+                    editor.apply();
+                }
+                break;
+            case R.id.assis:
+                if (checked) {
+                    RadioButton rd_no = (RadioButton) findViewById(R.id.assis);
                     editor.putString("Assistance", rd_no.getText().toString());
                     editor.apply();
                 }
@@ -220,14 +283,15 @@ Repa=(Spinner) findViewById(R.id.spinner);
         } else {
             User user = new User(nom, prenom, sexe, naissence, email, pass, passport, ville, code_p, adr_dom, natio,
                     pays, tel_dom_final, tel_pro_final, tel_mobil_final, tel_fax_final, societe, fonction, num_vol, date_vol,
-                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, accepte_mail);
-             reference.push().setValue(user);
+                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, repas, accepte_mail);
+            reference.push().setValue(user);
             remplir_champs();
             Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
         }
 
     }
+
     public void remplir_champs() {
         editor.putString("Agence_habit", Agencee);
         editor.putString("Site", Site);

@@ -2,6 +2,8 @@ package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,12 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class MilesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     RadioButton rd_type, rd_mile;
     EditText nb_miles;
+    TextView total;
+    String extenstion = " TND";
+    double prrix_mail = 0.1, taux=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +31,7 @@ public class MilesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_miles);
 
-     nb_miles = findViewById(R.id.nb_miles3);
-
+        nb_miles = findViewById(R.id.nb_miles3);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,33 +46,35 @@ public class MilesActivity extends AppCompatActivity
         rd_type = findViewById(R.id.dinar);
         rd_type.setChecked(true);
 
-        rd_mile = findViewById(R.id.typePri);
+        rd_mile = findViewById(R.id.typeQua);
         rd_mile.setChecked(true);
+        total = findViewById(R.id.prix_total);
 
-    }
+        nb_miles.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                total.setText("00.0"+extenstion);
+            }
 
-    public void onRadioButton_type(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-        switch (view.getId()) {
-            case R.id.eruo:
-                if (checked) {
-                    RadioButton rd_type = (RadioButton) findViewById(R.id.eruo);
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!nb_miles.getText().toString().isEmpty()) {
+                     if (taux==0) {
+                         double pre_total = Double.parseDouble(nb_miles.getText().toString()) * 0.1;
+                         total.setText(pre_total + extenstion);
+                     }else{
+                         double pre_total = Double.parseDouble(nb_miles.getText().toString()) *prrix_mail/taux;
+                         total.setText(pre_total + extenstion);
+                     }
                 }
-                break;
-            case R.id.dolar:
-                if (checked) {
-                    RadioButton rd_type = (RadioButton) findViewById(R.id.dolar);
+            }
+        });
 
-                }
-                break;
-            case R.id.dinar:
-                if (checked) {
-                    RadioButton rd_type = (RadioButton) findViewById(R.id.dinar);
-
-                }
-                break;
-        }
     }
 
     public void onRadioButton_miles(View view) {
@@ -75,19 +82,59 @@ public class MilesActivity extends AppCompatActivity
         switch (view.getId()) {
             case R.id.typeQua:
                 if (checked) {
-                    RadioButton rd_miles = (RadioButton) findViewById(R.id.typeQua);
-
+                    prrix_mail = 0.1;
+                    if(taux==0){
+                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail;
+                        total.setText(pre_total + extenstion);
+                    }else {
+                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                        total.setText(pre_total + extenstion);
+                    }
                 }
                 break;
-                case R.id.typePri:
+            case R.id.typePri:
                 if (checked) {
-                    RadioButton rd_miles = (RadioButton) findViewById(R.id.typePri);
-
+                    prrix_mail = 0.05;
+                    if(taux==0){
+                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail;
+                        total.setText(pre_total + extenstion);
+                    }else {
+                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                        total.setText(pre_total + extenstion);
+                    }
                 }
                 break;
         }
     }
-
+    public void onRadioButton_type(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.eruo:
+                if (checked) {
+                    extenstion = " EUR";
+                    taux = 3.00;
+                    double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                    total.setText(pre_total + extenstion);
+                }
+                break;
+            case R.id.dolar:
+                if (checked) {
+                    extenstion = " USD";
+                    taux = 2.47;
+                    double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                    total.setText(pre_total + extenstion);
+                }
+                break;
+            case R.id.dinar:
+                if (checked) {
+                    extenstion = " TND";
+                    taux = 0;
+                    double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail;
+                    total.setText(pre_total + extenstion);
+                }
+                break;
+        }
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

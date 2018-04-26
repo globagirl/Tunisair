@@ -156,6 +156,13 @@ public class InscriptionActivity extends AppCompatActivity {
                     editor.apply();
                 }
                 break;
+                case R.id.rd_m:
+                if (checked) {
+                    RadioButton rd_mle = (RadioButton) findViewById(R.id.rd_m);
+                    editor.putString("sexe", rd_mle.getText().toString());
+                    editor.apply();
+                }
+                break;
         }
     }
 
@@ -171,6 +178,4 @@ public class InscriptionActivity extends AppCompatActivity {
         naisence.setError(null);
         editor.putString("Naissence", naisence.getText().toString());
     }
-
-
 }
