@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="347dp"
-        android:layout_height="445dp"
+        android:layout_width="404dp"
+        android:layout_height="483dp"
         android:layout_below="@+id/profile_layout"
 
         android:layout_marginTop="20dp"
@@ -42,7 +42,7 @@
                 android:id="@+id/P_depart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:spinnerMode="dialog" />
 
@@ -58,7 +58,7 @@
                 android:id="@+id/p_arrive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:spinnerMode="dialog" />
         </LinearLayout>
@@ -123,7 +123,7 @@
                 android:id="@+id/dat_dep"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -134,19 +134,6 @@
                 android:onClick="get_date"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
-            <EditText
-                android:id="@+id/time_dep"
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:cursorVisible="false"
-                android:ems="10"
-                android:focusableInTouchMode="false"
-                android:hint="Time"
-                android:inputType="time"
-                android:onClick="get_time"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
         </LinearLayout>
 
         <LinearLayout
@@ -167,7 +154,7 @@
                 android:id="@+id/dat_arr"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -177,24 +164,13 @@
                 android:onClick="get_date2"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
-            <EditText
-                android:id="@+id/time_arr"
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:cursorVisible="false"
-                android:ems="10"
-                android:focusableInTouchMode="false"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:onClick="get_time2"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -265,7 +241,7 @@
 
                 <Spinner
                     android:id="@+id/N_enfant"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
@@ -299,6 +275,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -348,6 +325,7 @@
             android:id="@+id/simul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:buttonTint="@color/colorPrimary"
             android:text="Simulation"
             android:textColor="@color/common_google_signin_btn_text_light_focused" />
@@ -366,16 +344,16 @@
         android:id="@+id/button2"
         android:layout_width="300dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="60dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
         android:onClick="valide"
         android:text="Valider"
         android:textColor="@color/ic_launcher_background"
         android:theme="@style/MyButton"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </android.support.constraint.ConstraintLayout>
