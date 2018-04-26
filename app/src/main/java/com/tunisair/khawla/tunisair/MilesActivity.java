@@ -16,8 +16,9 @@ import android.widget.RadioButton;
 public class MilesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    RadioButton rd_type,rd_mile;
+    RadioButton rd_type, rd_mile;
     EditText nb_miles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +45,7 @@ public class MilesActivity extends AppCompatActivity
         rd_mile.setChecked(true);
 
     }
+
     public void onRadioButton_type(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
@@ -59,14 +61,27 @@ public class MilesActivity extends AppCompatActivity
 
                 }
                 break;
+            case R.id.dinar:
+                if (checked) {
+                    RadioButton rd_type = (RadioButton) findViewById(R.id.dinar);
+
+                }
+                break;
         }
     }
+
     public void onRadioButton_miles(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
             case R.id.typeQua:
                 if (checked) {
                     RadioButton rd_miles = (RadioButton) findViewById(R.id.typeQua);
+
+                }
+                break;
+                case R.id.typePri:
+                if (checked) {
+                    RadioButton rd_miles = (RadioButton) findViewById(R.id.typePri);
 
                 }
                 break;
@@ -93,29 +108,27 @@ public class MilesActivity extends AppCompatActivity
             Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_billet) {
+        } else if (id == R.id.nav_billet) {
 
             Intent intent = new Intent(this, BilletActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_miles) {
+        } else if (id == R.id.nav_miles) {
 
             Intent intent = new Intent(this, MilesActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_mouv) {
+        } else if (id == R.id.nav_mouv) {
 
             Intent intent = new Intent(this, MouvementActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_rec) {
+        } else if (id == R.id.nav_rec) {
 
             Intent intent = new Intent(this, ReclamationActivity.class);
             startActivity(intent);
 
-        }
-
-        else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) {
 
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);

@@ -16,7 +16,6 @@
     <string name="champ_obligatoir">Champ Obligatoire</string>
     <string name="longure_mot_de_passe">Votre mot de passe doit contenir 6 caractères au minimum</string>
     <string name="mail_invalide">Adresse mail invalide</string>
-    <string name="logure_pasport">Votre numero passport doit contenir 8 caractères</string>
     <string name="mot_de_passe_identique">Votre mot de passe n\'est pas identique</string>
     <string name="verifier_tout_les_champs">Veuillez vérifier tout les champs</string>
     <string name="logure_numero_vole">Votre numero de vol doit contenir 4 chifre</string>

@@ -40,7 +40,7 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
         return view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     public void onClick(View view) {
         String date;
@@ -49,7 +49,7 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
             this.dismiss();
         } else {
             int x = naisence.getYear();
-            int mois = naisence.getMonth();
+            int mois = naisence.getMonth()+1;
             int day = naisence.getDayOfMonth();
 
             date = day + "/" + mois + "/" + x;
