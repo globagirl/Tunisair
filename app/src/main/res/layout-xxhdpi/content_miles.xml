@@ -13,12 +13,9 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,14 +28,106 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp">
 
+            <EditText
+                android:id="@+id/nb_miles3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:ems="10"
+                android:hint="Nombre des miles"
+                android:inputType="textPersonName"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tx_sexe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Type des Miles"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/typeQua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimary"
+                        android:onClick="onRadioButton_miles"
+                        android:text="Qualifiant"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+
+                    <RadioButton
+                        android:id="@+id/typePri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimary"
+                        android:onClick="onRadioButton_miles"
+                        android:text="Prime"
+                        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="3dp"
+                        android:text="( 1Mailes =0,1TND )"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="( 1Mailes =0,05TND )"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:text="Séléctionnez la devise"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textStyle="bold" />
 
             <RadioGroup
@@ -51,15 +140,13 @@
                     android:id="@+id/eruo"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
-                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_type"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
                     android:text="Euro"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <RadioButton
                     android:id="@+id/dolar"
@@ -71,8 +158,7 @@
                     android:scaleX="0.8"
                     android:scaleY="0.8"
                     android:text="Dollar"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <RadioButton
                     android:id="@+id/dinar"
@@ -84,122 +170,92 @@
                     android:scaleX="0.8"
                     android:scaleY="0.8"
                     android:text="Dinar"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
             </RadioGroup>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="300dp"
+                android:layout_height="1px"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:id="@+id/tx_sexe"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Type des Miles"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="taux de change"
                 android:textStyle="bold" />
 
-            <RadioGroup
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0"
+                android:text="1 EUR =1 DNT " />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:text="1 USD =1 DNT " />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/typeQua"
+                <TextView
+                    android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:onClick="onRadioButton_miles"
-                    android:buttonTint="@color/colorPrimary"
-                    android:text="Qualifiant"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0"
+                    android:text="Prix total ="
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                <RadioButton
-                    android:id="@+id/typePri"
+                <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:onClick="onRadioButton_miles"
-                    android:buttonTint="@color/colorPrimary"
-                    android:text="Prime"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="16sp" />
-            </RadioGroup>
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0"
+                    android:text="25 DT"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/nb_miles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:ems="10"
-                android:hint="Nombre des miles"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/prix_TND"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:ems="10"
-                android:hint="Prix unitaire en TND"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
-
-            <EditText
-                android:id="@+id/val_devise"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:ems="10"
-                android:hint="Valeur en Devise"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
-
-            <EditText
-                android:id="@+id/Val_TND"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:ems="10"
-                android:hint="Valeur en TND"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
         </LinearLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="192dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="28dp"
         android:text="Acheter"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"

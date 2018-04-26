@@ -25,7 +25,7 @@ public class MilesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_miles);
 
-        nb_miles = findViewById(R.id.nb_miles);
+     nb_miles = findViewById(R.id.nb_miles3);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
