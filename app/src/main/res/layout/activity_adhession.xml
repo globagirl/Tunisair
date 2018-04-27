@@ -420,7 +420,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/vos_habitude_de_voyage"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <LinearLayout

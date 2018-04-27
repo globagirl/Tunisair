@@ -45,6 +45,7 @@
                     android:ems="10"
                     android:text="Type de Réclamation"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -62,11 +63,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/num_vol"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -76,14 +77,16 @@
                     android:hint="Numéro du Vol"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
 
                 <EditText
                     android:id="@+id/date_vol"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:cursorVisible="false"
@@ -93,19 +96,21 @@
                     android:inputType="textPersonName"
                     android:onClick="get_date2"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/billet_ref"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
@@ -114,11 +119,12 @@
                     android:hint="Réf Billet"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
 
                 <EditText
                     android:id="@+id/ticket_number"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -128,7 +134,8 @@
                     android:hint="Ticket N°"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                    android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -142,7 +149,8 @@
                 android:hint="Description"
                 android:inputType="textMultiLine|textLongMessage"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+                android:textSize="12sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -150,19 +158,17 @@
     <Button
         android:id="@+id/button_valider"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_height="38dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="388dp"
         android:layout_weight="1"
         android:onClick="verifier"
         android:text="Valider"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="12sp"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

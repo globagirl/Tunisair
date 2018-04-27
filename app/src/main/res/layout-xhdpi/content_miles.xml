@@ -39,7 +39,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
                 android:hint="Nombre des miles"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="14sp" />
@@ -171,15 +171,48 @@
                     android:scaleY="0.8"
                     android:text="Dinar"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0"
+                        android:text="Prix total ="
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/prix_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0"
+                        android:text="00.0 DT"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </RadioGroup>
 
             <View
                 android:id="@+id/view"
-                android:layout_width="270dp"
+                android:layout_width="300dp"
                 android:layout_height="1px"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -203,7 +236,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="0"
-                android:text="1 EUR =1 DNT " />
+                android:text="1 EUR =3.00 DNT " />
 
             <TextView
                 android:id="@+id/textView11"
@@ -213,39 +246,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="1 USD =1 DNT " />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0"
-                    android:text="Prix total ="
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0"
-                    android:text="25 DT"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:text="1 USD =2.47 DNT " />
 
 
         </LinearLayout>
@@ -254,8 +255,8 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="192dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
         android:text="Acheter"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"
@@ -264,4 +265,3 @@
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </android.support.constraint.ConstraintLayout>
-

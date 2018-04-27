@@ -171,6 +171,39 @@
                     android:scaleY="0.8"
                     android:text="Dinar"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0"
+                        android:text="Prix total ="
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/prix_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0"
+                        android:text="00.0 DT"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </RadioGroup>
 
             <View
@@ -179,7 +212,7 @@
                 android:layout_height="1px"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -214,37 +247,6 @@
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
                 android:text="1 USD =2.47 DNT " />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0"
-                    android:text="Prix total ="
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/prix_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0"
-                    android:text="00.0 DT"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
 
         </LinearLayout>
