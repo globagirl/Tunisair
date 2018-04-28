@@ -15,37 +15,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
+        <activity android:name=".Splash_Screen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InscriptionActivity" android:screenOrientation="portrait" />
-        <activity android:screenOrientation="portrait"
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".InscriptionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".MouvementActivity"
             android:label="Mouvement"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".ProfilActivity"
             android:label="Profil"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".BilletActivity"
             android:label="Achat de Billet"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".MilesActivity"
             android:label="Achat de Miles"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".ReclamationActivity"
             android:label="Reclamations Fidelys"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".AboutActivity"
             android:label="A propos Fidelys"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -59,15 +69,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:screenOrientation="portrait"
-                  android:name=".MapsActivity"
-                  android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Inscription2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdhessionActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".Inscription2Activity"
-                  android:screenOrientation="portrait"/>
-
-        <activity android:name=".AdhessionActivity"
-                  android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
