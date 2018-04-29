@@ -65,10 +65,11 @@ public class MilesActivity extends AppCompatActivity
             public void afterTextChanged(Editable editable) {
                 if (!nb_miles.getText().toString().isEmpty()) {
                      if (taux==0) {
-                         double pre_total = Double.parseDouble(nb_miles.getText().toString()) * 0.1;
+                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * 0.1;
                          total.setText(pre_total + extenstion);
-                     }else{
-                         double pre_total = Double.parseDouble(nb_miles.getText().toString()) *prrix_mail/taux;
+                     }
+                     else{
+                         double pre_total = Double.valueOf(nb_miles.getText().toString()) *prrix_mail/taux;
                          total.setText(pre_total + extenstion);
                      }
                 }
@@ -84,10 +85,10 @@ public class MilesActivity extends AppCompatActivity
                 if (checked) {
                     prrix_mail = 0.1;
                     if(taux==0){
-                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
                         total.setText(pre_total + extenstion);
                     }else {
-                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
                         total.setText(pre_total + extenstion);
                     }
                 }
@@ -96,10 +97,10 @@ public class MilesActivity extends AppCompatActivity
                 if (checked) {
                     prrix_mail = 0.05;
                     if(taux==0){
-                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
                         total.setText(pre_total + extenstion);
                     }else {
-                        double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
                         total.setText(pre_total + extenstion);
                     }
                 }
@@ -113,7 +114,7 @@ public class MilesActivity extends AppCompatActivity
                 if (checked) {
                     extenstion = " EUR";
                     taux = 3.00;
-                    double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
                     total.setText(pre_total + extenstion);
                 }
                 break;
@@ -121,7 +122,7 @@ public class MilesActivity extends AppCompatActivity
                 if (checked) {
                     extenstion = " USD";
                     taux = 2.47;
-                    double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail/taux;
+                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
                     total.setText(pre_total + extenstion);
                 }
                 break;
@@ -129,7 +130,7 @@ public class MilesActivity extends AppCompatActivity
                 if (checked) {
                     extenstion = " TND";
                     taux = 0;
-                    double pre_total = Double.parseDouble(nb_miles.getText().toString())*prrix_mail;
+                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
                     total.setText(pre_total + extenstion);
                 }
                 break;
