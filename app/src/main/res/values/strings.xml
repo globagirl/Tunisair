@@ -65,5 +65,9 @@
     <string name="logure_reference">Votre numero de vol doit contenir 6 caractaire</string>
     <string name="longure_ticket">Votre numero de vol doit contenir 10 caractaire</string>
     <string name="chek_reclamation">Votre Reclamation a été envoyer avec succée</string>
+    <string name="title_activity_consultation">ConsultationActivity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 
 </resources>
