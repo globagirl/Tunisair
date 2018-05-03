@@ -23,7 +23,7 @@ public class MilesActivity extends AppCompatActivity
     EditText nb_miles;
     TextView total;
     String extenstion = " TND";
-    double prrix_mail = 0.1, taux=0;
+    double prrix_mail = 0.1, taux = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MilesActivity extends AppCompatActivity
         nb_miles.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                total.setText("00.0"+extenstion);
+                total.setText("00.0" + extenstion);
             }
 
             @Override
@@ -64,14 +64,13 @@ public class MilesActivity extends AppCompatActivity
             @Override
             public void afterTextChanged(Editable editable) {
                 if (!nb_miles.getText().toString().isEmpty()) {
-                     if (taux==0) {
-                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * 0.1;
-                         total.setText(pre_total + extenstion);
-                     }
-                     else{
-                         double pre_total = Double.valueOf(nb_miles.getText().toString()) *prrix_mail/taux;
-                         total.setText(pre_total + extenstion);
-                     }
+                    if (taux == 0) {
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * 0.1;
+                        total.setText(pre_total + extenstion);
+                    } else {
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                        total.setText(pre_total + extenstion);
+                    }
                 }
             }
         });
@@ -83,59 +82,77 @@ public class MilesActivity extends AppCompatActivity
         switch (view.getId()) {
             case R.id.typeQua:
                 if (checked) {
-                    prrix_mail = 0.1;
-                    if(taux==0){
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
-                        total.setText(pre_total + extenstion);
-                    }else {
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                        total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        prrix_mail = 0.1;
+                        if (taux == 0) {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
+                            total.setText(pre_total + extenstion);
+                        } else {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                            total.setText(pre_total + extenstion);
+                        }
                     }
                 }
                 break;
             case R.id.typePri:
                 if (checked) {
-                    prrix_mail = 0.05;
-                    if(taux==0){
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
-                        total.setText(pre_total + extenstion);
-                    }else {
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                        total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        prrix_mail = 0.05;
+                        if (taux == 0) {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
+                            total.setText(pre_total + extenstion);
+                        } else {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                            total.setText(pre_total + extenstion);
+                        }
                     }
                 }
                 break;
         }
     }
+
     public void onRadioButton_type(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
             case R.id.eruo:
                 if (checked) {
                     extenstion = " EUR";
-                    taux = 3.00;
-                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                    total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        taux = 3.00;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                        total.setText(pre_total + extenstion);
+                    }else {
+                        total.setText("00.0" + extenstion);
+                    }
                 }
                 break;
             case R.id.dolar:
                 if (checked) {
                     extenstion = " USD";
-                    taux = 2.47;
-                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                    total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        taux = 2.47;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                        total.setText(pre_total + extenstion);
+                    }else {
+                        total.setText("00.0" + extenstion);
+                    }
                 }
                 break;
             case R.id.dinar:
                 if (checked) {
                     extenstion = " TND";
-                    taux = 0;
-                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
-                    total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        taux = 0;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
+                        total.setText(pre_total + extenstion);
+                    }else {
+                        total.setText("00.0" + extenstion);
+                    }
                 }
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
