@@ -102,7 +102,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="3dp"
-                        android:text="( 1Mailes =0,1TND )"
+                        android:text="( 1Miles =0,1TND )"
                         android:textColor="@color/colorPrimary"
                         android:textSize="11sp" />
 
@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
-                        android:text="( 1Mailes =0,05TND )"
+                        android:text="( 1Miles =0,05TND )"
                         android:textColor="@color/colorPrimary"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -201,8 +201,9 @@
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="12dp"
                         android:layout_weight="0"
-                        android:text="25 DT"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="00.0Dt"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </RadioGroup>
 
