@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lin_lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Splash_Screen"
-    android:background="@drawable/tunisair_img">
+    android:layout_gravity="center"
+    android:background="@drawable/b1g"
+    android:gravity="center"
 
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/splash"
+        android:layout_width="341dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="176dp"
+        android:background="@drawable/logo2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="9dp"
+        android:layout_marginLeft="10dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+
+        android:layout_width="70dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="www.tunisair.com.tn"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 </android.support.constraint.ConstraintLayout>

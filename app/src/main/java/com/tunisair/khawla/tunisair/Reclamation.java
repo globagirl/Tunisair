@@ -1,7 +1,6 @@
 package com.tunisair.khawla.tunisair;
 
 public class Reclamation {
-    private String identif;
     private String datrec;
     private String typerec;
     private String numvol;
@@ -9,12 +8,12 @@ public class Reclamation {
     private String refebillet;
     private String numtecket;
     private String description;
+    private int etat;
 
     public Reclamation() {
     }
 
-    public Reclamation(String identif, String datrec, String typerec, String numvol, String datvol, String refebillet, String numtecket, String description) {
-        this.identif = identif;
+    public Reclamation( String datrec, String typerec, String numvol, String datvol, String refebillet, String numtecket, String description,int etat) {
         this.datrec = datrec;
         this.typerec = typerec;
         this.numvol = numvol;
@@ -22,16 +21,16 @@ public class Reclamation {
         this.refebillet = refebillet;
         this.numtecket = numtecket;
         this.description = description;
+        this.etat = etat;
     }
 
-    public String getIdentif() {
-        return identif;
+    public int getEtat() {
+        return etat;
     }
 
-    public void setIdentif(String identif) {
-        this.identif = identif;
+    public void setEtat(int etat) {
+        this.etat = etat;
     }
-
     public String getDatrec() {
         return datrec;
     }

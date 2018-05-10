@@ -26,38 +26,38 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".InscriptionActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MouvementActivity"
-            android:label="Mouvement"
+            android:label="@string/mvm"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ProfilActivity"
-            android:label="Profil"
+            android:label="@string/prof"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".BilletActivity"
-            android:label="Achat de Billet"
+            android:label="@string/achtB"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MilesActivity"
-            android:label="Achat de Miles"
+            android:label="@string/achtM"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ReclamationActivity"
-            android:label="Reclamations Fidelys"
+            android:label="@string/rec"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".AboutActivity"
-            android:label="A propos Fidelys"
+            android:label="@string/about"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <!--
@@ -85,7 +85,8 @@
         <activity
             android:name=".ConsultationActivity"
             android:label="@string/title_activity_consultation"
-            android:theme="@style/AppTheme"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

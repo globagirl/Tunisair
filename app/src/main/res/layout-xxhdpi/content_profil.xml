@@ -86,7 +86,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            android:text="O+"
             app:layout_constraintLeft_toRightOf="@+id/tx_nom"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,7 +95,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:clickable="true"
-            android:text="01/01/2017"
             app:layout_constraintStart_toEndOf="@+id/tx_naisence"
             app:layout_constraintTop_toTopOf="@+id/tx_naisence" />
 
@@ -108,7 +106,6 @@
             android:layout_marginLeft="24dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            android:text="Male"
             app:layout_constraintLeft_toRightOf="@+id/tx_sexe"
             app:layout_constraintTop_toBottomOf="@+id/prenom" />
 
@@ -119,7 +116,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="5dp"
             android:clickable="true"
-            android:text="22192780"
             app:layout_constraintLeft_toRightOf="@+id/textView26"
             app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -130,7 +126,6 @@
             android:layout_marginStart="9dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            android:text="marothiatechs@gmail.com"
             app:layout_constraintStart_toEndOf="@+id/textView27"
             app:layout_constraintTop_toBottomOf="@+id/naisence" />
 
@@ -167,7 +162,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            android:text="B.Tech"
             app:layout_constraintLeft_toRightOf="@+id/tx_prenom"
             app:layout_constraintTop_toBottomOf="@+id/tx_nom" />
 
@@ -233,7 +227,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="52dp"
-            android:text="125548iuh"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold"

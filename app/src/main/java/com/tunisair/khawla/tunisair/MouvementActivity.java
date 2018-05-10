@@ -88,6 +88,11 @@ public class MouvementActivity extends AppCompatActivity
             Intent intent = new Intent(this, ReclamationActivity.class);
             startActivity(intent);
 
+        }else if (id == R.id.nav_cons) {
+
+            Intent intent = new Intent(this, ConsultationActivity.class);
+            startActivity(intent);
+
         }
 
         else if (id == R.id.nav_about) {

@@ -101,7 +101,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="3dp"
-                        android:text="( 1Mailes =0,1TND )"
+                        android:text="( 1Miles =0,1TND )"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
@@ -111,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
-                        android:text="( 1Mailes =0,05TND )"
+                        android:text="( 1Miles =0,05TND )"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
                 </LinearLayout>

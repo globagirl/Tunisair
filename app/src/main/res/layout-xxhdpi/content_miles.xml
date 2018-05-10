@@ -102,7 +102,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="3dp"
-                        android:text="( 1Mailes =0,1TND )"
+                        android:text="( 1Miles =0,1TND )"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 

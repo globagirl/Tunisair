@@ -8,6 +8,7 @@
     tools:context="com.tunisair.khawla.tunisair.LoginActivity">
 
     <ImageView
+        android:contentDescription="logo"
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
@@ -26,7 +27,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:drawableRight="@drawable/ic_user"
         android:ems="10"
-        android:hint="Nom d'utilisateur"
+        android:hint="@string/user_name"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -47,7 +48,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:drawableRight="@drawable/ic_locked"
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="@string/psw"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -67,7 +68,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="68dp"
         android:onClick="connecter"
-        android:text="Se Connecter"
+        android:text="@string/login"
         android:textColor="@color/ic_launcher_background"
         android:textSize="12sp"
         android:theme="@style/MyButton"
@@ -84,7 +85,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:onClick="inscrire"
-        android:text="S'inscrire"
+        android:text=""
         android:textColor="@color/ic_launcher_background"
         android:textSize="12sp"
         android:theme="@style/MyButton"

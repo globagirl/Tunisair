@@ -13,14 +13,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class ConsultationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    ListView listView;
+    private String[] reclamtion={"hamza","khawla"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultation);
+
+        listView = (ListView) findViewById(R.id.listview);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, reclamtion);
+        listView.setAdapter(adapter);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -73,6 +82,11 @@ public class ConsultationActivity extends AppCompatActivity
         } else if (id == R.id.nav_rec) {
 
             Intent intent = new Intent(this, ReclamationActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_cons) {
+
+            Intent intent = new Intent(this, ConsultationActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_about) {

@@ -21,8 +21,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,11 +36,11 @@ public class ReclamationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     EditText desc, Num_vol, Ref, Tickt, date_vol;
-    String type, dec, numvol, refe, tic, dt_vol,dt_rec,identif;
+    String type, dec, numvol, refe, tic, dt_vol, dt_rec;
     Spinner type_rec;
+    int etat = 0;
     DatabaseReference reference;
     SharedPreferences prefs;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +57,8 @@ public class ReclamationActivity extends AppCompatActivity
         type_rec = (Spinner) findViewById(R.id.typeRec);
 
         Calendar cal = Calendar.getInstance();
-        int month=cal.get(Calendar.MONTH)+1;
-        dt_rec=cal.get(Calendar.DAY_OF_MONTH)+"/"+month+"/"+cal.get(Calendar.YEAR);
-        identif= prefs.getString("Identifiant","empty");
-
-        reference = FirebaseDatabase.getInstance().getReference("reclamation");
+        int month = cal.get(Calendar.MONTH) + 1;
+        dt_rec = cal.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + cal.get(Calendar.YEAR);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -139,6 +140,11 @@ public class ReclamationActivity extends AppCompatActivity
             Intent intent = new Intent(this, ReclamationActivity.class);
             startActivity(intent);
 
+        } else if (id == R.id.nav_cons) {
+
+            Intent intent = new Intent(this, ConsultationActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_about) {
 
             Intent intent = new Intent(this, AboutActivity.class);
@@ -181,17 +187,37 @@ public class ReclamationActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
         } else {
             if (isOnline()) {
-                Reclamation reclamation = new Reclamation(identif,dt_rec,type, numvol, dt_vol, refe, tic, dec);
-                reference.push().setValue(reclamation);
-                Toast.makeText(this, R.string.chek_reclamation, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, ProfilActivity.class);
-                startActivity(intent);
+                String email = prefs.getString("Email", "empty");
+                final String identif = prefs.getString("Identifiant", "empty");
+                reference = FirebaseDatabase.getInstance().getReference("users");
+                Query query = reference.orderByChild("email").equalTo(email);
+                final Reclamation reclamation = new Reclamation(dt_rec, type, numvol, dt_vol, refe, tic, dec, etat);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            String key= reference.push().getKey();
+                            Toast.makeText(ReclamationActivity.this, key, Toast.LENGTH_SHORT).show();
+                             reference.child(identif).child("Reclamation").child(key).child("envoia").setValue(reclamation);
+                             reference.child(identif).child("Reclamation").child(key).child("repence").setValue(true);
+                            Toast.makeText(ReclamationActivity.this, R.string.chek_reclamation, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ReclamationActivity.this, ProfilActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             } else {
                 Toast.makeText(this, R.string.chek_internet, Toast.LENGTH_SHORT).show();
 
             }
         }
     }
+
     protected boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
