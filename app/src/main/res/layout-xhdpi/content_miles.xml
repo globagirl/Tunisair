@@ -38,7 +38,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
-                android:hint="Nombre des miles"
+                android:hint="@string/nb_milles"
                 android:inputType="number"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused"
@@ -53,7 +53,7 @@
                 android:layout_weight="1"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                android:text="Type des Miles"
+                android:text="@string/type_milles"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_miles"
-                        android:text="Qualifiant"
+                        android:text="@string/qualifiant"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                     <RadioButton
@@ -86,7 +86,7 @@
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButton_miles"
-                        android:text="Prime"
+                        android:text="@string/prime"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
                 </RadioGroup>
 
@@ -101,7 +101,7 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="3dp"
-                        android:text="( 1Miles =0,1TND )"
+                        android:text="@string/type2"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
@@ -111,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
-                        android:text="( 1Miles =0,05TND )"
+                        android:text="@string/type1"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -126,7 +126,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:text="Séléctionnez la devise"
+                android:text="@string/devise"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textStyle="bold" />
 
@@ -145,7 +145,7 @@
                     android:onClick="onRadioButton_type"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
-                    android:text="Euro"
+                    android:text="@string/euro"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <RadioButton
@@ -157,7 +157,7 @@
                     android:onClick="onRadioButton_type"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
-                    android:text="Dollar"
+                    android:text="@string/dollar"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <RadioButton
@@ -169,7 +169,7 @@
                     android:onClick="onRadioButton_type"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
-                    android:text="Dinar"
+                    android:text="@string/dinar"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <LinearLayout
@@ -187,7 +187,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="0"
-                        android:text="Prix total ="
+                        android:text="@string/prix"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -199,7 +199,7 @@
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="0"
-                        android:text="00.0 DT"
+                        android:text="@string/Dt"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -225,7 +225,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:text="taux de change"
+                android:text="@string/taux"
                 android:textStyle="bold" />
 
             <TextView
@@ -236,7 +236,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="0"
-                android:text="1 EUR =3.00 DNT " />
+                android:text="@string/taux1" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -246,7 +246,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="1 USD =2.47 DNT " />
+                android:text="@string/taux2" />
 
 
         </LinearLayout>
@@ -257,7 +257,7 @@
         android:layout_width="192dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
-        android:text="Acheter"
+        android:text="@string/acheter"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"

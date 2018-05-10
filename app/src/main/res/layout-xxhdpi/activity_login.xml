@@ -83,7 +83,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="140dp"
         android:onClick="inscrire"
-        android:text="S'inscrire"
+        android:text="@string/inscri"
         android:textColor="@color/ic_launcher_background"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"

@@ -81,4 +81,67 @@
     <string name="login">Se Connecter</string>
     <string name="inscri">S\'inscrire</string>
     <string name="loc">Location</string>
+    <string name="nom">Nom *</string>
+    <string name="prenom">Prénom *</string>
+    <string name="date_naissance">Date naissance *</string>
+    <string name="adresse_mail">Adresse Email *</string>
+<string name="mot_de_pass">Mot de passe *</string>
+    <string name="conf">Confirmation *</string>
+    <string name="num_pasport">Numéro passport</string>
+    <string name="ville">Ville *</string>
+    <string name="code_postale">Code Postale *</string>
+    <string name="m">M</string>
+    <string name="mme">Mme</string>
+    <string name="mlle">Mlle</string>
+    <string name="natio">Nationalité</string>
+    <string name="pays">Pays</string>
+    <string name="tel_dom">Tél Domicile *</string>
+    <string name="tel_prof">Tél Professionnel</string>
+    <string name="tel_mob">Tél Mobile</string>
+    <string name="tel_fax">Tél Fax</string>
+    <string name="société">Société</string>
+    <string name="fonction">Fonction</string>
+    <string name="num_vol">N° Vol</string>
+    <string name="date">Date</string>
+    <string name="num_billet">Num billet</string>
+    <string name="num_1">199</string>
+    <string name="num_2">1234567890</string>
+    <string name="agence">Agence</string>
+    <string name="voyage">Voyage à fournir plus tard</string>
+    <string name="obligation">* Tous les champs doivent  être renseignés</string>
+    <string name="suit">Suivant</string>
+    <string name="text">Voyage effectuer durant les 4 semaines précédant votre adhésion</string>
+    <string name="votre_id">Votre identifiant </string>
+    <string name="solde">Solde</string>
+    <string name="miles_qualifiants">Miles qualifiants</string>
+    <string name="Nom">Nom:</string>
+    <string name="Prénom">Prénom</string>
+    <string name="gender">Sexe: </string>
+    <string name="date_nas">Date de naissance:</string>
+    <string name="mobile">Mobile</string>
+    <string name="mail">Email: </string>
+    <string name="modifier_Profil">Modifier Profil</string>
+    <string name="modifier_Adhésion">Modifier Adhésion</string>
+    <string name="nb_milles">Nombre des miles</string>
+    <string name="type_milles">Type des Miles</string>
+    <string name="type1">( 1Miles =0,05TND )</string>
+    <string name="type2">( 1Miles =0,1TND )</string>
+    <string name="qualifiant">Qualifiant</string>
+    <string name="prime">Prime</string>
+    <string name="devise">Séléctionnez la devise</string>
+    <string name="euro">Euro</string>
+    <string name="dollar">Dollar</string>
+    <string name="dinar">Dinar</string>
+    <string name="prix">Prix total =</string>
+    <string name="Dt">00.0Dt</string>
+    <string name="taux">taux de change</string>
+    <string name="taux1">1 EUR =3.00 DNT </string>
+    <string name="taux2">1 USD =2.47 DNT  </string>
+    <string name="acheter">Acheter</string>
+    <string name="type_rec">Type de Réclamation</string>
+    <string name="date_vol">Date du Vole</string>
+    <string name="ref_billet">Réf Billet</string>
+    <string name="num_ticket">Ticket N°</string>
+    <string name="desc">Description</string>
+    <string name="valider">Valider</string>
 </resources>

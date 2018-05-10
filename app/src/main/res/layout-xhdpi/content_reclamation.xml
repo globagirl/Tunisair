@@ -43,7 +43,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:text="Type de Réclamation"
+                    android:text="@string/type_rec"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
-                    android:hint="Numéro du Vol"
+                    android:hint="@string/num_vol"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -90,7 +90,7 @@
                     android:cursorVisible="false"
                     android:ems="10"
                     android:focusableInTouchMode="false"
-                    android:hint="Date du Vole"
+                    android:hint="@string/date_vol"
                     android:inputType="textPersonName"
                     android:onClick="get_date2"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
@@ -113,7 +113,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
-                    android:hint="Réf Billet"
+                    android:hint="@string/ref_billet"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -127,7 +127,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
-                    android:hint="Ticket N°"
+                    android:hint="@string/num_ticket"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -141,7 +141,7 @@
 
                 android:backgroundTint="@color/colorPrimary"
                 android:ems="10"
-                android:hint="Description"
+                android:hint="@string/desc"
                 android:inputType="textMultiLine|textLongMessage"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -160,7 +160,7 @@
         android:layout_marginTop="450dp"
         android:layout_weight="1"
         android:onClick="verifier"
-        android:text="Valider"
+        android:text="@string/valider"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"

@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Nom *"
+                        android:hint="@string/nom"
                         android:inputType="textPersonName"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Prénom *"
+                        android:hint="@string/prenom"
                         android:inputType="textPersonName"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -82,7 +82,7 @@
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButtonClicked"
-                        android:text="M"
+                        android:text="@string/m"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                     <RadioButton
@@ -92,7 +92,7 @@
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButtonClicked"
-                        android:text="Mme"
+                        android:text="@string/mme"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                     <RadioButton
@@ -102,7 +102,7 @@
                         android:layout_weight="1"
                         android:buttonTint="@color/colorPrimary"
                         android:onClick="onRadioButtonClicked"
-                        android:text="Mlle"
+                        android:text="@string/mlle"
                         android:textColor="@color/common_google_signin_btn_text_light_focused" />
                 </RadioGroup>
 
@@ -121,7 +121,7 @@
                     android:cursorVisible="false"
                     android:ems="10"
                     android:focusableInTouchMode="false"
-                    android:hint="Date naissance *"
+                    android:hint="@string/date_naissance"
                     android:inputType="date"
                     android:onClick="get_date"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Adresse Email *"
+                    android:hint="@string/adresse_mail"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -161,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Mot de passe *"
+                    android:hint="@string/mot_de_pass"
                     android:inputType="textPassword"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -172,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Confirmation *"
+                    android:hint="@string/conf"
                     android:inputType="textPassword"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -184,7 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Numero passport "
+                android:hint="@string/num_pasport"
                 android:inputType="textPersonName"
                 android:textColor="@color/common_google_signin_btn_text_light_focused"
                 android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -200,7 +200,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="ville *"
+                    android:hint="@string/ville"
                     android:inputType="textPersonName"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -211,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Code Postal *"
+                    android:hint="@string/code_postale"
                     android:inputType="textPostalAddress|number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />

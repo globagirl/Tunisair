@@ -44,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Nationnalité"
+                    android:text="@string/natio"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                     android:textSize="18sp" />
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Pays"
+                    android:text="@string/pays"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                     android:textSize="18sp" />
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:ems="10"
-                    android:hint="Tél Domicile *"
+                    android:hint="@string/tel_dom"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -130,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Tél Professionnel"
+                    android:hint="@string/tel_prof"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -156,7 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Tél Mobile"
+                    android:hint="@string/tel_mob"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Tél Fax"
+                    android:hint="@string/tel_fax"
                     android:inputType="number"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Société"
+                    android:hint="@string/société"
                     android:inputType="textPersonName"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -210,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Fonction"
+                    android:hint="@string/fonction"
                     android:inputType="textMultiLine"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -221,7 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backEditText"
-                android:text="Voyage effectuer durant les 4 semaines précédant votre adhésion"
+                android:text="@string/text"
                 android:textColor="@color/colorAccent" />
 
             <LinearLayout
@@ -241,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="N° Vol"
+                        android:hint="@string/num_vol"
                         android:inputType="number"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -254,7 +254,7 @@
                         android:cursorVisible="false"
                         android:ems="10"
                         android:focusableInTouchMode="false"
-                        android:hint="Date"
+                        android:hint="@string/date"
                         android:onClick="get_date"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -271,7 +271,7 @@
                         android:layout_width="164dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Num billet"
+                        android:text="@string/num_billet"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
@@ -281,7 +281,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="199"
+                        android:hint="@string/num_1"
                         android:inputType="number"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -292,7 +292,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="1234567890"
+                        android:hint="@string/num_2"
                         android:inputType="number"
                         android:textColor="@color/common_google_signin_btn_text_light_focused"
                         android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -304,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Agence"
+                    android:hint="@string/agence"
                     android:inputType="text"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
@@ -320,9 +320,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="onCheckboxClicked"
-                    android:text="Voyage à fournir plus tard"
                     android:buttonTint="@color/colorPrimary"
+                    android:onClick="onCheckboxClicked"
+                    android:text="@string/voyage"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
             </LinearLayout>
@@ -331,7 +331,7 @@
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="* Tous les champs doivent  être renseignés"
+                android:text="@string/obligation"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
@@ -349,7 +349,7 @@
         android:layout_marginTop="550dp"
         android:layout_weight="1"
         android:onClick="veriff"
-        android:text="Suivant"
+        android:text="@string/suit"
         android:textColor="@android:color/background_light"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"
