@@ -34,7 +34,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
             android:clickable="true"
-            android:text="@string/Prénom"
+            android:text="@string/prenom"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tx_nom" />
@@ -46,7 +46,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            android:text="@string/date_nas"
+            android:text="@string/date_naissance"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tx_sexe" />
@@ -73,7 +73,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            android:text="@string/Nom"
+            android:text="@string/nom"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

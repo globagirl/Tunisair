@@ -22,18 +22,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdhessionActivity extends AppCompatActivity {
+    //Déclaration
     CheckBox case1, case2;
-    SharedPreferences prefs;
-    SharedPreferences.Editor editor;
     EditText autre, site, pointe, agencee;
     String Autre, Site, Pointe, Agencee, nom, sexe, prenom, email, naissence, habitude, besoin, repas;
     String payement, type_adh, classe, lan, pref, date_vol, entet_bielt, num_bielt, pass, num_vol, agence, fonction;
     String societe, cod_tel_fax, tel_fax, cod_tel_mobile, passport, tel_mobile, cod_tel_prof, ville, code_p, tel_prof, adr_dom, natio, pays, tel_dom, cod_tel_dom;
     RadioButton rd_indiv, rd_lang, rd_hub, rd_eco, rd_cache, rd_seul, rd_assis;
     Boolean accepte_mail;
-    DatabaseReference reference;
-
     Spinner Repa;
+    DatabaseReference reference;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class AdhessionActivity extends AppCompatActivity {
         case1 = (CheckBox) findViewById(R.id.checkBox);
         case2 = (CheckBox) findViewById(R.id.checkBox2);
 
-
+        // Remplissage et récupération de valeur du spiner "repas"
         final List<String> spinerarray = new ArrayList<String>();
         spinerarray.add("Bébé");
         spinerarray.add("Sans sel");
@@ -105,7 +105,6 @@ public class AdhessionActivity extends AppCompatActivity {
             }
         });
     }
-
     public void onRadioButton_type(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {

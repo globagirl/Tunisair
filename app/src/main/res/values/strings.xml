@@ -64,7 +64,7 @@
     <string name="logure_reference">Votre numero de référence doit contenir 6 caractères</string>
     <string name="longure_ticket">Votre numero de ticket doit contenir 10 caractères</string>
     <string name="chek_reclamation">Votre Reclamation a été envoyé avec succès</string>
-    <string name="title_activity_consultation" translatable="false">Mes réclamations</string>
+    <string name="title_activity_consultation">Mes réclamations</string>
     <string name="nav_header_title" translatable="false">Android Studio</string>
     <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
@@ -87,7 +87,7 @@
     <string name="adresse_mail">Adresse Email *</string>
 <string name="mot_de_pass">Mot de passe *</string>
     <string name="conf">Confirmation *</string>
-    <string name="num_pasport">Numéro passport</string>
+    <string name="num_pasport">Numéro passeport</string>
     <string name="ville">Ville *</string>
     <string name="code_postale">Code Postale *</string>
     <string name="m">M</string>
@@ -104,44 +104,40 @@
     <string name="num_vol">N° Vol</string>
     <string name="date">Date</string>
     <string name="num_billet">Num billet</string>
-    <string name="num_1">199</string>
-    <string name="num_2">1234567890</string>
+    <string name="num_1" translatable="false">199</string>
+    <string name="num_2" translatable="false">1234567890</string>
     <string name="agence">Agence</string>
     <string name="voyage">Voyage à fournir plus tard</string>
-    <string name="obligation">* Tous les champs doivent  être renseignés</string>
     <string name="suit">Suivant</string>
-    <string name="text">Voyage effectuer durant les 4 semaines précédant votre adhésion</string>
+    <string name="text">Voyage effectué durant les 4 semaines précédant votre adhésion</string>
     <string name="votre_id">Votre identifiant </string>
     <string name="solde">Solde</string>
     <string name="miles_qualifiants">Miles qualifiants</string>
-    <string name="Nom">Nom:</string>
-    <string name="Prénom">Prénom</string>
-    <string name="gender">Sexe: </string>
-    <string name="date_nas">Date de naissance:</string>
+    <string name="gender">Sexe</string>
     <string name="mobile">Mobile</string>
-    <string name="mail">Email: </string>
+    <string name="mail">Email</string>
     <string name="modifier_Profil">Modifier Profil</string>
     <string name="modifier_Adhésion">Modifier Adhésion</string>
     <string name="nb_milles">Nombre des miles</string>
     <string name="type_milles">Type des Miles</string>
-    <string name="type1">( 1Miles =0,05TND )</string>
-    <string name="type2">( 1Miles =0,1TND )</string>
-    <string name="qualifiant">Qualifiant</string>
-    <string name="prime">Prime</string>
+    <string name="type1" translatable="false">( 1Miles =0,05TND )</string>
+    <string name="type2" translatable="false">( 1Miles =0,1TND )</string>
+    <string name="qualifiant" translatable="false">Qualifiant</string>
+    <string name="prime" translatable="false">Prime</string>
     <string name="devise">Séléctionnez la devise</string>
-    <string name="euro">Euro</string>
-    <string name="dollar">Dollar</string>
-    <string name="dinar">Dinar</string>
+    <string name="euro" translatable="false">Euro</string>
+    <string name="dollar" translatable="false">Dollar</string>
+    <string name="dinar" translatable="false">Dinar</string>
     <string name="prix">Prix total =</string>
-    <string name="Dt">00.0Dt</string>
+    <string name="Dt" translatable="false">00.0Dt</string>
     <string name="taux">taux de change</string>
-    <string name="taux1">1 EUR =3.00 DNT </string>
-    <string name="taux2">1 USD =2.47 DNT  </string>
+    <string name="taux1" translatable="false">1 EUR =3.00 DNT </string>
+    <string name="taux2" translatable="false">1 USD =2.47 DNT  </string>
     <string name="acheter">Acheter</string>
     <string name="type_rec">Type de Réclamation</string>
-    <string name="date_vol">Date du Vole</string>
+    <string name="date_vol">Date du Vol</string>
     <string name="ref_billet">Réf Billet</string>
-    <string name="num_ticket">Ticket N°</string>
+    <string name="num_ticket">"N° ticket "</string>
     <string name="desc">Description</string>
     <string name="valider">Valider</string>
 </resources>
