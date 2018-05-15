@@ -59,7 +59,6 @@ public class ReclamationActivity extends AppCompatActivity
         Calendar cal = Calendar.getInstance();
         int month = cal.get(Calendar.MONTH) + 1;
         dt_rec = cal.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + cal.get(Calendar.YEAR);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -187,30 +186,15 @@ public class ReclamationActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
         } else {
             if (isOnline()) {
-                String email = prefs.getString("Email", "empty");
-                final String identif = prefs.getString("Identifiant", "empty");
-                reference = FirebaseDatabase.getInstance().getReference("users");
-                Query query = reference.orderByChild("email").equalTo(email);
-                final Reclamation reclamation = new Reclamation(dt_rec, type, numvol, dt_vol, refe, tic, dec, etat);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            String key= reference.push().getKey();
-                            Toast.makeText(ReclamationActivity.this, key, Toast.LENGTH_SHORT).show();
-                             reference.child(identif).child("Reclamation").child(key).child("envoia").setValue(reclamation);
-                             reference.child(identif).child("Reclamation").child(key).child("repence").setValue(true);
-                            Toast.makeText(ReclamationActivity.this, R.string.chek_reclamation, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ReclamationActivity.this, ProfilActivity.class);
-                            startActivity(intent);
-                        }
-                    }
+                String identif = prefs.getString("Identifiant", "empty");
+                reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
+                String key = reference.push().getKey();
+                Reclamation reclamation = new Reclamation(identif,dt_rec, type, numvol, dt_vol, refe, tic, dec, etat,key);
+                reference.child(key).setValue(reclamation);
+                Toast.makeText(ReclamationActivity.this, R.string.chek_reclamation, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ReclamationActivity.this, ProfilActivity.class);
+                startActivity(intent);
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
             } else {
                 Toast.makeText(this, R.string.chek_internet, Toast.LENGTH_SHORT).show();
 
