@@ -85,7 +85,7 @@
     <string name="prenom">Prénom *</string>
     <string name="date_naissance">Date naissance *</string>
     <string name="adresse_mail">Adresse Email *</string>
-<string name="mot_de_pass">Mot de passe *</string>
+    <string name="mot_de_pass">Mot de passe *</string>
     <string name="conf">Confirmation *</string>
     <string name="num_pasport">Numéro passeport</string>
     <string name="ville">Ville *</string>
@@ -143,4 +143,5 @@
     <string name="name">Nom</string>
     <string name="pren">Prénom</string>
     <string name="naissance">Date de naissance</string>
+    <string name="title_activity_reponse">ReponseActivity</string>
 </resources>

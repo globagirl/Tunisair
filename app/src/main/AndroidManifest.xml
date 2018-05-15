@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".InscriptionActivity"
             android:screenOrientation="portrait" />
@@ -86,7 +86,11 @@
             android:name=".ConsultationActivity"
             android:label="@string/title_activity_consultation"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ReponseActivity"
+            android:label="@string/title_activity_reponse"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
