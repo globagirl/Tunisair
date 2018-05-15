@@ -1,9 +1,11 @@
 package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,20 +17,60 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class ConsultationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+public class ConsultationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
     ListView listView;
-    private String[] reclamtion={"hamza","khawla"};
+    ArrayList<String> listrec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultation);
 
+        prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
+        editor = prefs.edit();
         listView = (ListView) findViewById(R.id.listview);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, reclamtion);
-        listView.setAdapter(adapter);
+        listrec=new ArrayList<>();
+
+        //getReclamation();
+        String identif = prefs.getString("Identifiant", "empty");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
+        Query query = reference.orderByChild("id_User").equalTo(identif);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Reclamation rec=snapshot.getValue(Reclamation.class);
+                        String item=rec.getId_recenvoi();
+                        listrec.add(new String(item));
+
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, listrec);
+                    listView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listrec);
+//        listView.setAdapter(adapter);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,6 +83,31 @@ public class ConsultationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    private void getReclamation(){
+//        String identif = prefs.getString("Identifiant", "empty");
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
+//        Query query = reference.orderByChild("id_User").equalTo(identif);
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                        Reclamation rec=snapshot.getValue(Reclamation.class);
+//                        Toast.makeText(getApplicationContext(),rec.getTyperec(),Toast.LENGTH_LONG).show();
+//                        String item=rec.getTyperec();
+//                        listrec.add(new String(item));
+//
+//                    }
+//                    System.out.println(listrec.size());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     @Override
