@@ -112,4 +112,7 @@
     <string name="mail">E-mail</string>
     <string name="mobile">Mobile</string>
     <string name="solde">Balance</string>
+    <string name="name">Name</string>
+    <string name="pren">First name</string>
+    <string name="naissance">Birth date</string>
 </resources>

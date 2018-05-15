@@ -140,4 +140,7 @@
     <string name="num_ticket">"N° ticket "</string>
     <string name="desc">Description</string>
     <string name="valider">Valider</string>
+    <string name="name">Nom</string>
+    <string name="pren">Prénom</string>
+    <string name="naissance">Date de naissance</string>
 </resources>

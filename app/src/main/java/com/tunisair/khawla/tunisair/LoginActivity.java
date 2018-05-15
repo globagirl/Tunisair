@@ -18,10 +18,12 @@ import android.content.Intent;
 import java.util.regex.Matcher;
 
 public class LoginActivity extends AppCompatActivity {
-
+    //Déclaration des variables
     EditText login,password;
-    FirebaseAuth mAuth;
     String email,pass;
+
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,13 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
     }
+    //Methodes
+    //Action du buton inscription
     public void inscrire(View view) {
         Intent intent = new Intent(this, InscriptionActivity.class);
         startActivity(intent);
     }
+    //Action du buton se connecter
     public void connecter(View view) {
          email=login.getText().toString().trim();
          pass=password.getText().toString().trim();
@@ -64,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+    //contrôle de saisi
     private boolean valider() {
         boolean valide = true;
         if (email.isEmpty() || (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {

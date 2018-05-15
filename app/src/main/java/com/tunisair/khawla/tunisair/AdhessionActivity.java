@@ -39,6 +39,7 @@ public class AdhessionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adhession);
+
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
