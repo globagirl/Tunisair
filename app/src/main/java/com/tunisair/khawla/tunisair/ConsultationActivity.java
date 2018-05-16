@@ -15,8 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +36,7 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
     SharedPreferences.Editor editor;
     ListView listView;
     ArrayList<String> listrec;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +45,8 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
         listView = (ListView) findViewById(R.id.listview);
-        listrec=new ArrayList<>();
+        listrec = new ArrayList<>();
 
-        //getReclamation();
         String identif = prefs.getString("Identifiant", "empty");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
         Query query = reference.orderByChild("id_User").equalTo(identif);
@@ -53,12 +55,11 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        Reclamation rec=snapshot.getValue(Reclamation.class);
-                        String item=rec.getId_recenvoi();
-                        listrec.add(new String(item));
+                        Reclamation rec = snapshot.getValue(Reclamation.class);
+                        listrec.add(rec.getId_recenvoi());
 
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, listrec);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listrec);
                     listView.setAdapter(adapter);
                 }
             }
@@ -68,8 +69,16 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
 
             }
         });
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listrec);
-//        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = ((TextView) view).getText().toString();
+
+                Intent ite = new Intent(ConsultationActivity.this, ReponseActivity.class);
+                ite.putExtra("Id_recenvoi", item);
+                startActivity(ite);
+            }
+        });
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -83,31 +92,6 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-    private void getReclamation(){
-//        String identif = prefs.getString("Identifiant", "empty");
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
-//        Query query = reference.orderByChild("id_User").equalTo(identif);
-//        query.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists()) {
-//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                        Reclamation rec=snapshot.getValue(Reclamation.class);
-//                        Toast.makeText(getApplicationContext(),rec.getTyperec(),Toast.LENGTH_LONG).show();
-//                        String item=rec.getTyperec();
-//                        listrec.add(new String(item));
-//
-//                    }
-//                    System.out.println(listrec.size());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 
     @Override
