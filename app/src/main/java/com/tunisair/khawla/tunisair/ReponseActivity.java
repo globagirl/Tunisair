@@ -1,6 +1,7 @@
 package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +39,7 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
         reponse = (TextView) findViewById(R.id.txt_rep);
 
         getReclamation_envoyer();
+        getReclamation_reponse();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -83,12 +86,16 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Reponse rep = snapshot.getValue(Reponse.class);
-//                        if (snapshot.getKey().equals(rec.getId_recenvoi())) {
-//                            datenvoi.setText(rec.getDatrec());
-//                            type_rec.setText(rec.getTyperec());
-//                            description.setText(rec.getDescription());
-//                        }
-                    }
+                            datreponse.setText(rep.getDataRep());
+                            datreponse.setTextColor(Color.DKGRAY);
+                            reponse.setText(rep.getReponce());
+                            reponse.setTextColor(Color.DKGRAY);
+                }
+                }else{
+                    datreponse.setText("En coure");
+                    datreponse.setTextColor(Color.RED);
+                    reponse.setText("En coure");
+                    reponse.setTextColor(Color.RED);
                 }
             }
 

@@ -57,31 +57,31 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
     }
 
     private void getUser() {
-        String email = prefs.getString("Email", "empty");
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query query = reference.orderByChild("email").equalTo(email);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        User user = snapshot.getValue(User.class);
-                        identif.setText(snapshot.getKey());
-                        tx_noms.setText(user.getNom());
-                        tx_prnom.setText(user.getPrenom());
-                        tx_naisenc.setText(user.getNaisence());
-                        tx_mail.setText(user.getEmail());
-                        tx_numtel.setText(user.getTeldom());
-                        if (user.getGenre().equals("M")) {
-                            tx_genre.setText(R.string.homme);
-                        } else {
-                            tx_genre.setText(R.string.femme);
+                String email = prefs.getString("Email", "empty");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+                Query query = reference.orderByChild("email").equalTo(email);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                User user = snapshot.getValue(User.class);
+                                identif.setText(snapshot.getKey());
+                                tx_noms.setText(user.getNom());
+                                tx_prnom.setText(user.getPrenom());
+                                tx_naisenc.setText(user.getNaisence());
+                                tx_mail.setText(user.getEmail());
+                                tx_numtel.setText(user.getTeldom());
+                                if (user.getGenre().equals("M")) {
+                                    tx_genre.setText(R.string.homme);
+                                } else {
+                                    tx_genre.setText(R.string.femme);
+                                }
+                                editor.putString("Identifiant", identif.getText().toString());
+                                editor.apply();
+                            }
                         }
-                        editor.putString("Identifiant", identif.getText().toString());
-                        editor.apply();
                     }
-                }
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

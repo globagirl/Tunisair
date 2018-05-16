@@ -11,11 +11,19 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class InscriptionActivity extends AppCompatActivity {
     EditText naisence, nom, prenom, mail, password, conf_password, num_pass, ville, code_postale, adresse;
     String name, prenoms, email, pass, confirme, pasport, Ville, code_p, Adresse, Naisence;
     RadioButton rd_m;
     static int p;
+    boolean use;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
@@ -57,11 +65,12 @@ public class InscriptionActivity extends AppCompatActivity {
         Naisence = naisence.getText().toString().trim();
 
         if (!valider()) {
-            Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
         } else {
             remplir_champs();
             Intent intent = new Intent(this, Inscription2Activity.class);
             startActivity(intent);
+
         }
     }
     public void remplir_champs() {
@@ -79,6 +88,7 @@ public class InscriptionActivity extends AppCompatActivity {
     // validation et messages d erreur
     private boolean valider() {
         boolean valide = true;
+
         if (name.isEmpty()) {
             nom.setError(getString(R.string.champ_obligatoir));
             valide = false;
@@ -112,6 +122,17 @@ public class InscriptionActivity extends AppCompatActivity {
             valide = false;
 
         }
+
+        //Toast.makeText(getApplicationContext(),use+"",Toast.LENGTH_LONG).show();
+//         if(use==true){
+//             mail.setError("Votre email es deja utiliser");
+//            use=false;
+//         }
+        if (getUser()) {
+            mail.setError("Votre email es deja utiliser");
+            valide = false;
+        }
+
         if (!email.isEmpty() && (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
             mail.setError(getString(R.string.mail_invalide));
             valide = false;
@@ -137,6 +158,27 @@ public class InscriptionActivity extends AppCompatActivity {
 
         }
         return valide;
+    }
+    private boolean getUser() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query query = reference.orderByChild("email").equalTo(email);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    use=true;
+                }else {
+                    use=false;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return use;
     }
 
     public void onRadioButtonClicked(View view) {
