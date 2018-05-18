@@ -87,7 +87,7 @@
     <string name="adresse_mail">Adresse Email *</string>
     <string name="mot_de_pass">Mot de passe *</string>
     <string name="conf">Confirmation *</string>
-    <string name="num_pasport">Numéro passeport</string>
+    <string name="num_pasport">Numéro passeport(+100 Miles)</string>
     <string name="ville">Ville *</string>
     <string name="code_postale">Code Postale *</string>
     <string name="m">M</string>
@@ -97,7 +97,7 @@
     <string name="pays">Pays</string>
     <string name="tel_dom">Tél Domicile *</string>
     <string name="tel_prof">Tél Professionnel</string>
-    <string name="tel_mob">Tél Mobile</string>
+    <string name="tel_mob">Tél Mobile(+100 Miles)</string>
     <string name="tel_fax">Tél Fax</string>
     <string name="société">Société</string>
     <string name="fonction">Fonction</string>
@@ -144,4 +144,6 @@
     <string name="pren">Prénom</string>
     <string name="naissance">Date de naissance</string>
     <string name="title_activity_reponse">ReponseActivity</string>
+    <string name="mail_existe_db">Votre email es deja utiliser</string>
+    <string name="accepte_condistion">Accepter les conditions</string>
 </resources>

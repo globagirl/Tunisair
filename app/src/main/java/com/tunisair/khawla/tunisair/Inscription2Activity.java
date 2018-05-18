@@ -11,11 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,15 +19,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Inscription2Activity extends AppCompatActivity {
-    EditText Tel_dom,Tel_prof,Tel_mobile,fax,sociéte,fonction,num_bielt,entet_bielt,agence,num_vole,dat_vol;
+    EditText Tel_dom,Tel_prof,Tel_mobile,fax, societe,fonction,num_bielt,entet_bielt,agence,num_vole,dat_vol;
     String teldom,telprof,telmobil,faxs,num_bielts,entet_bielts,Agence,Num_vole,Dat_vol;
     boolean chek=false;
     Liste_code_payes adapter;
     Liste_nationnalité adapterN;
     Liste_pays adapterP;
     String[] codes = new String[199];
-    String[] nation=new String[194];
-    String[] pay=new String[199];
+    String[] nation=new String[195];
+    String[] pay=new String[200];
     Spinner SpiCode,SpiNatio,SpiPays,Spicode2,Spicode3,Spicode4;
     LinearLayout li_voyage;
     CheckBox bt_chek;
@@ -45,26 +41,26 @@ public class Inscription2Activity extends AppCompatActivity {
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
-        Tel_dom=(EditText) findViewById(R.id.T_domic);
-        Tel_prof=(EditText) findViewById(R.id.T_prof);
-        Tel_mobile=(EditText) findViewById(R.id.T_mobile);
-        fax=(EditText) findViewById(R.id.fax);
-        sociéte=(EditText) findViewById(R.id.societe);
-        fonction=(EditText) findViewById(R.id.fonction);
-        SpiNatio=(Spinner) findViewById(R.id.natio);
-        SpiPays = (Spinner) findViewById(R.id.pays);
-        SpiCode = (Spinner) findViewById(R.id.code_pays_domic);
-        Spicode2=(Spinner) findViewById(R.id.code_pays_prof);
-        Spicode3= (Spinner)findViewById(R.id.code_pays_mob) ;
-        Spicode4= (Spinner)findViewById(R.id.code_pays_fax) ;
-        li_voyage= (LinearLayout) findViewById(R.id.linear_voyage) ;
-        bt_chek= (CheckBox) findViewById(R.id.check_voyage) ;
+        Tel_dom= findViewById(R.id.T_domic);
+        Tel_prof= findViewById(R.id.T_prof);
+        Tel_mobile= findViewById(R.id.T_mobile);
+        fax= findViewById(R.id.fax);
+        societe = findViewById(R.id.societe);
+        fonction= findViewById(R.id.fonction);
+        SpiNatio= findViewById(R.id.natio);
+        SpiPays =  findViewById(R.id.pays);
+        SpiCode = findViewById(R.id.code_pays_domic);
+        Spicode2= findViewById(R.id.code_pays_prof);
+        Spicode3= findViewById(R.id.code_pays_mob) ;
+        Spicode4= findViewById(R.id.code_pays_fax) ;
+        li_voyage= findViewById(R.id.linear_voyage) ;
+        bt_chek= findViewById(R.id.check_voyage) ;
 
-        num_bielt=(EditText) findViewById(R.id.num_bielt2);
-        entet_bielt=(EditText) findViewById(R.id.num_bielt);
-        dat_vol=(EditText) findViewById(R.id.date);
-        agence=(EditText) findViewById(R.id.agence);
-        num_vole=(EditText) findViewById(R.id.Nvol);
+        num_bielt= findViewById(R.id.num_bielt2);
+        entet_bielt=findViewById(R.id.num_bielt);
+        dat_vol= findViewById(R.id.date);
+        agence= findViewById(R.id.agence);
+        num_vole= findViewById(R.id.Nvol);
 
         //Appel des methodes
         remplirpays();
@@ -95,12 +91,11 @@ public class Inscription2Activity extends AppCompatActivity {
         SpiCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_domicile",code.getText().toString());
+                editor.putString("Tel_domicile",adapter.getItem(i));
                 editor.apply();
             }
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {SpiCode.setSelection(187);
+            public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
 
@@ -109,14 +104,13 @@ public class Inscription2Activity extends AppCompatActivity {
         Spicode2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_profe",code.getText().toString());
+                editor.putString("Tel_profe",adapter.getItem(i));
                 editor.apply();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Spicode2.setSelection(-1);
+
             }
         });
 
@@ -125,14 +119,13 @@ public class Inscription2Activity extends AppCompatActivity {
         Spicode3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_Mobile",code.getText().toString());
+                editor.putString("Tel_Mobile",adapter.getItem(i));
                 editor.apply();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Spicode3.setSelection(-1);
+
             }
         });
         adapter = new Liste_code_payes(this, codes, Constante.imgs);
@@ -140,14 +133,12 @@ public class Inscription2Activity extends AppCompatActivity {
         Spicode4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView code = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Tel_faxe",code.getText().toString());
+                editor.putString("Tel_faxe",adapter.getItem(i));
                 editor.apply();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Spicode4.setSelection(-1);
             }
         });
 
@@ -181,14 +172,13 @@ public class Inscription2Activity extends AppCompatActivity {
         SpiNatio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView natio = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Nationalite",natio.getText().toString());
+
+                editor.putString("Nationalite", adapterN.getItem(i));
                 editor.apply();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                SpiNatio.setSelection(-1);
             }
         });
 
@@ -224,13 +214,12 @@ public class Inscription2Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                TextView pays = (TextView) view.findViewById(R.id.code_payes);
-                editor.putString("Pays",pays.getText().toString());
+                editor.putString("Pays",adapterP.getItem(i));
                 editor.apply();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                SpiPays.setSelection(-1);
+
             }
         });
 
@@ -274,13 +263,13 @@ public class Inscription2Activity extends AppCompatActivity {
         }
     }
     public void remplir_champs() {
-        editor.putString("Societe", sociéte.getText().toString());
+        editor.putString("Societe", societe.getText().toString());
         editor.putString("Fonction",fonction.getText().toString());
         editor.putString("Tel_dom", teldom);
         editor.putString("Tel_prof", telprof);
         editor.putString("Tel_mobile",telmobil);
         editor.putString("Tel_fax", faxs);
-        if(chek==false){
+        if(!chek){
             editor.putString("Agence",Agence);
             editor.putString("Num_vol", Num_vole);
             editor.putString("Num_bielt", num_bielts);
@@ -301,7 +290,7 @@ public class Inscription2Activity extends AppCompatActivity {
             Tel_dom.setError(getString(R.string.champ_obligatoir));
             valide = false;
         }
-        if(chek==false){
+        if(!chek){
             if (Agence.isEmpty()) {
                 agence.setError(getString(R.string.champ_obligatoir));
                 valide = false;

@@ -30,6 +30,7 @@ public class AdhessionActivity extends AppCompatActivity {
     String societe, cod_tel_fax, tel_fax, cod_tel_mobile, passport, tel_mobile, cod_tel_prof, ville, code_p, tel_prof, adr_dom, natio, pays, tel_dom, cod_tel_dom;
     RadioButton rd_indiv, rd_lang, rd_hub, rd_eco, rd_cache, rd_seul, rd_assis;
     Boolean accepte_mail;
+    int NB_miles=600;
     Spinner Repa;
     DatabaseReference reference;
     SharedPreferences prefs;
@@ -43,6 +44,8 @@ public class AdhessionActivity extends AppCompatActivity {
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
+       // int nbmiles = prefs.getInt("Num_miles", 0);
+        // Toast.makeText(getApplicationContext(),nbmiles+"",Toast.LENGTH_LONG).show();
         reference = FirebaseDatabase.getInstance().getReference("users");
 
         autre = (EditText) findViewById(R.id.autre);
@@ -252,14 +255,14 @@ public class AdhessionActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.noAssis:
                 if (checked) {
-                    RadioButton rd_no = (RadioButton) findViewById(R.id.noAssis);
+                    RadioButton rd_no = findViewById(R.id.noAssis);
                     editor.putString("Assistance", rd_no.getText().toString());
                     editor.apply();
                 }
                 break;
             case R.id.assis:
                 if (checked) {
-                    RadioButton rd_no = (RadioButton) findViewById(R.id.assis);
+                    RadioButton rd_no = findViewById(R.id.assis);
                     editor.putString("Assistance", rd_no.getText().toString());
                     editor.apply();
                 }
@@ -278,14 +281,14 @@ public class AdhessionActivity extends AppCompatActivity {
         String tel_mobil_final = cod_tel_mobile + " " + tel_mobile;
         String tel_fax_final = cod_tel_fax + " " + tel_fax;
         String num_biellt_final = entet_bielt + "/" + num_bielt;
-        if (!valider()) {
-            Toast.makeText(getApplicationContext(), "Accepter les conditions", Toast.LENGTH_LONG).show();
-        } else {
+
+
+        if (valider()) {
+            remplir_champs();
             User user = new User(nom, prenom, sexe, naissence, email, pass, passport, ville, code_p, adr_dom, natio,
                     pays, tel_dom_final, tel_pro_final, tel_mobil_final, tel_fax_final, societe, fonction, num_vol, date_vol,
-                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, repas, accepte_mail);
+                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, repas,NB_miles, accepte_mail);
             reference.push().setValue(user);
-            remplir_champs();
             Intent intent = new Intent(this, ProfilActivity.class);
             startActivity(intent);
         }
@@ -293,6 +296,16 @@ public class AdhessionActivity extends AppCompatActivity {
     }
 
     public void remplir_champs() {
+        if(!passport.isEmpty()){
+            NB_miles+=100;
+        }
+        if (!tel_mobile.isEmpty()){
+            NB_miles+=100;
+        }
+        if(!natio.equals("Choisire votre payés..")){
+            NB_miles+=100;
+        }
+        editor.putInt("Num_miles", NB_miles);
         editor.putString("Agence_habit", Agencee);
         editor.putString("Site", Site);
         editor.putString("Autre_prog", Autre);

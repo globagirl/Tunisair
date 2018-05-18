@@ -40,13 +40,13 @@ public class User {
     private String habitude;
     private String besoin;
     private String repas;
-
+    private int Nb_miles;
     private boolean accepte_mail;
 
     public User() {
     }
 
-    public User(String nom, String prenom, String genre, String naisence, String email, String pass, String pasport, String villes, String postale, String adrDO, String nationalite, String pays, String teldom, String telprof, String telmobil, String telfaxs, String societe, String fonction, String num_vol, String dat_vol, String num_bielet, String agence, String type_ad, String autre_prog, String langue, String agence_habit, String point_vent, String site_vent, String prefere, String classe, String mode_pay, String habitude, String besoin, String repas, boolean accepte_mail) {
+    public User(String nom, String prenom, String genre, String naisence, String email, String pass, String pasport, String villes, String postale, String adrDO, String nationalite, String pays, String teldom, String telprof, String telmobil, String telfaxs, String societe, String fonction, String num_vol, String dat_vol, String num_bielet, String agence, String type_ad, String autre_prog, String langue, String agence_habit, String point_vent, String site_vent, String prefere, String classe, String mode_pay, String habitude, String besoin, String repas,int nb_miles,boolean accepte_mail) {
         this.nom = nom;
         this.prenom = prenom;
         this.genre = genre;
@@ -81,7 +81,16 @@ public class User {
         this.habitude = habitude;
         this.besoin = besoin;
         this.repas = repas;
+        this.Nb_miles=nb_miles;
         this.accepte_mail = accepte_mail;
+    }
+
+    public int getNb_miles() {
+        return Nb_miles;
+    }
+
+    public void setNb_miles(int nb_miles) {
+        Nb_miles = nb_miles;
     }
 
     public String getRepas() {

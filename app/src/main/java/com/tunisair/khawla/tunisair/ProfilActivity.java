@@ -24,7 +24,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-    TextView tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel, identif;
+    TextView tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel, identif,soldes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
         tx_naisenc = findViewById(R.id.naisence);
         tx_numtel = findViewById(R.id.num_tel);
         identif = findViewById(R.id.name4);
+        soldes = findViewById(R.id.solde);
 
         getUser();
 
@@ -67,6 +68,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 User user = snapshot.getValue(User.class);
                                 identif.setText(snapshot.getKey());
+                                soldes.setText(String.valueOf(user.getNb_miles()));
                                 tx_noms.setText(user.getNom());
                                 tx_prnom.setText(user.getPrenom());
                                 tx_naisenc.setText(user.getNaisence());

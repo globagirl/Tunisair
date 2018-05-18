@@ -72,10 +72,10 @@
     <string name="nom">Name*</string>
     <string name="prenom">First name*</string>
     <string name="date_naissance">Birth date*</string>
-    <string name="adresse_mail">E-mail adress*</string>
+    <string name="adresse_mail">E-mail address*</string>
     <string name="mot_de_pass">Password*</string>
     <string name="conf">Confirmation*</string>
-    <string name="num_pasport">Passport number</string>
+    <string name="num_pasport">Passport number(+100 Miles)</string>
     <string name="ville">City*</string>
     <string name="code_postale">ZIP code*</string>
     <string name="m">Mr</string>
@@ -85,7 +85,7 @@
     <string name="pays">Country</string>
     <string name="tel_dom">" Home phone *"</string>
     <string name="tel_prof">" Professional phone"</string>
-    <string name="tel_mob">Mobile phone</string>
+    <string name="tel_mob">Mobile phone(+100 Miles)</string>
     <string name="tel_fax">Fax</string>
     <string name="société">Society</string>
     <string name="fonction">Function</string>

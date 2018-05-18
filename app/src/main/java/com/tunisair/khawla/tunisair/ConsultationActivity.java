@@ -35,7 +35,8 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     ListView listView;
-    ArrayList<String> listrec;
+    ArrayList<String> listrec,listvide;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
         editor = prefs.edit();
         listView = (ListView) findViewById(R.id.listview);
         listrec = new ArrayList<>();
+        listvide = new ArrayList<>();
+        listvide.add("Aucune Reclamation");
 
         String identif = prefs.getString("Identifiant", "empty");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
@@ -57,11 +60,14 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Reclamation rec = snapshot.getValue(Reclamation.class);
                         listrec.add(rec.getId_recenvoi());
-
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listrec);
-                    listView.setAdapter(adapter);
                 }
+                if (listrec.size()==0){
+                    adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listvide);
+                }else {
+                    adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listrec);
+                }
+                listView.setAdapter(adapter);
             }
 
             @Override
@@ -73,10 +79,11 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = ((TextView) view).getText().toString();
-
-                Intent ite = new Intent(ConsultationActivity.this, ReponseActivity.class);
-                ite.putExtra("Id_recenvoi", item);
-                startActivity(ite);
+                 if(!item.equals("Aucune Reclamation")){
+                     Intent ite = new Intent(ConsultationActivity.this, ReponseActivity.class);
+                     ite.putExtra("Id_recenvoi", item);
+                     startActivity(ite);
+                 }
             }
         });
 
