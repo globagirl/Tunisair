@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:paddingTop="5dp"
-                android:text="Type de voyage"
+                android:text="@string/type_v"
                 android:textStyle="bold" />
 
             <RadioGroup
@@ -91,7 +91,7 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButtonClicked"
-                    android:text="Aller simple"
+                    android:text="@string/simple"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <RadioButton
@@ -101,7 +101,7 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButtonClicked"
-                    android:text="Aller retour"
+                    android:text="@string/retour"
                     android:textColor="@color/common_google_signin_btn_text_light_focused" />
             </RadioGroup>
         </LinearLayout>
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Départ"
+                android:text="@string/dep"
                 android:textStyle="bold" />
 
             <EditText
@@ -147,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Retour"
+                android:text="@string/ret"
                 android:textStyle="bold" />
 
             <EditText
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Passagers"
+                android:text="@string/passagers"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -192,7 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Adultes" />
+                    android:text="@string/adultes" />
 
                 <Spinner
                     android:id="@+id/N_adult"
@@ -215,7 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Jeunes" />
+                    android:text="@string/jeunes" />
 
                 <Spinner
                     android:id="@+id/N_jeune"
@@ -237,7 +237,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Enfants" />
+                    android:text="@string/enfants" />
 
                 <Spinner
                     android:id="@+id/N_enfant"
@@ -259,7 +259,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Bébés" />
+                    android:text="@string/b_b_s" />
 
                 <Spinner
                     android:id="@+id/N_bebe"
@@ -283,7 +283,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Classe"
+                android:text="@string/classe"
                 android:textStyle="bold" />
 
             <RadioGroup
@@ -327,14 +327,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:buttonTint="@color/colorPrimary"
-            android:text="Simulation"
+            android:text="@string/simulation"
             android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Condition d'achat du Billets Prime"
+            android:text="@string/condition_d_achat_du_billets_prime"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="12sp" />
 
@@ -348,7 +348,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="15dp"
         android:onClick="valide"
-        android:text="Valider"
+        android:text="@string/valider"
         android:textColor="@color/ic_launcher_background"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"

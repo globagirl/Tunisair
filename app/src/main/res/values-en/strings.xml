@@ -89,7 +89,7 @@
     <string name="tel_fax">Fax</string>
     <string name="société">Society</string>
     <string name="fonction">Function</string>
-    <string name="num_vol">" flight number"</string>
+    <string name="num_vol">"Flight number"</string>
     <string name="date">Date</string>
     <string name="num_billet">Ticket number</string>
     <string name="agence">Agency</string>
@@ -106,7 +106,7 @@
     <string name="devise">" Select the currency"</string>
     <string name="prix">Total price=</string>
     <string name="taux">Exchange rate</string>
-    <string name="type_rec">Reclamation typer</string>
+    <string name="type_rec">Reclamation type</string>
     <string name="date_vol">" Flight date"</string>
     <string name="ref_billet">Ticket reference</string>
     <string name="mail">E-mail</string>
@@ -115,4 +115,26 @@
     <string name="name">Name</string>
     <string name="pren">First name</string>
     <string name="naissance">Birth date</string>
+    <string name="mail_existe_db">Your email is already used</string>
+    <string name="accepte_condistion">Please accept the conditions</string>
+    <string name="type_v">Trip type</string>
+    <string name="simple">One way ticket</string>
+    <string name="retour">Round trip</string>
+    <string name="dep">"Departure "</string>
+    <string name="ret">Return</string>
+    <string name="passagers">Passengers</string>
+    <string name="adultes">Adults</string>
+    <string name="jeunes">Youth</string>
+    <string name="enfants">Children</string>
+    <string name="b_b_s">" Babies"</string>
+    <string name="classe">Class</string>
+    <string name="simulation">Simulation</string>
+    <string name="condition_d_achat_du_billets_prime">" Condition of purchase of the Award Tickets"</string>
+    <string name="en_cours">In progress</string>
+    <string name="no_rec">" No complaints"</string>
+    <string name="date_envoi">Date Sending</string>
+    <string name="type_r_clamation">" Claim type"</string>
+    <string name="description">Description</string>
+    <string name="date_r_ponse">"Date Answer "</string>
+    <string name="r_ponse">Response</string>
 </resources>

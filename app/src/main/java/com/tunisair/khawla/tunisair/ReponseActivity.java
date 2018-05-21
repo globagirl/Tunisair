@@ -92,9 +92,9 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
                             reponse.setTextColor(Color.DKGRAY);
                 }
                 }else{
-                    datreponse.setText("En coure");
+                    datreponse.setText(R.string.en_cours);
                     datreponse.setTextColor(Color.RED);
-                    reponse.setText("En coure");
+                    reponse.setText(R.string.en_cours);
                     reponse.setTextColor(Color.RED);
                 }
             }

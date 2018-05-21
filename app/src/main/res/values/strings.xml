@@ -143,7 +143,27 @@
     <string name="name">Nom</string>
     <string name="pren">Prénom</string>
     <string name="naissance">Date de naissance</string>
-    <string name="title_activity_reponse">ReponseActivity</string>
-    <string name="mail_existe_db">Votre email es deja utiliser</string>
-    <string name="accepte_condistion">Accepter les conditions</string>
+    <string name="title_activity_reponse" translatable="false">ReponseActivity</string>
+    <string name="mail_existe_db">Votre email est déja utilisé</string>
+    <string name="accepte_condistion">Vueillez accepter les conditions</string>
+    <string name="type_v">Type de voyage</string>
+    <string name="simple">Aller simple</string>
+    <string name="retour">Aller retour</string>
+    <string name="dep">Départ</string>
+    <string name="ret">Retour</string>
+    <string name="passagers">Passagers</string>
+    <string name="adultes">Adultes</string>
+    <string name="jeunes">Jeunes</string>
+    <string name="enfants">Enfants</string>
+    <string name="b_b_s">Bébés</string>
+    <string name="classe">Classe</string>
+    <string name="simulation">Simulation</string>
+    <string name="condition_d_achat_du_billets_prime">Condition d\'achat du Billets Prime</string>
+    <string name="r_ponse">Réponse</string>
+    <string name="date_r_ponse">Date Réponse</string>
+    <string name="description">Description</string>
+    <string name="type_r_clamation">Type Réclamation</string>
+    <string name="date_envoi">Date Envoi</string>
+    <string name="no_rec">Aucune Réclamation</string>
+    <string name="en_cours">En cours</string>
 </resources>

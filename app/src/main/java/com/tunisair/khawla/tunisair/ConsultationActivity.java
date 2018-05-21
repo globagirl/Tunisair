@@ -79,7 +79,7 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = ((TextView) view).getText().toString();
-                 if(!item.equals("Aucune Reclamation")){
+                 if(!item.equals(getString(R.string.no_rec))){
                      Intent ite = new Intent(ConsultationActivity.this, ReponseActivity.class);
                      ite.putExtra("Id_recenvoi", item);
                      startActivity(ite);

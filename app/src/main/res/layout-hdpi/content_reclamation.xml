@@ -72,10 +72,10 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
                     android:ems="10"
                     android:hint="@string/num_vol"
                     android:inputType="number"
+                    android:backgroundTint="@color/colorPrimary"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
                     android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                     android:textSize="12sp" />

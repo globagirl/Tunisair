@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_ins"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ReponseActivity"
     tools:showIn="@layout/app_bar_reponse">
 
     <android.support.v7.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="393dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -23,15 +24,16 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Date Envoi :"
+                android:text="@string/date_envoi"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +45,10 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginStart="8dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:padding="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView17"
@@ -55,8 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:padding="10dp"
-                android:text="Type Reclamation"
+                android:text="@string/type_r_clamation"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -69,8 +75,11 @@
                 android:layout_marginRight="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="13dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:padding="10dp"
                 android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView38"
@@ -82,8 +91,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:padding="10dp"
-                android:text="Description:"
+                android:text="@string/description"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
             <TextView
@@ -95,8 +105,11 @@
                 android:layout_marginRight="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:padding="10dp"
                 android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView37"
@@ -117,8 +130,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Date Reponse"
+                android:text="@string/date_r_ponse"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -130,7 +144,10 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginStart="24dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:padding="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView39"
@@ -142,8 +159,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:padding="10dp"
-                android:text="Reponse:"
+                android:text="@string/r_ponse"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
@@ -156,7 +174,10 @@
                 android:layout_marginRight="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:padding="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView41"
