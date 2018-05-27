@@ -14,7 +14,6 @@
         android:layout_width="404dp"
         android:layout_height="483dp"
         android:layout_below="@+id/profile_layout"
-
         android:layout_marginTop="20dp"
         android:background="#fff"
         android:elevation="4dp"
@@ -137,10 +136,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_retour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="5dp">
+            android:paddingBottom="5dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textView9"
@@ -166,111 +167,14 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/nbr_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tx_nom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/passagers"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/adultes" />
-
-                <Spinner
-                    android:id="@+id/N_adult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/jeunes" />
-
-                <Spinner
-                    android:id="@+id/N_jeune"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/enfants" />
-
-                <Spinner
-                    android:id="@+id/N_enfant"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/b_b_s" />
-
-                <Spinner
-                    android:id="@+id/N_bebe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-        </LinearLayout>
+            android:backgroundTint="@color/colorPrimary"
+            android:ems="10"
+            android:hint="Nombre de place"
+            android:inputType="number" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -320,24 +224,6 @@
                     android:textSize="12sp" />
             </RadioGroup>
         </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/simul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:buttonTint="@color/colorPrimary"
-            android:text="@string/simulation"
-            android:textColor="@color/common_google_signin_btn_text_light_focused" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/condition_d_achat_du_billets_prime"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="12sp" />
-
     </LinearLayout>
 
     <Button
@@ -355,10 +241,5 @@
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <!--<WebView-->
-        <!--android:id="@+id/webView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
 
 </android.support.constraint.ConstraintLayout>

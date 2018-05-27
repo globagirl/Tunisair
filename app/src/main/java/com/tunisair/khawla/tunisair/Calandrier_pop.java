@@ -1,25 +1,12 @@
 package com.tunisair.khawla.tunisair;
 
-import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Toast;
-
-import java.util.Calendar;
-
-import static android.content.ContentValues.TAG;
-
-/**
- * Created by ASUS on 03/02/2018.
- */
 
 public class Calandrier_pop extends DialogFragment implements View.OnClickListener {
 
@@ -60,13 +47,13 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
                 Inscription2Activity inscrr = (Inscription2Activity) getActivity();
                 inscrr.setdate2(date);
             }
-//            else if (InscriptionActivity.p== 3) {
-//                BilletActivity inscrr = (BilletActivity) getActivity();
-//                inscrr.setdate(date);
-//            }else if (InscriptionActivity.p== 4) {
-//                BilletActivity inscrr = (BilletActivity) getActivity();
-//                inscrr.setdate2(date);
-//            }
+            else if (InscriptionActivity.p== 3) {
+                BilletActivity inscrr = (BilletActivity) getActivity();
+                inscrr.setdate(date);
+            }else if (InscriptionActivity.p== 4) {
+                BilletActivity inscrr = (BilletActivity) getActivity();
+                inscrr.setdate2(date);
+            }
             else if (InscriptionActivity.p== 6) {
                 ReclamationActivity inscrr = (ReclamationActivity) getActivity();
                 inscrr.setdate2(date);

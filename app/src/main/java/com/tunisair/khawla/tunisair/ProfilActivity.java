@@ -58,6 +58,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
     }
 
     private void getUser() {
+
                 String email = prefs.getString("Email", "empty");
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
                 Query query = reference.orderByChild("email").equalTo(email);

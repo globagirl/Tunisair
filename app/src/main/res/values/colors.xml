@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#af1f22</color>
     <color name="colorAccent">#960000</color>
     <color name="backEditText">#52dc1216</color>
+    <color name="ligne">#cac7c7</color>
 </resources>

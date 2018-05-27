@@ -2,6 +2,7 @@ package com.tunisair.khawla.tunisair;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -15,6 +16,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,9 +35,11 @@ public class AdhessionActivity extends AppCompatActivity {
     String societe, cod_tel_fax, tel_fax, cod_tel_mobile, passport, tel_mobile, cod_tel_prof, ville, code_p, tel_prof, adr_dom, natio, pays, tel_dom, cod_tel_dom;
     RadioButton rd_indiv, rd_lang, rd_hub, rd_eco, rd_cache, rd_seul, rd_assis;
     Boolean accepte_mail;
-    int NB_miles=600;
+    int NB_miles = 600;
     Spinner Repa;
+    User user;
     DatabaseReference reference;
+    FirebaseAuth mAuth;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
@@ -44,10 +51,8 @@ public class AdhessionActivity extends AppCompatActivity {
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
-       // int nbmiles = prefs.getInt("Num_miles", 0);
-        // Toast.makeText(getApplicationContext(),nbmiles+"",Toast.LENGTH_LONG).show();
         reference = FirebaseDatabase.getInstance().getReference("users");
-
+        mAuth = FirebaseAuth.getInstance();
         autre = (EditText) findViewById(R.id.autre);
         agencee = (EditText) findViewById(R.id.agence_habit);
         pointe = (EditText) findViewById(R.id.point);
@@ -109,6 +114,7 @@ public class AdhessionActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onRadioButton_type(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
@@ -282,28 +288,35 @@ public class AdhessionActivity extends AppCompatActivity {
         String tel_fax_final = cod_tel_fax + " " + tel_fax;
         String num_biellt_final = entet_bielt + "/" + num_bielt;
 
-
         if (valider()) {
-            remplir_champs();
-            User user = new User(nom, prenom, sexe, naissence, email, pass, passport, ville, code_p, adr_dom, natio,
+            user = new User(nom, prenom, sexe, naissence, email, pass, passport, ville, code_p, adr_dom, natio,
                     pays, tel_dom_final, tel_pro_final, tel_mobil_final, tel_fax_final, societe, fonction, num_vol, date_vol,
-                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, repas,NB_miles, accepte_mail);
-            reference.push().setValue(user);
-            Intent intent = new Intent(this, ProfilActivity.class);
-            startActivity(intent);
+                    num_biellt_final, agence, type_adh, Autre, lan, Agencee, Pointe, Site, pref, classe, payement, habitude, besoin, repas, NB_miles, accepte_mail);
+            mAuth.createUserWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                remplir_champs();
+                                reference.push().setValue(user);
+                                Intent intent = new Intent(getApplicationContext(), ProfilActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    });
         }
 
     }
 
     public void remplir_champs() {
-        if(!passport.isEmpty()){
-            NB_miles+=100;
+        if (!passport.isEmpty()) {
+            NB_miles += 100;
         }
-        if (!tel_mobile.isEmpty()){
-            NB_miles+=100;
+        if (!tel_mobile.isEmpty()) {
+            NB_miles += 100;
         }
-        if(!natio.equals("Choisire votre payés..")){
-            NB_miles+=100;
+        if (!natio.equals("Choisire votre payés..")) {
+            NB_miles += 100;
         }
         editor.putInt("Num_miles", NB_miles);
         editor.putString("Agence_habit", Agencee);

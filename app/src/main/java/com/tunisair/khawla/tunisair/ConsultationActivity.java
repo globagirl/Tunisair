@@ -48,7 +48,7 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
         listView = (ListView) findViewById(R.id.listview);
         listrec = new ArrayList<>();
         listvide = new ArrayList<>();
-        listvide.add("Aucune Reclamation");
+        listvide.add(getString(R.string.no_rec));
 
         String identif = prefs.getString("Identifiant", "empty");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");

@@ -3,6 +3,7 @@ package com.tunisair.khawla.tunisair;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -12,15 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,49 +37,45 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-
-    Spinner de, vers, adult, enfants, bebe, jeune;
-    String[] depart = new String[62];
-    String[] ariver = new String[62];
+    Spinner de, vers;
+    String[] depart = new String[63];
+    String[] ariver = new String[63];
     String[] bb = new String[7];
-    Liste_pays adapterP;
-    Liste_pays adapterPy;
-    EditText naissance1,naissance2;
-    String Naissance1, Naissance2;
-    RadioButton rd_all,rd_eco;
-    CheckBox chek_simul;
+    Liste_pays adapterP, adapterPy;
+    EditText naissance1, naissance2, nb_place;
+    String Naissance1, Naissance2, type, Depart_vol, Arrivage_vol, err = "";
+    int nb_places;
+    RadioButton rd_all, rd_eco, rd_all_retour;
+    LinearLayout linearLayout;
+    ArrayList<Vols> list_vols = new ArrayList<>();
+    Vols vol_s = new Vols();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_billet);
+        getVols();
         prefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE);
         editor = prefs.edit();
 
         de = (Spinner) findViewById(R.id.P_depart);
         vers = (Spinner) findViewById(R.id.p_arrive);
-        rd_all=findViewById(R.id.rd_aller);
-        naissance1=(EditText) findViewById(R.id.dat_dep);
-        naissance2=(EditText) findViewById(R.id.dat_arr);
+        rd_all = (RadioButton) findViewById(R.id.rd_aller);
+        rd_all_retour = (RadioButton) findViewById(R.id.rd_retour);
+        naissance1 = (EditText) findViewById(R.id.dat_dep);
+        naissance2 = (EditText) findViewById(R.id.dat_arr);
+        nb_place = (EditText) findViewById(R.id.nbr_place);
         rd_eco = (RadioButton) findViewById(R.id.eco);
-        chek_simul = (CheckBox) findViewById(R.id.simul);
-
-        adult = (Spinner) findViewById(R.id.N_adult);
-        enfants = (Spinner) findViewById(R.id.N_enfant);
-        bebe = (Spinner) findViewById(R.id.N_bebe);
-        jeune = (Spinner) findViewById(R.id.N_jeune);
-
-
+        linearLayout = (LinearLayout) findViewById(R.id.linear_retour);
 
         remplirp();
         remplirpys();
 
         rd_all.setChecked(true);
-        editor.putString("Type_voyage", rd_all.getText().toString());
+        type = rd_all.getText().toString();
         rd_eco.setChecked(true);
         editor.putString("Classe_voyage", rd_eco.getText().toString());
         editor.apply();
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -89,33 +89,29 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final List<Integer> spinerarray = new ArrayList<Integer>();
-        spinerarray.add(0);
-        spinerarray.add(1);
-        spinerarray.add(2);
-        spinerarray.add(3);
-        spinerarray.add(4);
-        spinerarray.add(5);
-        spinerarray.add(6);
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, spinerarray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adult.setAdapter(adapter);
-        enfants.setAdapter(adapter);
-        bebe.setAdapter(adapter);
-        jeune.setAdapter(adapter);
+    }
 
-// WEB VIEW ------------------------------------------------------------------------------
-//        WebView view=(WebView) findViewById(R.id.webView);
-//        view.getSettings().setJavaScriptEnabled(true);
-//        view.getSettings().setBuiltInZoomControls(true);
-//        view.loadUrl("http://www.tunisair.com/mobileWeb/booking3/booking.asp");
-//
-//        view.setWebViewClient(new WebViewClient(){
-//            public boolean shouldOverriceUrlLoading(WebView view,String url){
-//                return false;
-//            }
-//        });
-// ---------------------------------------------------------------------------------------
+    public void getVols() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Vols");
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Iterable<DataSnapshot> cheldrens = dataSnapshot.getChildren();
+                        for (DataSnapshot snapshot : cheldrens) {
+                            Vols rep = snapshot.getValue(Vols.class);
+                            list_vols.add(rep);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+            }
+        }, 1000);
     }
 
     public void onRadioButton_classe(View view) {
@@ -128,6 +124,12 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
                     editor.apply();
                 }
                 break;
+            case R.id.eco:
+                if (checked) {
+                    editor.putString("Classe_voyage", rd_eco.getText().toString());
+                    editor.apply();
+                }
+                break;
         }
     }
 
@@ -136,13 +138,21 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
         switch (view.getId()) {
             case R.id.rd_retour:
                 if (checked) {
-                    RadioButton rd_r = (RadioButton) findViewById(R.id.rd_retour);
-                    editor.putString("Type_voyage", rd_r.getText().toString());
-                    editor.apply();
+                    linearLayout.setVisibility(View.VISIBLE);
+                    type = rd_all_retour.getText().toString();
+                }
+                break;
+            case R.id.rd_aller:
+                if (checked) {
+                    linearLayout.setVisibility(View.GONE);
+                    naissance2.setError(null);
+                    naissance2.setText(null);
+                    type = rd_all.getText().toString();
                 }
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -209,23 +219,22 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
     public void remplirp() {
 
         remplir();
-        adapterP = new Liste_pays(this,depart);
+        adapterP = new Liste_pays(this, depart);
         de.setAdapter(adapterP);
         de.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-
-
+                Depart_vol = adapterP.getItem(i);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                de.setSelection(-1);
             }
         });
 
     }
+
     public void remplir() {
 
         try {
@@ -245,26 +254,26 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
         }
 
     }
+
     public void remplirpys() {
 
         remplirpy();
-        adapterPy = new Liste_pays(this,ariver);
+        adapterPy = new Liste_pays(this, ariver);
         vers.setAdapter(adapterPy);
         vers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
+                Arrivage_vol = adapterPy.getItem(i);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                de.setSelection(-1);
+
             }
         });
 
     }
+
     public void remplirpy() {
 
         try {
@@ -284,24 +293,28 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
         }
 
     }
+
     public void get_date(View view) {
         FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
         Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
-        InscriptionActivity.p=3;
+        InscriptionActivity.p = 3;
 
     }
+
     public void setdate(String date) {
         naissance1.setText(date);
         naissance1.setError(null);
     }
+
     public void get_date2(View view) {
         FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
         Calandrier_pop pop = new Calandrier_pop();
         pop.show(manager, null);
-        InscriptionActivity.p=4;
+        InscriptionActivity.p = 4;
 
     }
+
     public void setdate2(String date) {
         naissance2.setText(date);
         naissance2.setError(null);
@@ -309,25 +322,69 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
 
     public void valide(View view) {
         Naissance1 = naissance1.getText().toString().trim();
-        Naissance2= naissance2.getText().toString().trim();
+        Naissance2 = naissance2.getText().toString().trim();
+        try {
+            nb_places = Integer.parseInt(nb_place.getText().toString());
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
         if (!valider()) {
             Toast.makeText(getApplicationContext(), R.string.verifier_tout_les_champs, Toast.LENGTH_LONG).show();
+            if (!err.isEmpty()) {
+                Toast.makeText(getApplicationContext(), err, Toast.LENGTH_LONG).show();
+                err = "";
+            }
         } else {
-            remplir_champs();
-            if (chek_simul.isChecked()) {
-                Toast.makeText(getApplicationContext(), "simulation cocher", Toast.LENGTH_LONG).show();
-
-            }else{
-                Toast.makeText(getApplicationContext(),"simulation nom cocher", Toast.LENGTH_LONG).show();
-
+            if (Exist()) {
+                if (vol_s.getDatAre().equals("2018-05-25")) {
+                    System.out.println(vol_s.getIdV());
+                    if (rd_all_retour.isChecked()) {
+                        if (vol_s.getDateDeo().equals("2018-05-04")) {
+                            remplir_champs();
+                            Intent intent = new Intent(this, AchatBilletActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Choisir un autre date d'arrivge ", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        remplir_champs();
+                        Intent intent = new Intent(this, AchatBilletActivity.class);
+                        startActivity(intent);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Choisir un autre date de depart ", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Votre vols n'existe pas !", Toast.LENGTH_LONG).show();
             }
         }
     }
+
+    public boolean Exist() {
+        boolean exist = true;
+        for (Vols vol : list_vols) {
+            if (vol.getPaysAre().equals(Depart_vol) && vol.getPaysDep().equals(Arrivage_vol)) {
+                vol_s = vol;
+                exist = true;
+                break;
+            } else {
+                exist = false;
+            }
+        }
+        return exist;
+    }
+
     public void remplir_champs() {
         editor.putString("Date_dep", Naissance1);
         editor.putString("Date_arr", Naissance2);
+        editor.putString("Type_voyage", type);
+        editor.putString("Depart", Depart_vol);
+        editor.putString("Arrivage", Arrivage_vol);
+        editor.putInt("Nb_places", nb_places);
+        editor.putString("Identife_vol", vol_s.getIdV());
         editor.apply();
     }
+
     private boolean valider() {
         boolean valide = true;
 
@@ -336,10 +393,26 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
             valide = false;
 
         }
-        if (Naissance2.isEmpty()) {
+        if (rd_all_retour.isChecked() && Naissance2.isEmpty()) {
             naissance2.setError(getString(R.string.champ_obligatoir));
             valide = false;
+        }
+        if (nb_place.getText().toString().isEmpty()) {
+            nb_place.setError(getString(R.string.champ_obligatoir));
+            valide = false;
+        }
+        if (!nb_place.getText().toString().isEmpty() && nb_places < 1 || nb_places > 6) {
+            nb_place.setError("Nombre des places doit etre entre 1 et 6 perssone");
+            valide = false;
+        }
+        if (de.getSelectedItem().equals("Choisir...")) {
+            err += "choisire votre depart";
+            valide = false;
+        }
+        if (vers.getSelectedItem().equals("Choisir...")) {
+            err += "\n choisire votre arrivage";
 
+            valide = false;
         }
         return valide;
     }

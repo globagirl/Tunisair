@@ -27,7 +27,7 @@
         android:drawableRight="@drawable/ic_user"
         android:ems="10"
         android:hint="Nom d'utilisateur"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColor="@android:color/background_light"
