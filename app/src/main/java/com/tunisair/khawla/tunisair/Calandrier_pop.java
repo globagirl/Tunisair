@@ -38,8 +38,20 @@ public class Calandrier_pop extends DialogFragment implements View.OnClickListen
             int x = naisence.getYear();
             int mois = naisence.getMonth()+1;
             int day = naisence.getDayOfMonth();
+            String mois0="0";
+            String jour0="0";
+            if (mois>1 && mois<10){
+               mois0+=mois;
+            }else {
+                mois0=String.valueOf(mois);
+            }
+            if (day>1 && day<10){
+               jour0+=day;
+            }else {
+                jour0=String.valueOf(day);
+            }
 
-            date = day + "/" + mois + "/" + x;
+            date = x + "-" + mois0 + "-" + jour0;
             if (InscriptionActivity.p ==1) {
                 InscriptionActivity inscr = (InscriptionActivity) getActivity();
                 inscr.setdate(date);

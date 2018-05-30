@@ -1,7 +1,13 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,8 +33,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
 
 import java.util.ArrayList;
+
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class ConsultationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,19 +47,30 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
     ListView listView;
     ArrayList<String> listrec,listvide;
     ArrayAdapter<String> adapter;
+    ACProgressFlower dialog;
+    static ACProgressFlower dialoge;
+    private BroadcastReceiver mNetworkReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultation);
 
+        LoginActivity.NB_Activity=9;
+        mNetworkReceiver = new NetworkStateChangeReceiver();
+        registerNetworkBroadcastForNougat();
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
         listView = (ListView) findViewById(R.id.listview);
         listrec = new ArrayList<>();
         listvide = new ArrayList<>();
         listvide.add(getString(R.string.no_rec));
-
+        dialog = new ACProgressFlower.Builder(this)
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(Color.WHITE)
+                .text("Loading...").textColor(Color.WHITE)
+                .fadeColor(Color.DKGRAY).build();
+        dialog.show();
         String identif = prefs.getString("Identifiant", "empty");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("RecEnvoi");
         Query query = reference.orderByChild("id_User").equalTo(identif);
@@ -68,6 +89,7 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
                     adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listrec);
                 }
                 listView.setAdapter(adapter);
+                dialog.dismiss();
             }
 
             @Override
@@ -123,18 +145,15 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
             startActivity(intent);
 
         } else if (id == R.id.nav_billet) {
-
+            SharedPreferences.Editor  Sprefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE).edit();
+            Sprefs.clear();
+            Sprefs.apply();
             Intent intent = new Intent(this, BilletActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_miles) {
 
             Intent intent = new Intent(this, MilesActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_mouv) {
-
-            Intent intent = new Intent(this, MouvementActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_rec) {
@@ -163,5 +182,43 @@ public class ConsultationActivity extends AppCompatActivity implements Navigatio
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    //Methode de test connexion
+    public static void dialog(boolean value, Context context) {
+
+        if (value) {
+            context=null;
+            dialoge.dismiss();
+        } else {
+            dialoge = new ACProgressFlower.Builder(context)
+                    .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                    .themeColor(Color.WHITE)
+                    .text("Access Denied...").textColor(Color.WHITE)
+                    .fadeColor(Color.DKGRAY).build();
+            dialoge.show();
+        }
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 }

@@ -14,9 +14,6 @@
             android:id="@+id/nav_miles"
             android:title="@string/achtM" />
         <item
-            android:id="@+id/nav_mouv"
-            android:title="@string/mvm" />
-        <item
             android:id="@+id/nav_rec"
             android:title="@string/rec" />
         <item

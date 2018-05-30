@@ -1,7 +1,15 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.os.Build;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +21,15 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class Inscription2Activity extends AppCompatActivity {
     EditText Tel_dom,Tel_prof,Tel_mobile,fax, societe,fonction,num_bielt,entet_bielt,agence,num_vole,dat_vol;
@@ -33,14 +46,22 @@ public class Inscription2Activity extends AppCompatActivity {
     CheckBox bt_chek;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
+    static ConstraintLayout constraintLayout;
+    static ACProgressFlower dialoge;
+    private BroadcastReceiver mNetworkReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription2);
 
+        LoginActivity.NB_Activity=2;
+        mNetworkReceiver = new NetworkStateChangeReceiver();
+        registerNetworkBroadcastForNougat();
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
+        constraintLayout = (ConstraintLayout) findViewById(R.id.layout);
         Tel_dom= findViewById(R.id.T_domic);
         Tel_prof= findViewById(R.id.T_prof);
         Tel_mobile= findViewById(R.id.T_mobile);
@@ -340,5 +361,43 @@ public class Inscription2Activity extends AppCompatActivity {
         dat_vol.setText(date);
         dat_vol.setError(null);
         editor.putString("Date_vol", dat_vol.getText().toString());
+    }
+    //Methode de test connexion
+    public static void dialog(boolean value, Context context) {
+
+        if (value) {
+            context=null;
+            dialoge.dismiss();
+        } else {
+            dialoge = new ACProgressFlower.Builder(context)
+                    .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                    .themeColor(Color.WHITE)
+                    .text("Access Denied..").textColor(Color.WHITE)
+                    .fadeColor(Color.DKGRAY).build();
+            dialoge.show();
+        }
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 }

@@ -1,7 +1,12 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,16 +24,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class ReponseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView datenvoi,type_rec,description,datreponse,reponse;
     String id_recenvoi;
+    ACProgressFlower dialog;
+    static ACProgressFlower dialoge;
+    private BroadcastReceiver mNetworkReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reponse);
+
+        LoginActivity.NB_Activity=10;
+        mNetworkReceiver = new NetworkStateChangeReceiver();
+        registerNetworkBroadcastForNougat();
 
         Intent intent = getIntent();
         id_recenvoi = intent.getStringExtra("Id_recenvoi");
@@ -51,6 +67,12 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        dialog = new ACProgressFlower.Builder(this)
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(Color.WHITE)
+                .text("Uploading...").textColor(Color.WHITE)
+                .fadeColor(Color.DKGRAY).build();
+        dialog.show();
     }
 
     private void getReclamation_envoyer() {
@@ -68,6 +90,7 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
                             description.setText(rec.getDescription());
                         }
                     }
+                    dialog.dismiss();
                 }
             }
 
@@ -136,12 +159,7 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(this, MilesActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_mouv) {
-
-            Intent intent = new Intent(this, MouvementActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_rec) {
+        }  else if (id == R.id.nav_rec) {
 
             Intent intent = new Intent(this, ReclamationActivity.class);
             startActivity(intent);
@@ -166,5 +184,43 @@ public class ReponseActivity extends AppCompatActivity implements NavigationView
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    //Methode de test connexion
+    public static void dialog(boolean value, Context context) {
+
+        if (value) {
+            context=null;
+            dialoge.dismiss();
+        } else {
+            dialoge = new ACProgressFlower.Builder(context)
+                    .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                    .themeColor(Color.WHITE)
+                    .text("Access Denied...").textColor(Color.WHITE)
+                    .fadeColor(Color.DKGRAY).build();
+            dialoge.show();
+        }
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 }

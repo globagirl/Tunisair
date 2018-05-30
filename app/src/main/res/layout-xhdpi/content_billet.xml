@@ -11,11 +11,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="347dp"
-        android:layout_height="432dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/profile_layout"
-
-        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
         android:background="#fff"
         android:elevation="4dp"
         android:orientation="vertical"
@@ -42,7 +45,7 @@
                 android:id="@+id/P_depart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:spinnerMode="dialog" />
 
@@ -58,7 +61,7 @@
                 android:id="@+id/p_arrive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:spinnerMode="dialog" />
         </LinearLayout>
@@ -80,6 +83,7 @@
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/group_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -116,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="5dp"
                 android:text="@string/dep"
                 android:textStyle="bold" />
 
@@ -123,7 +128,7 @@
                 android:id="@+id/dat_dep"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -134,26 +139,15 @@
                 android:onClick="get_date"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
-            <EditText
-                android:id="@+id/time_dep"
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:cursorVisible="false"
-                android:ems="10"
-                android:focusableInTouchMode="false"
-                android:hint="Time"
-                android:inputType="time"
-                android:onClick="get_time"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_retour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="5dp">
+            android:paddingBottom="5dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textView9"
@@ -167,7 +161,7 @@
                 android:id="@+id/dat_arr"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -177,128 +171,21 @@
                 android:onClick="get_date2"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
-            <EditText
-                android:id="@+id/time_arr"
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:cursorVisible="false"
-                android:ems="10"
-                android:focusableInTouchMode="false"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:onClick="get_time2"
-                android:textColor="@color/common_google_signin_btn_text_light_focused" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/nbr_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:ems="10"
+            android:hint="Nombre de place"
+            android:inputType="number" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tx_nom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/passagers"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/adultes" />
-
-                <Spinner
-                    android:id="@+id/N_adult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/jeunes" />
-
-                <Spinner
-                    android:id="@+id/N_jeune"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/enfants" />
-
-                <Spinner
-                    android:id="@+id/N_enfant"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/b_b_s" />
-
-                <Spinner
-                    android:id="@+id/N_bebe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -306,10 +193,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:paddingTop="5dp"
                 android:text="@string/classe"
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/group_classe"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -323,11 +212,9 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_classe"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:text="@string/affaire"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/eco"
@@ -336,50 +223,24 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_classe"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:text="@string/economique"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </RadioGroup>
         </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/simul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
-            android:text="@string/simulation"
-            android:textColor="@color/common_google_signin_btn_text_light_focused" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/condition_d_achat_du_billets_prime"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="12sp" />
-
     </LinearLayout>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="300dp"
+        android:layout_width="192dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
         android:onClick="valide"
-        android:text="@string/valider"
+        android:text="Rechercher"
         android:textColor="@color/ic_launcher_background"
         android:theme="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <!--<WebView-->
-        <!--android:id="@+id/webView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
 
 </android.support.constraint.ConstraintLayout>

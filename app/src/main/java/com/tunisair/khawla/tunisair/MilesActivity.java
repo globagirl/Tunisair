@@ -1,6 +1,13 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +23,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
+
 public class MilesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,13 +35,17 @@ public class MilesActivity extends AppCompatActivity
     EditText nb_miles;
     TextView total;
     String extenstion = " TND";
-    double prrix_mail = 0.1, taux=0;
+    double prrix_mail = 0.1, taux = 0;
+    static ACProgressFlower dialoge;
+    private BroadcastReceiver mNetworkReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_miles);
+        LoginActivity.NB_Activity=7;
+        mNetworkReceiver = new NetworkStateChangeReceiver();
+        registerNetworkBroadcastForNougat();
 
         nb_miles = findViewById(R.id.nb_miles3);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -53,7 +69,7 @@ public class MilesActivity extends AppCompatActivity
         nb_miles.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                total.setText("00.0"+extenstion);
+                total.setText("00.0" + extenstion);
             }
 
             @Override
@@ -64,15 +80,14 @@ public class MilesActivity extends AppCompatActivity
             @Override
             public void afterTextChanged(Editable editable) {
                 if (!nb_miles.getText().toString().isEmpty()) {
-                     if (taux==0) {
+                    if (taux == 0) {
 
-                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * 0.1;
-                         total.setText(pre_total + extenstion);
-                     }
-                     else{
-                         double pre_total = Double.valueOf(nb_miles.getText().toString()) *prrix_mail/taux;
-                         total.setText(pre_total + extenstion);
-                     }
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * 0.1;
+                        total.setText(pre_total + extenstion);
+                    } else {
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                        total.setText(pre_total + extenstion);
+                    }
                 }
             }
         });
@@ -84,59 +99,75 @@ public class MilesActivity extends AppCompatActivity
         switch (view.getId()) {
             case R.id.typeQua:
                 if (checked) {
-                    prrix_mail = 0.1;
-                    if(taux==0){
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
-                        total.setText(pre_total + extenstion);
-                    }else {
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                        total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        prrix_mail = 0.1;
+                        if (taux == 0) {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
+                            total.setText(pre_total + extenstion);
+                        } else {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                            total.setText(pre_total + extenstion);
+                        }
                     }
-                }
-                break;
+                }break;
             case R.id.typePri:
                 if (checked) {
-                    prrix_mail = 0.05;
-                    if(taux==0){
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
-                        total.setText(pre_total + extenstion);
-                    }else {
-                        double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                        total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        prrix_mail = 0.05;
+                        if (taux == 0) {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
+                            total.setText(pre_total + extenstion);
+                        } else {
+                            double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                            total.setText(pre_total + extenstion);
+                        }
                     }
-                }
-                break;
+                }break;
         }
     }
+
     public void onRadioButton_type(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
             case R.id.eruo:
                 if (checked) {
                     extenstion = " EUR";
-                    taux = 3.00;
-                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                    total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        taux = 3.00;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                        total.setText(pre_total + extenstion);
+                    } else {
+                        total.setText("00.0" + extenstion);
+                    }
                 }
                 break;
             case R.id.dolar:
                 if (checked) {
                     extenstion = " USD";
-                    taux = 2.47;
-                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail/taux;
-                    total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        taux = 2.47;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
+                        total.setText(pre_total + extenstion);
+                    } else {
+                        total.setText("00.0" + extenstion);
+                    }
                 }
                 break;
             case R.id.dinar:
                 if (checked) {
                     extenstion = " TND";
-                    taux = 0;
-                    double pre_total = Double.valueOf(nb_miles.getText().toString())*prrix_mail;
-                    total.setText(pre_total + extenstion);
+                    if (!nb_miles.getText().toString().isEmpty()) {
+                        taux = 0;
+                        double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
+                        total.setText(pre_total + extenstion);
+                    } else {
+                        total.setText("00.0" + extenstion);
+                    }
                 }
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -158,7 +189,9 @@ public class MilesActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_billet) {
-
+            SharedPreferences.Editor  Sprefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE).edit();
+            Sprefs.clear();
+            Sprefs.apply();
             Intent intent = new Intent(this, BilletActivity.class);
             startActivity(intent);
 
@@ -167,9 +200,9 @@ public class MilesActivity extends AppCompatActivity
             Intent intent = new Intent(this, MilesActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_mouv) {
+        } else if (id == R.id.nav_cons) {
 
-            Intent intent = new Intent(this, MouvementActivity.class);
+            Intent intent = new Intent(this, ConsultationActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_rec) {
@@ -195,5 +228,43 @@ public class MilesActivity extends AppCompatActivity
     }
 
     public void acheter(View view) {
+    }
+    //Methode de test connexion
+    public static void dialog(boolean value, Context context) {
+
+        if (value) {
+            context=null;
+            dialoge.dismiss();
+        } else {
+            dialoge = new ACProgressFlower.Builder(context)
+                    .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                    .themeColor(Color.WHITE)
+                    .text("Access Denied...").textColor(Color.WHITE)
+                    .fadeColor(Color.DKGRAY).build();
+            dialoge.show();
+        }
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 }

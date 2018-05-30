@@ -1,9 +1,17 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,23 +21,35 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class ProfilActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private BroadcastReceiver mNetworkReceiver;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     TextView tx_naisenc, tx_noms, tx_prnom, tx_mail, tx_genre, tx_numtel, identif,soldes;
+    ACProgressFlower dialog;
+    static ACProgressFlower dialoge;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
+        LoginActivity.NB_Activity=4;
+        mNetworkReceiver = new NetworkStateChangeReceiver();
+        registerNetworkBroadcastForNougat();
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
@@ -41,7 +61,12 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
         tx_numtel = findViewById(R.id.num_tel);
         identif = findViewById(R.id.name4);
         soldes = findViewById(R.id.solde);
-
+        dialog = new ACProgressFlower.Builder(this)
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(Color.WHITE)
+                .text("Loading...").textColor(Color.WHITE)
+                .fadeColor(Color.DKGRAY).build();
+        dialog.show();
         getUser();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -82,6 +107,7 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
                                 }
                                 editor.putString("Identifiant", identif.getText().toString());
                                 editor.apply();
+                                dialog.dismiss();
                             }
                         }
                     }
@@ -116,18 +142,15 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
             startActivity(intent);
 
         } else if (id == R.id.nav_billet) {
-
+            SharedPreferences.Editor  Sprefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE).edit();
+            Sprefs.clear();
+            Sprefs.apply();
             Intent intent = new Intent(this, BilletActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_miles) {
 
             Intent intent = new Intent(this, MilesActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_mouv) {
-
-            Intent intent = new Intent(this, MouvementActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_rec) {
@@ -150,11 +173,53 @@ public class ProfilActivity extends AppCompatActivity implements NavigationView.
             startActivity(intent);
 
         } else if (id == R.id.nav_deconnexion) {
+            FirebaseAuth.getInstance().signOut();
+            this.finish();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //Methode de test connexion
+    public static void dialog(boolean value, Context context){
+
+        if(value){
+            context=null;
+            dialoge.dismiss();
+        }else {
+            dialoge = new ACProgressFlower.Builder(context)
+                    .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                    .themeColor(Color.WHITE)
+                    .text("Access Denied...").textColor(Color.WHITE)
+                    .fadeColor(Color.DKGRAY).build();
+            dialoge.show();
+        }
+    }
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 }

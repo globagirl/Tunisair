@@ -1,7 +1,13 @@
 package com.tunisair.khawla.tunisair;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,21 +21,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
+import cc.cloudist.acplibrary.ACProgressConstant;
+import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class AchatBilletActivity extends AppCompatActivity {
 
-    static final Double POURCENTAGE_AFFAIRE = 0.13;
+    static final Double POURCENTAGE_AFFAIRE = 0.25;
     SharedPreferences prefs;
     TextView Depart, Arrivage, Date_Depart, Date_Arrivage, Classe, Nb_places;
     TextView PrixDepart, PrixArrivage, PrixClasse, PrixTotale, PrixTotale_P;
     int restorednbplac;
     String restoreddatreto, restoredclass;
-
+    ACProgressFlower dialog;
+    static ACProgressFlower dialoge;
+    private BroadcastReceiver mNetworkReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achat_billet);
 
+        LoginActivity.NB_Activity=6;
+        mNetworkReceiver = new NetworkStateChangeReceiver();
+        registerNetworkBroadcastForNougat();
         prefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE);
 
         Depart = (TextView) findViewById(R.id.txt_depart);
@@ -44,7 +59,12 @@ public class AchatBilletActivity extends AppCompatActivity {
         PrixClasse = (TextView) findViewById(R.id.prix_class);
         PrixTotale_P = (TextView) findViewById(R.id.txt_total1);
         PrixTotale = (TextView) findViewById(R.id.txt_total);
-
+        dialog = new ACProgressFlower.Builder(this)
+                .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                .themeColor(Color.WHITE)
+                .text("Loading...").textColor(Color.WHITE)
+                .fadeColor(Color.DKGRAY).build();
+        dialog.show();
         restorde_donner();
 
         new Handler().postDelayed(new Runnable() {
@@ -63,6 +83,7 @@ public class AchatBilletActivity extends AppCompatActivity {
                                 double Prixretoure = Double.parseDouble(vol.getPrix_A_R());
                                 double PrixclassA = Double.parseDouble(vol.getPrix_Cal_A());
                                 double PrixclassAR = Double.parseDouble(vol.getPrix_Cal_A_R());
+                                double Prixsoupliment=0;
                                 double Prixtotale = 0;
 
                                 PrixDepart.setText("+" + Prixvole);
@@ -73,32 +94,24 @@ public class AchatBilletActivity extends AppCompatActivity {
                                     PrixArrivage.setText("+" + Prixretoure);
                                 }
                                 if (restoredclass.equals(getString(R.string.economique))) {
-                                    if (restoreddatreto.equals("")) {
-                                        PrixClasse.setText("+" + PrixclassA);
-                                    } else {
-                                        PrixClasse.setText("+" + PrixclassAR);
-                                    }
+                                        PrixClasse.setText("+" + Prixsoupliment);
                                 } else {
-                                    if (restoreddatreto.equals("")) {
-                                        PrixclassA += PrixclassA * POURCENTAGE_AFFAIRE;
-                                        PrixClasse.setText("+" + PrixclassA);
-                                    } else {
-                                        PrixclassAR += PrixclassAR * POURCENTAGE_AFFAIRE;
-                                        PrixClasse.setText("+" + PrixclassAR);
-                                    }
+                                    Prixsoupliment = Prixvole * POURCENTAGE_AFFAIRE;
+                                    PrixClasse.setText("+" + Prixsoupliment);
                                 }
 
                                 if (restoreddatreto.equals("")) {
-                                    Prixtotale = PrixclassA + Prixretoure + Prixvole;
-                                    PrixTotale_P.setText("=" + Prixtotale);
+                                    Prixtotale = Prixretoure + Prixvole;
+                                    PrixTotale_P.setText( String.valueOf(Prixtotale));
                                 } else {
-                                    Prixtotale = PrixclassAR + Prixretoure + Prixvole;
-                                    PrixTotale_P.setText("=" + Prixtotale);
+                                    Prixtotale = Prixsoupliment + Prixretoure + Prixvole;
+                                    PrixTotale_P.setText(String.valueOf(Prixtotale));
                                 }
                                 if (restorednbplac != 0) {
-                                    PrixTotale.setText("=" + Prixtotale * restorednbplac);
+                                    PrixTotale.setText(String.valueOf( Prixtotale * restorednbplac));
                                 }
                             }
+                            dialog.dismiss();
                         }
                     }
 
@@ -139,7 +152,7 @@ public class AchatBilletActivity extends AppCompatActivity {
             Classe.setText(restoredclass);
         }
         if (restorednbplac != 0) {
-            Nb_places.setText("="+restorednbplac);
+            Nb_places.setText(String.valueOf(restorednbplac));
         }
     }
 
@@ -149,5 +162,43 @@ public class AchatBilletActivity extends AppCompatActivity {
     }
 
     public void acheter(View view) {
+    }
+    //Methode de test connexion
+    public static void dialog(boolean value, Context context) {
+
+        if (value) {
+            context=null;
+            dialoge.dismiss();
+        } else {
+            dialoge = new ACProgressFlower.Builder(context)
+                    .direction(ACProgressConstant.DIRECT_CLOCKWISE)
+                    .themeColor(Color.WHITE)
+                    .text("Access Denied...").textColor(Color.WHITE)
+                    .fadeColor(Color.DKGRAY).build();
+            dialoge.show();
+        }
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 }

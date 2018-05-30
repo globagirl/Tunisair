@@ -11,10 +11,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="404dp"
-        android:layout_height="483dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/profile_layout"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:background="#fff"
         android:elevation="4dp"
         android:orientation="vertical"
@@ -79,6 +79,7 @@
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/group_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -115,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="5dp"
                 android:text="@string/dep"
                 android:textStyle="bold" />
 
@@ -187,11 +189,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:paddingTop="5dp"
                 android:text="@string/classe"
                 android:textStyle="bold" />
 
             <RadioGroup
-                android:layout_width="wrap_content"
+                android:id="@+id/group_classe"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -199,47 +203,39 @@
                 <RadioButton
                     android:id="@+id/affaire"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="3dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_classe"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:text="@string/affaire"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/eco"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_classe"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:text="@string/economique"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="300dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="192dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
         android:onClick="valide"
-        android:text="@string/valider"
+        android:text="Rechercher"
         android:textColor="@color/ic_launcher_background"
         android:theme="@style/MyButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

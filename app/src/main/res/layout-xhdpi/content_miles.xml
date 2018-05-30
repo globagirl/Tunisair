@@ -199,7 +199,6 @@
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="0"
-                        android:text="@string/Dt"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold" />

@@ -33,9 +33,15 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:text="Detaile Sur le Vol"
+            android:text="@string/detaile_sur_le_vol"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ligne" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -51,7 +57,7 @@
 
                     <TextView
                         android:id="@+id/textView45"
-                        android:layout_width="300dp"
+                        android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:textSize="14sp"
@@ -74,7 +80,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Prix"
+                        android:text="@string/prixe"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
@@ -95,11 +101,11 @@
 
                     <TextView
                         android:id="@+id/textView41"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="DEPARTS"
+                        android:text="@string/departs"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
@@ -109,7 +115,7 @@
 
                     <TextView
                         android:id="@+id/txt_depart"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
@@ -137,11 +143,11 @@
 
                     <TextView
                         android:id="@+id/textView40"
-                        android:layout_width="150dp"
+                        android:layout_width="130sp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="ARRIVES"
+                        android:text="@string/arrives"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
@@ -151,7 +157,7 @@
 
                     <TextView
                         android:id="@+id/txt_arriv"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
@@ -179,11 +185,11 @@
 
                     <TextView
                         android:id="@+id/textView42"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:padding="10dp"
-                        android:text="departs le "
+                        android:text="@string/departs_le"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
@@ -193,7 +199,7 @@
 
                     <TextView
                         android:id="@+id/txt_dat_dep"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:padding="10dp"
@@ -216,11 +222,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text=""
+                        android:gravity="center"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
-                        android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/view60"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -237,11 +242,11 @@
 
                     <TextView
                         android:id="@+id/textView43"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:padding="10dp"
-                        android:text="retoure le "
+                        android:text="@string/retoure_le"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
@@ -251,7 +256,7 @@
 
                     <TextView
                         android:id="@+id/txt_dat_retour"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:padding="10dp"
@@ -274,11 +279,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text=""
                         android:textAllCaps="true"
+                        android:gravity="center"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
-                        android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/view61"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -295,11 +299,11 @@
 
                     <TextView
                         android:id="@+id/textView44"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="classe"
+                        android:text="@string/classe"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
@@ -309,7 +313,7 @@
 
                     <TextView
                         android:id="@+id/txt_classe"
-                        android:layout_width="150dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
@@ -333,9 +337,9 @@
                         android:layout_weight="1"
                         android:padding="10dp"
                         android:textAllCaps="true"
+                        android:gravity="center"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
-                        android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/view8"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -362,29 +366,38 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="left"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:textAllCaps="false"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/total1"
+                        app:layout_constraintStart_toEndOf="@+id/view833"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/total1"
-                        android:layout_width="280dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="130dp"
+                        android:layout_marginStart="130dp"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="5dp"
-                        android:text="Total (1Place)"
+                        android:text="@string/total_1place"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
                         android:textStyle="normal|bold"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View
+                        android:id="@+id/view833"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@color/ligne"
+                        app:layout_constraintStart_toEndOf="@+id/total1"
                         app:layout_constraintTop_toTopOf="parent" />
                 </android.support.constraint.ConstraintLayout>
             </TableRow>
@@ -399,27 +412,35 @@
 
                     <TextView
                         android:id="@+id/textView49"
-                        android:layout_width="280dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
                         android:padding="5dp"
-                        android:text="Nb.Places"
+                        android:text="@string/nb_places"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        tools:layout_editor_absoluteX="130dp" />
 
                     <TextView
                         android:id="@+id/txt_nb_place"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@color/ligne"
                         app:layout_constraintStart_toEndOf="@+id/textView49"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -439,29 +460,38 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="left"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:textAllCaps="false"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/total"
+                        app:layout_constraintStart_toEndOf="@+id/view300"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/total"
-                        android:layout_width="280dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="130dp"
+                        android:layout_marginStart="130dp"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="5dp"
-                        android:text="Total (TND)"
+                        android:text="@string/total_tnd"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
                         android:textStyle="normal|bold"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View
+                        android:id="@+id/view300"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@color/ligne"
+                        app:layout_constraintStart_toEndOf="@+id/total"
                         app:layout_constraintTop_toTopOf="parent" />
                 </android.support.constraint.ConstraintLayout>
             </TableRow>
@@ -504,7 +534,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:buttonTint="@color/colorPrimary"
-                android:text="PayPal"
+                android:text="@string/paypal"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
         </RadioGroup>
     </LinearLayout>
@@ -513,7 +543,7 @@
         android:id="@+id/button6"
         android:layout_width="192dp"
         android:layout_height="46dp"
-        android:text="modifier"
+        android:text="@string/modifier"
         android:onClick="retour"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"

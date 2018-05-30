@@ -11,15 +11,18 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="303dp"
-        android:layout_height="397dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/profile_layout"
-
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
         android:background="#fff"
         android:elevation="4dp"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,14 +39,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/de"
-                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/P_depart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:spinnerMode="dialog" />
 
@@ -53,14 +55,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/vers"
-                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/p_arrive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:spinnerMode="dialog" />
         </LinearLayout>
@@ -79,10 +80,10 @@
                 android:layout_weight="0"
                 android:paddingTop="5dp"
                 android:text="@string/type_v"
-                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/group_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -90,31 +91,28 @@
                 <RadioButton
                     android:id="@+id/rd_aller"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/simple"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
                 <RadioButton
                     android:id="@+id/rd_retour"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/retour"
-                    android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textColor="@color/common_google_signin_btn_text_light_focused" />
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -122,15 +120,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="5dp"
                 android:text="@string/dep"
-                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/dat_dep"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -145,9 +143,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_retour"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textView9"
@@ -155,14 +156,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ret"
-                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/dat_arr"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -170,135 +170,37 @@
                 android:hint="Date"
                 android:inputType="textPersonName"
                 android:onClick="get_date2"
-                android:textColor="@color/common_google_signin_btn_text_light_focused"
-                android:textSize="14sp" />
+                android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/nbr_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:ems="10"
+            android:hint="Nombre de place"
+            android:inputType="number"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tx_nom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/passagers"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/adultes"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/N_adult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/jeunes"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/N_jeune"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/enfants"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/N_enfant"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/b_b_s"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/N_bebe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="5dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:paddingTop="5dp"
                 android:text="@string/classe"
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/group_classe"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -312,11 +214,9 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_classe"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:text="@string/affaire"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/eco"
@@ -325,53 +225,24 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_classe"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:text="@string/economique"
                     android:textColor="@color/common_google_signin_btn_text_light_focused"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </RadioGroup>
         </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/simul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
-            android:text="@string/simulation"
-            android:textColor="@color/common_google_signin_btn_text_light_focused"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/condition_d_achat_du_billets_prime"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="12sp" />
-
     </LinearLayout>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="222dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="192dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="20dp"
         android:onClick="valide"
-        android:text="@string/valider"
+        android:text="Rechercher"
         android:textColor="@color/ic_launcher_background"
-        android:textSize="12sp"
         android:theme="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <!--<WebView-->
-        <!--android:id="@+id/webView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
 </android.support.constraint.ConstraintLayout>

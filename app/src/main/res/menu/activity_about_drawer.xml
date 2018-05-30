@@ -14,16 +14,11 @@
             android:id="@+id/nav_miles"
             android:title="@string/achtM" />
         <item
-            android:id="@+id/nav_mouv"
-            android:title="@string/mvm" />
-        <item
             android:id="@+id/nav_rec"
             android:title="@string/rec" />
         <item
             android:id="@+id/nav_cons"
             android:title="@string/title_activity_consultation" />
-
-
     </group>
 
     <item android:title="">
@@ -39,5 +34,4 @@
                 android:title="@string/deco" />
         </menu>
     </item>
-
 </menu>
