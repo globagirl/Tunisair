@@ -330,6 +330,18 @@
             android:textColor="@color/common_google_signin_btn_text_dark_default"
             app:layout_constraintStart_toEndOf="@+id/textView31"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/qualif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="55dp"
+            android:text="0"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            app:layout_constraintStart_toEndOf="@+id/textView33"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -78,7 +78,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ReponseActivity"
-            android:label="@string/title_activity_reponse"
+            android:label=" "
             android:theme="@style/AppTheme" />
         <activity android:name=".AchatBilletActivity" />
 
