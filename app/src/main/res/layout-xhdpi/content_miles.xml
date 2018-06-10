@@ -93,6 +93,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -140,6 +141,7 @@
                     android:id="@+id/eruo"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
+                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_type"
@@ -152,6 +154,7 @@
                     android:id="@+id/dolar"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
+                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_type"
@@ -164,6 +167,7 @@
                     android:id="@+id/dinar"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
+                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorPrimary"
                     android:onClick="onRadioButton_type"
@@ -185,7 +189,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="12dp"
                         android:layout_weight="0"
                         android:text="@string/prix"
                         android:textSize="18sp"

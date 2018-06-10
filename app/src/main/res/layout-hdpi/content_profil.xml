@@ -301,7 +301,7 @@
             android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.266"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

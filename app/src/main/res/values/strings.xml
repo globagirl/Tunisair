@@ -17,8 +17,8 @@
     <string name="longure_mot_de_passe">Votre mot de passe doit contenir 6 caractères au minimum</string>
     <string name="mail_invalide">Adresse mail invalide</string>
     <string name="mot_de_passe_identique">Votre mot de passe n\'est pas identique</string>
-    <string name="verifier_tout_les_champs">Veuillez vérifier tout les champs</string>
-    <string name="logure_numero_vole">Votre numero de vol doit contenir 4 chifre</string>
+    <string name="verifier_tout_les_champs">Veuillez vérifier tous les champs</string>
+    <string name="logure_numero_vole">Votre numero de vol doit contenir 4 chiffres</string>
     <string name="logure_numero_bielts">Votre numéro de billet doit contenir 10 chiffres</string>
     <string name="autre_programme">Autre programme ?</string>
     <string name="familiale">Familiale</string>
@@ -74,7 +74,7 @@
     <string name="prof">Profil</string>
     <string name="achtB">Achat de Billets</string>
     <string name="achtM">Achat de Miles</string>
-    <string name="rec">Reclamations</string>
+    <string name="rec">Envoyer Réclamation</string>
     <string name="deco">Déconnexion</string>
     <string name="user_name">Nom d\'utilisateur</string>
     <string name="psw">Mot de passe</string>
@@ -111,14 +111,14 @@
     <string name="suit">Suivant</string>
     <string name="text">Voyage effectué durant les 4 semaines précédant votre adhésion</string>
     <string name="votre_id">Votre identifiant </string>
-    <string name="solde">Solde</string>
-    <string name="miles_qualifiants">Miles qualifiants</string>
+    <string name="solde">Prime</string>
+    <string name="miles_qualifiants">Qualifiants</string>
     <string name="gender">Sexe</string>
     <string name="mobile">Mobile</string>
     <string name="mail">Email</string>
     <string name="modifier_Profil">Modifier Profil</string>
     <string name="modifier_Adhésion">Modifier Adhésion</string>
-    <string name="nb_milles">Nombre des miles</string>
+    <string name="nb_milles">Nombre des Miles</string>
     <string name="type_milles">Type des Miles</string>
     <string name="type1" translatable="false">( 1Miles =0,05TND )</string>
     <string name="type2" translatable="false">( 1Miles =0,1TND )</string>
@@ -129,16 +129,16 @@
     <string name="dollar" translatable="false">Dollar</string>
     <string name="dinar" translatable="false">Dinar</string>
     <string name="prix">Prix total =</string>
-    <string name="taux">taux de change</string>
+    <string name="taux">Taux de change</string>
     <string name="taux1" translatable="false">1 EUR =3.00 DNT </string>
     <string name="taux2" translatable="false">1 USD =2.47 DNT  </string>
-    <string name="acheter">Acheter</string>
+    <string name="acheter">Confirmer</string>
     <string name="type_rec">Type de Réclamation</string>
     <string name="date_vol">Date du Vol</string>
     <string name="ref_billet">Réf Billet</string>
     <string name="num_ticket">"N° ticket "</string>
     <string name="desc">Description</string>
-    <string name="valider">Valider</string>
+    <string name="valider">Envoyer</string>
     <string name="name">Nom</string>
     <string name="pren">Prénom</string>
     <string name="naissance">Date de naissance</string>
@@ -174,7 +174,7 @@
     <string name="date_arr">Choisir une autre date d\'arrivage</string>
     <string name="departs">DEPARTS</string>
     <string name="arrives">ARRIVES</string>
-    <string name="detaile_sur_le_vol">Detaile Sur le Vol</string>
+    <string name="detaile_sur_le_vol">Facture</string>
     <string name="total_1place">Total (1Place)</string>
     <string name="retoure_le">retoure le</string>
     <string name="departs_le">departs le</string>
