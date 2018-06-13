@@ -174,7 +174,7 @@
     <string name="date_arr">Choisir une autre date d\'arrivage</string>
     <string name="departs">DEPARTS</string>
     <string name="arrives">ARRIVES</string>
-    <string name="detaile_sur_le_vol">Facture</string>
+    <string name="detaile_sur_le_vol">Détails de paiement</string>
     <string name="total_1place">Total (1Place)</string>
     <string name="retoure_le">retoure le</string>
     <string name="departs_le">departs le</string>
