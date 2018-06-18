@@ -433,13 +433,16 @@
                         android:id="@+id/textView49"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="130dp"
+                        android:layout_marginStart="130dp"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:text="@string/nb_places"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
-                        tools:layout_editor_absoluteX="130dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/txt_nb_place"
@@ -531,6 +534,7 @@
             android:layout_marginTop="10dp"
             android:paddingTop="5dp"
             android:text="@string/mode_de_paiement"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <RadioGroup
@@ -546,6 +550,7 @@
                 android:layout_weight="1"
                 android:buttonTint="@color/colorPrimary"
                 android:text="@string/simulation"
+                android:onClick="getChoixAchat"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
             <RadioButton
@@ -555,6 +560,7 @@
                 android:layout_weight="1"
                 android:buttonTint="@color/colorPrimary"
                 android:text="@string/paypal"
+                android:onClick="getChoixAchat"
                 android:textColor="@color/common_google_signin_btn_text_light_focused" />
         </RadioGroup>
     </LinearLayout>

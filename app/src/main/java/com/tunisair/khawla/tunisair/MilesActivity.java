@@ -1,5 +1,6 @@
 package com.tunisair.khawla.tunisair;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,8 +24,19 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+import com.tunisair.khawla.tunisair.ConfigPaypal.Config;
 import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
+import org.json.JSONException;
+
+import java.math.BigDecimal;
 
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
@@ -35,10 +48,18 @@ public class MilesActivity extends AppCompatActivity
     EditText nb_miles;
     TextView total;
     String extenstion = " TND";
-    double prrix_mail = 0.1, taux = 0;
+    double prrix_mail = 0.1, taux = 0,Total;
     static ACProgressFlower dialoge;
     private BroadcastReceiver mNetworkReceiver;
 
+    private static final int REQUEST_CODE_PAYMENT = 1;
+    private static PayPalConfiguration config = new PayPalConfiguration()
+            .environment(PayPalConfiguration.ENVIRONMENT_NO_NETWORK)
+            .clientId(Config.CONFIG_CLIENT_ID)
+            // The following are only used in PayPalFuturePaymentActivity.
+            .merchantName("Tuniser")
+            .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
+            .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +69,12 @@ public class MilesActivity extends AppCompatActivity
         registerNetworkBroadcastForNougat();
 
         nb_miles = findViewById(R.id.nb_miles3);
+        total = findViewById(R.id.prix_total);
+
+        Intent intent = new Intent(this, PayPalService.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        startService(intent);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -64,12 +91,12 @@ public class MilesActivity extends AppCompatActivity
 
         rd_mile = findViewById(R.id.typeQua);
         rd_mile.setChecked(true);
-        total = findViewById(R.id.prix_total);
 
         nb_miles.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 total.setText("00.0" + extenstion);
+                Total=0;
             }
 
             @Override
@@ -84,9 +111,11 @@ public class MilesActivity extends AppCompatActivity
 
                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * 0.1;
                         total.setText(pre_total + extenstion);
+                        Total=pre_total;
                     } else {
                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
                         total.setText(pre_total + extenstion);
+                        Total=pre_total;
                     }
                 }
             }
@@ -104,9 +133,11 @@ public class MilesActivity extends AppCompatActivity
                         if (taux == 0) {
                             double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
                             total.setText(pre_total + extenstion);
+                            Total=pre_total;
                         } else {
                             double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
                             total.setText(pre_total + extenstion);
+                            Total=pre_total;
                         }
                     }
                 }break;
@@ -117,9 +148,11 @@ public class MilesActivity extends AppCompatActivity
                         if (taux == 0) {
                             double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
                             total.setText(pre_total + extenstion);
+                            Total=pre_total;
                         } else {
                             double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
                             total.setText(pre_total + extenstion);
+                            Total=pre_total;
                         }
                     }
                 }break;
@@ -136,8 +169,10 @@ public class MilesActivity extends AppCompatActivity
                         taux = 3.00;
                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
                         total.setText(pre_total + extenstion);
+                        Total=pre_total;
                     } else {
                         total.setText("00.0" + extenstion);
+                        Total=0;
                     }
                 }
                 break;
@@ -145,11 +180,13 @@ public class MilesActivity extends AppCompatActivity
                 if (checked) {
                     extenstion = " USD";
                     if (!nb_miles.getText().toString().isEmpty()) {
-                        taux = 2.47;
+                        taux = 2.6;
                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail / taux;
                         total.setText(pre_total + extenstion);
+                        Total=pre_total;
                     } else {
                         total.setText("00.0" + extenstion);
+                        Total=0;
                     }
                 }
                 break;
@@ -160,8 +197,10 @@ public class MilesActivity extends AppCompatActivity
                         taux = 0;
                         double pre_total = Double.valueOf(nb_miles.getText().toString()) * prrix_mail;
                         total.setText(pre_total + extenstion);
+                        Total=pre_total;
                     } else {
                         total.setText("00.0" + extenstion);
+                        Total=0;
                     }
                 }
                 break;
@@ -227,7 +266,22 @@ public class MilesActivity extends AppCompatActivity
         return true;
     }
 
-    public void acheter(View view) {
+    public void achatMile(View view) {
+        switch (extenstion){
+            case " USD":processPayement(Total);break;
+            case " TND":processPayement(Total/2.6);break;
+            case " EUR":processPayement(Total*1.16);break;
+        }
+    }
+    private void processPayement(double valuer) {
+
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(valuer)),
+                "USD", "Montant", PayPalPayment.PAYMENT_INTENT_SALE);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT);
     }
     //Methode de test connexion
     public static void dialog(boolean value, Context context) {
@@ -266,5 +320,29 @@ public class MilesActivity extends AppCompatActivity
     public void onDestroy() {
         super.onDestroy();
         unregisterNetworkChanges();
+        stopService(new Intent(this, PayPalService.class));
+
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PAYMENT) {
+            if (resultCode == Activity.RESULT_OK) {
+                PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (confirm != null) {
+                    try {
+                        String payemmentDetail = confirm.toJSONObject().toString(4);
+
+                        Toast.makeText(this, " solde insufise", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED)
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+            Toast.makeText(this, "Invalide", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 }

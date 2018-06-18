@@ -257,6 +257,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="28dp"
         android:text="@string/acheter"
+        android:onClick="achatMile"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:theme="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package com.tunisair.khawla.tunisair;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +8,17 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +26,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.paypal.android.sdk.payments.PayPalAuthorization;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.paypal.android.sdk.payments.PayPalFuturePaymentActivity;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalProfileSharingActivity;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+import com.tunisair.khawla.tunisair.ConfigPaypal.Config;
 import com.tunisair.khawla.tunisair.receiver.NetworkStateChangeReceiver;
+
+import org.json.JSONException;
+
+import java.math.BigDecimal;
 
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
@@ -33,16 +51,28 @@ public class AchatBilletActivity extends AppCompatActivity {
     TextView Depart, Arrivage, Date_Depart, Date_Arrivage, Classe, Nb_places;
     TextView PrixDepart, PrixArrivage, PrixClasse, PrixTotale, PrixTotale_P;
     int restorednbplac;
-    String restoreddatreto, restoredclass;
+    String restoreddatreto, restoredclass, montants = "";
     ACProgressFlower dialog;
     static ACProgressFlower dialoge;
     private BroadcastReceiver mNetworkReceiver;
+    RadioButton simulation, paypal;
+    boolean choixAchat;
+
+    private static final int REQUEST_CODE_PAYMENT = 1;
+    private static PayPalConfiguration config = new PayPalConfiguration()
+            .environment(PayPalConfiguration.ENVIRONMENT_NO_NETWORK)
+            .clientId(Config.CONFIG_CLIENT_ID)
+            // The following are only used in PayPalFuturePaymentActivity.
+            .merchantName("Tuniser")
+            .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
+            .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achat_billet);
 
-        LoginActivity.NB_Activity=6;
+        LoginActivity.NB_Activity = 6;
         mNetworkReceiver = new NetworkStateChangeReceiver();
         registerNetworkBroadcastForNougat();
         prefs = getSharedPreferences("Achat_biellet", MODE_PRIVATE);
@@ -53,6 +83,9 @@ public class AchatBilletActivity extends AppCompatActivity {
         Date_Arrivage = (TextView) findViewById(R.id.txt_dat_retour);
         Classe = (TextView) findViewById(R.id.txt_classe);
         Nb_places = (TextView) findViewById(R.id.txt_nb_place);
+
+        simulation = (RadioButton) findViewById(R.id.rd_simul);
+        paypal = (RadioButton) findViewById(R.id.rd_paypal);
 
         PrixDepart = (TextView) findViewById(R.id.prix_dep);
         PrixArrivage = (TextView) findViewById(R.id.prix_retour);
@@ -66,6 +99,13 @@ public class AchatBilletActivity extends AppCompatActivity {
                 .fadeColor(Color.DKGRAY).build();
         dialog.show();
         restorde_donner();
+
+        Intent intent = new Intent(this, PayPalService.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        startService(intent);
+
+        simulation.setChecked(true);
+        choixAchat = true;
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -83,7 +123,7 @@ public class AchatBilletActivity extends AppCompatActivity {
                                 double Prixretoure = Double.parseDouble(vol.getPrix_A_R());
                                 double PrixclassA = Double.parseDouble(vol.getPrix_Cal_A());
                                 double PrixclassAR = Double.parseDouble(vol.getPrix_Cal_A_R());
-                                double Prixsoupliment=0;
+                                double Prixsoupliment = 0;
                                 double Prixtotale = 0;
 
                                 PrixDepart.setText("+" + Prixvole);
@@ -94,7 +134,7 @@ public class AchatBilletActivity extends AppCompatActivity {
                                     PrixArrivage.setText("+" + Prixretoure);
                                 }
                                 if (restoredclass.equals(getString(R.string.economique))) {
-                                        PrixClasse.setText("+" + Prixsoupliment);
+                                    PrixClasse.setText("+" + Prixsoupliment);
                                 } else {
                                     Prixsoupliment = Prixvole * POURCENTAGE_AFFAIRE;
                                     PrixClasse.setText("+" + Prixsoupliment);
@@ -102,13 +142,13 @@ public class AchatBilletActivity extends AppCompatActivity {
 
                                 if (restoreddatreto.equals("")) {
                                     Prixtotale = Prixretoure + Prixvole;
-                                    PrixTotale_P.setText( String.valueOf(Prixtotale));
+                                    PrixTotale_P.setText(String.valueOf(Prixtotale));
                                 } else {
                                     Prixtotale = Prixsoupliment + Prixretoure + Prixvole;
                                     PrixTotale_P.setText(String.valueOf(Prixtotale));
                                 }
                                 if (restorednbplac != 0) {
-                                    PrixTotale.setText(String.valueOf( Prixtotale * restorednbplac));
+                                    PrixTotale.setText(String.valueOf(Prixtotale * restorednbplac));
                                 }
                             }
                             dialog.dismiss();
@@ -156,18 +196,52 @@ public class AchatBilletActivity extends AppCompatActivity {
         }
     }
 
+    public void getChoixAchat(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.rd_simul:
+                if (checked) {
+                    choixAchat = true;
+                }
+                break;
+            case R.id.rd_paypal:
+                if (checked) {
+                    choixAchat = false;
+                }
+                break;
+        }
+    }
+
     public void retour(View view) {
         Intent intent = new Intent(this, BilletActivity.class);
         startActivity(intent);
     }
 
     public void acheter(View view) {
+        if (choixAchat) {
+            //simulation
+        } else {
+            //Paypal
+            processPayement();
+        }
     }
+
+    private void processPayement() {
+        montants = PrixTotale.getText().toString();
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(montants)),
+                "USD", "Montant", PayPalPayment.PAYMENT_INTENT_SALE);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+    }
+
     //Methode de test connexion
     public static void dialog(boolean value, Context context) {
 
         if (value) {
-            context=null;
+            context = null;
             dialoge.dismiss();
         } else {
             dialoge = new ACProgressFlower.Builder(context)
@@ -199,6 +273,32 @@ public class AchatBilletActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        stopService(new Intent(this, PayPalService.class));
         unregisterNetworkChanges();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PAYMENT) {
+            if (resultCode == Activity.RESULT_OK) {
+                PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (confirm != null) {
+                    try {
+                        String payemmentDetail = confirm.toJSONObject().toString(4);
+
+                        startActivity(new Intent(this,PaiementDetail.class)
+                                .putExtra("PaiementDetail",payemmentDetail)
+                                .putExtra("PaymentMontant",montants));
+                        Toast.makeText(this, " solde insufise", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED)
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+            Toast.makeText(this, "Invalide", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }

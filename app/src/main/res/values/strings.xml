@@ -130,8 +130,8 @@
     <string name="dinar" translatable="false">Dinar</string>
     <string name="prix">Prix total =</string>
     <string name="taux">Taux de change</string>
-    <string name="taux1" translatable="false">1 EUR =3.00 DNT </string>
-    <string name="taux2" translatable="false">1 USD =2.47 DNT  </string>
+    <string name="taux1" translatable="false">1 EUR =3.00 TND </string>
+    <string name="taux2" translatable="false">1 USD =2.60 TND  </string>
     <string name="acheter">Confirmer</string>
     <string name="type_rec">Type de Réclamation</string>
     <string name="date_vol">Date du Vol</string>
