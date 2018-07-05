@@ -64,7 +64,7 @@
     <string name="psw">Password</string>
     <string name="login">Login</string>
     <string name="inscri">Register</string>
-    <string name="acheter">buy</string>
+    <string name="acheter">Confirm</string>
     <string name="num_ticket">Ticket N°</string>
     <string name="desc">Description</string>
     <string name="valider">Validate</string>
@@ -95,15 +95,15 @@
     <string name="agence">Agency</string>
     <string name="voyage">" Travel to be provided later"</string>
     <string name="suit">Next</string>
-    <string name="text">" Travel done during the 4 weeks prior to your membership"</string>
-    <string name="votre_id">" Your ID"</string>
+    <string name="text">Travel done during the 4 weeks prior to your membership</string>
+    <string name="votre_id">Your ID</string>
     <string name="miles_qualifiants">Qualifiants miles</string>
     <string name="gender">Gender</string>
-    <string name="modifier_Profil">" Edit profile"</string>
+    <string name="modifier_Profil">Edit profile</string>
     <string name="modifier_Adhésion">" Modify Membership"</string>
     <string name="nb_milles">Miles number</string>
     <string name="type_milles">Miles type</string>
-    <string name="devise">" Select the currency"</string>
+    <string name="devise">Select the currency</string>
     <string name="prix">Total price=</string>
     <string name="taux">Exchange rate</string>
     <string name="type_rec">Reclamation type</string>
@@ -133,8 +133,26 @@
     <string name="en_cours">In progress</string>
     <string name="no_rec">" No complaints"</string>
     <string name="date_envoi">Date Sending</string>
-    <string name="type_r_clamation">" Claim type"</string>
+    <string name="type_r_clamation">Claim type</string>
     <string name="description">Description</string>
     <string name="date_r_ponse">"Date Answer "</string>
     <string name="r_ponse">Response</string>
+    <string name="nb_place">The seats number must be between 1 and 6 people</string>
+    <string name="pt_dep">Please choose your starting point</string>
+    <string name="pt_arr">Please choose your arrival point</string>
+    <string name="vol_inexis">This flight does not exist!</string>
+    <string name="pl_ins">Insufficient places!</string>
+    <string name="date_dep">Please choose another departure date</string>
+    <string name="date_arr">"Please choose another arrival date "</string>
+    <string name="departs">From</string>
+    <string name="arrives">To</string>
+    <string name="detaile_sur_le_vol">Payment details</string>
+    <string name="departs_le">Departure</string>
+    <string name="retoure_le">Return</string>
+    <string name="prixe">Price</string>
+    <string name="modifier">Edit</string>
+    <string name="nb_places">NB. seats</string>
+    <string name="total_1place">Total (1 seat)</string>
+    <string name="total_tnd">Total (TND)</string>
+    <string name="paypal">PayPal</string>
 </resources>

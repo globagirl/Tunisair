@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Tunisair</string>
+    <string name="app_name" translatable="false">TUNISAIR</string>
     <string name="title_activity_account" translatable="false">AccountActivity</string>
 
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
@@ -26,7 +26,7 @@
     <string name="fran_ais">Français</string>
     <string name="english">English</string>
     <string name="arabic">عربى</string>
-    <string name="chek_internet">Vous n\'êtes pas connectés à Internet</string>
+    <string name="chek_internet">Vous n\'êtes pas connecté à Internet</string>
     <string name="lieu_d_achat_de_vos_billets">Lieu d\'achat de vos billets</string>
     <string name="langue_de_communication">Langue de communication</string>
     <string name="type_adh_sion">Type adhésion</string>
@@ -167,20 +167,21 @@
     <string name="en_cours">En cours</string>
     <string name="nb_place">Le nombre des places doit être entre 1 et 6 personnes</string>
     <string name="pt_dep">Veuillez choisir votre point de départ</string>
-    <string name="pt_arr">Veuillez choisir votre point d\'arrivage</string>
-    <string name="vol_inexis">Votre vols n\'existe pas !</string>
-    <string name="pl_ins">Places insufisant!</string>
-    <string name="date_dep">Choisir une autre date de départ</string>
-    <string name="date_arr">Choisir une autre date d\'arrivage</string>
-    <string name="departs">DEPARTS</string>
-    <string name="arrives">ARRIVES</string>
+    <string name="pt_arr">Veuillez choisir votre point d\'arrivée</string>
+    <string name="vol_inexis">Ce vols n\'existe pas !</string>
+    <string name="pl_ins">Places insuffisant!</string>
+    <string name="date_dep">Veuillez choisir une autre date de départ</string>
+    <string name="date_arr">Veuillez choisir une autre date d\'arrivée</string>
+    <string name="departs">De</string>
+    <string name="arrives">Vers</string>
     <string name="detaile_sur_le_vol">Détails de paiement</string>
     <string name="total_1place">Total (1Place)</string>
-    <string name="retoure_le">retoure le</string>
-    <string name="departs_le">departs le</string>
+    <string name="retoure_le">"Retour "</string>
+    <string name="departs_le">Départ</string>
     <string name="prixe">Prix</string>
-    <string name="modifier">modifier</string>
+    <string name="modifier">Modifier</string>
     <string name="nb_places">Nb.Places</string>
     <string name="total_tnd">Total (TND)</string>
     <string name="paypal">PayPal</string>
+    <string name="title_activity_liste_vol" translatable="false">listeVolActivity</string>
 </resources>

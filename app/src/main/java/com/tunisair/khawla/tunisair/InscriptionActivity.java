@@ -8,14 +8,11 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -40,7 +37,7 @@ public class InscriptionActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     ArrayList<User> list_users = new ArrayList<>();
-    static ConstraintLayout constraintLayout;
+
     static ACProgressFlower dialoge;
     private BroadcastReceiver mNetworkReceiver;
 
@@ -55,7 +52,7 @@ public class InscriptionActivity extends AppCompatActivity {
         prefs = getSharedPreferences("Inscription", MODE_PRIVATE);
         editor = prefs.edit();
 
-        constraintLayout = (ConstraintLayout) findViewById(R.id.layout);
+
         nom = findViewById(R.id.nom);
         prenom = findViewById(R.id.prenom);
         mail = findViewById(R.id.email);
@@ -71,6 +68,7 @@ public class InscriptionActivity extends AppCompatActivity {
         rd_m.setChecked(true);
         editor.putString("sexe", rd_m.getText().toString());
         editor.apply();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

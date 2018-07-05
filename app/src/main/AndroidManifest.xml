@@ -79,8 +79,11 @@
         <activity
             android:name=".ReponseActivity"
             android:label=" "
-            android:theme="@style/AppTheme" />
-        <activity android:name=".AchatBilletActivity" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AchatBilletActivity"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".receiver.NetworkStateChangeReceiver"
@@ -90,7 +93,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".PaiementDetail"></activity>
+        <activity android:name=".PaiementDetail"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

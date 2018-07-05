@@ -40,7 +40,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
@@ -265,9 +264,9 @@ public class BilletActivity extends AppCompatActivity implements NavigationView.
 
         } else if (id == R.id.nav_deconnexion) {
             FirebaseAuth.getInstance().signOut();
-            finish();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            this.finishAffinity();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

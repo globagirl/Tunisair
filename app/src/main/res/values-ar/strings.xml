@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tunisair</string>
     <string name="champ_obligatoir">خانة اجبارية</string>
     <string name="longure_mot_de_passe">يجب أن تحتوي كلمة المرور عل 6 أحرف على الأقل</string>
     <string name="mail_invalide">عنوان بريد إلكتروني غير صالح</string>

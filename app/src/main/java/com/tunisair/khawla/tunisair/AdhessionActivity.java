@@ -8,10 +8,9 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +18,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -115,6 +113,7 @@ public class AdhessionActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinerarray);
         adapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Repa.setAdapter(adapterR);
+
         Repa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
